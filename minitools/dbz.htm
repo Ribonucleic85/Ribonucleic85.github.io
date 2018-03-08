@@ -1,0 +1,116 @@
+<html><head><style>
+* {
+    border:1px solid #134e00;
+    background-color:black;
+    color:white;
+    margin:6px 0 6px 6px;
+    outline:0px;
+}
+
+textarea {
+    display:block;
+    width: 512px;
+    height:150px;
+    resize: none;
+
+}
+input[type=text] {
+    display:block;
+    width:275px;
+}
+.encoded {
+    color:#a872ee;
+    border:1px solid #a872ee;
+}
+.numero {
+    color:#ff8924;
+    border:1px solid #ff8924;
+}
+.decoded {
+    color:#72caee;
+    border:1px solid #72caee;
+}
+.code {
+    position: fixed;
+    top: 7px;
+    right: -460px;
+    resize: none;
+    height: calc(100% - 19px);
+    color:#c1a200;
+    border:1px solid #c1a200;
+}
+.code:hover {
+    right: -1px;
+}
+
+
+
+input[type=button] {
+    width: 80px;
+    border:1px solid #10ff00;
+}
+input[type=button][value] {
+    position:relative;
+    top:-3px;
+}
+input[type=button]:hover {
+    color:#10ff00;
+}
+</style></head>
+<body>
+    <textarea class="encoded"></textarea>
+    <input type="text" class="numero">
+    <input type="button"><input type="button"><input type="button">
+    <input type="button"><input type="button"><input type="button">
+    <textarea id="ifrDcdSrc" class="decoded"></textarea>
+    <textarea class="code" style="">function byId(x) { return document.getElementById(x); }
+
+function decoder(enc, num) {
+  var dcd = "";
+  num = parseInt(num.value);
+  enc = makeArray(enc);
+  enc.forEach(
+    function _(value) {
+      dcd += String.fromCharCode(
+      parseInt(atob(value).replace(/\D/g,''))-num);
+    }
+  );
+
+  byId("ifrDcdSrc").value = decodeURIComponent(escape(dcd));
+}
+
+function stripSource(str) {
+  s = str.value;
+  s = s.replace(/\"/g, "");
+  s = s.replace(/ /g, "");
+  s = s.replace(/\n/g, "");
+  s = s.replace(/\[/g, "");
+  s = s.replace(/]/g, "");
+  s = s.replace(/;/g, "");
+  str.value = s;
+}
+
+function makeArray(str) {
+  var s = str.value;
+  return s.split(",");
+}
+
+function getURL(e) {
+  var s = e.value;
+  e.value = s.substring(
+    s.indexOf("/", 0),
+    s.indexOf("\"", s.indexOf("/",0)+1 )
+  );
+}
+
+function addLink(el) {
+  var link = document.createElement('a');
+  var br = document.createElement('br');
+
+  link.href = prompt("Address for link","");
+  link.innerText = prompt("Episode info","");
+
+  el.appendChild(link);
+  el.appendChild(br);
+}</textarea>
+</body></html>
