@@ -99,11 +99,11 @@ function getNumber(s,d) {
   d.value = s[s.length-1];
 }
 
-function addLink(el) {
+function addLink(el,bl) {
   var link = document.createElement('a');
   var br = document.createElement('br');
 
-  link.href = prompt("Address for link","");
+  link.href = prompt("Address for link",((bl==undefined) ? "" : bl));
   link.innerText = prompt("Episode info","");
 
   el.appendChild(link);
@@ -119,9 +119,9 @@ function addLink(el) {
 <input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
 <input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
 <input type="button" value="link" onclick="addLink(document.body)">
-<input type="button">
+<input type="button" value="link" onclick="addLink(document.body, byId('baselink').value)">
+<input type="text" style="width:500px;" id="baselink">
 <textarea id="ifrDcdSrc" class="decoded"></textarea>
-<input type="text" style="width:500px;">
 <textarea class="code" style="">function byId(x) { return document.getElementById(x); }
 
 function decoder(enc, num) {
@@ -167,11 +167,11 @@ function getNumber(s,d) {
   d.value = s[s.length-1];
 }
 
-function addLink(el) {
+function addLink(el,bl) {
   var link = document.createElement('a');
   var br = document.createElement('br');
 
-  link.href = prompt("Address for link","");
+  link.href = prompt("Address for link",((bl==undefined) ? "" : bl));
   link.innerText = prompt("Episode info","");
 
   el.appendChild(link);
