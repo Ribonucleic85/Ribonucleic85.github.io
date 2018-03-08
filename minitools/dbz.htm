@@ -119,7 +119,7 @@ function addLink(el,bl) {
 <input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
 <input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
 <input type="button" value="link" onclick="addLink(document.body)">
-<input type="button" value="link" onclick="addLink(document.body, byId('baselink').value)">
+<input type="button" value="link v2" onclick="addLink(document.body, byId('baselink').value)">
 <input type="text" style="width:500px;" id="baselink">
 <textarea id="ifrDcdSrc" class="decoded"></textarea>
 <textarea class="code" style="">function byId(x) { return document.getElementById(x); }
