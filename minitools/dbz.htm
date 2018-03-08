@@ -52,14 +52,9 @@ input[type=button][value] {
 input[type=button]:hover {
     color:#10ff00;
 }
-</style></head>
-<body>
-    <textarea class="encoded"></textarea>
-    <input type="text" class="numero">
-    <input type="button"><input type="button"><input type="button">
-    <input type="button"><input type="button"><input type="button">
-    <textarea id="ifrDcdSrc" class="decoded"></textarea>
-    <textarea class="code" style="">function byId(x) { return document.getElementById(x); }
+</style>
+<script>
+function byId(x) { return document.getElementById(x); }
 
 function decoder(enc, num) {
   var dcd = "";
@@ -71,18 +66,18 @@ function decoder(enc, num) {
       parseInt(atob(value).replace(/\D/g,''))-num);
     }
   );
-
-  byId("ifrDcdSrc").value = decodeURIComponent(escape(dcd));
+  return decodeURIComponent(escape(dcd));
 }
 
-function stripSource(str) {
+function stripSource(str) {// remove all:
   s = str.value;
-  s = s.replace(/\"/g, "");
-  s = s.replace(/ /g, "");
-  s = s.replace(/\n/g, "");
-  s = s.replace(/\[/g, "");
-  s = s.replace(/]/g, "");
-  s = s.replace(/;/g, "");
+  s = s.substring(s.indexOf('[')+1, s.indexOf(']'));
+  s = s.replace(/\"/g, "");  //   `"` from str
+  s = s.replace(/ /g, "");   //   `blank spaces` from str
+  s = s.replace(/\n/g, "");  //   `line breaks` from str
+  s = s.replace(/\[/g, "");  //   `[` from str
+  s = s.replace(/]/g, "");   //   `]` from str
+  s = s.replace(/;/g, "");   //   `;` from str
   str.value = s;
 }
 
@@ -95,8 +90,13 @@ function getURL(e) {
   var s = e.value;
   e.value = s.substring(
     s.indexOf("/", 0),
-    s.indexOf("\"", s.indexOf("/",0)+1 )
+    s.indexOf("\"", s.indexOf("/",0)+1)
   );
+}
+
+function getNumber(s,d) {
+  s = s.value.match(/\d+/g);
+  d.value = s[s.length-1];
 }
 
 function addLink(el) {
@@ -109,9 +109,71 @@ function addLink(el) {
   el.appendChild(link);
   el.appendChild(br);
 }
+</script>
+</head>
+<body>
+<textarea class="encoded" id="ifrEncSrc"></textarea>
+<input type="text" class="numero" id="ifrDecNum">
+<input type="button" value="number" onclick="getNumber(byId('ifrEncSrc'), byId('ifrDecNum'))">
+<input type="button" value="strip" onclick="stripSource(byId('ifrEncSrc'))">
+<input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
+<input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
+<input type="button" value="link" onclick="addLink(document.body)">
+<input type="button">
+<textarea id="ifrDcdSrc" class="decoded"></textarea>
+<textarea class="code" style="">function byId(x) { return document.getElementById(x); }
 
-var sc = document.getElementsByTagName('script'), i=0;
+function decoder(enc, num) {
+  var dcd = "";
+  num = parseInt(num.value);
+  enc = makeArray(enc);
+  enc.forEach(
+    function _(value) {
+      dcd += String.fromCharCode(
+      parseInt(atob(value).replace(/\D/g,''))-num);
+    }
+  );
+  return decodeURIComponent(escape(dcd));
+}
 
-for ( ; i<sc.length; i++)
-  document.body.appendChild(sc[i]);</textarea>
+function stripSource(str) {// remove all:
+  s = str.value;
+  s = s.substring(s.indexOf('[')+1, s.indexOf(']'));
+  s = s.replace(/\"/g, "");  //   `"` from str
+  s = s.replace(/ /g, "");   //   `blank spaces` from str
+  s = s.replace(/\n/g, "");  //   `line breaks` from str
+  s = s.replace(/\[/g, "");  //   `[` from str
+  s = s.replace(/]/g, "");   //   `]` from str
+  s = s.replace(/;/g, "");   //   `;` from str
+  str.value = s;
+}
+
+function makeArray(str) {
+  var s = str.value;
+  return s.split(",");
+}
+
+function getURL(e) {
+  var s = e.value;
+  e.value = s.substring(
+    s.indexOf("/", 0),
+    s.indexOf("\"", s.indexOf("/",0)+1)
+  );
+}
+
+function getNumber(s,d) {
+  s = s.value.match(/\d+/g);
+  d.value = s[s.length-1];
+}
+
+function addLink(el) {
+  var link = document.createElement('a');
+  var br = document.createElement('br');
+
+  link.href = prompt("Address for link","");
+  link.innerText = prompt("Episode info","");
+
+  el.appendChild(link);
+  el.appendChild(br);
+}</textarea>
 </body></html>
