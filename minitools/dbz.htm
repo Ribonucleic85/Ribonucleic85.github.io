@@ -6,7 +6,6 @@
     margin:6px 0 6px 6px;
     outline:0px;
 }
-
 textarea {
     display:block;
     width: 512px;
@@ -42,9 +41,6 @@ input[type=text] {
 .code:hover {
     right: -1px;
 }
-
-
-
 input[type=button] {
     width: 80px;
     border:1px solid #10ff00;
@@ -112,5 +108,10 @@ function addLink(el) {
 
   el.appendChild(link);
   el.appendChild(br);
-}</textarea>
+}
+
+var sc = document.getElementsByTagName('script'), i=0;
+
+for ( ; i<sc.length; i++)
+  document.body.appendChild(sc[i]);</textarea>
 </body></html>
