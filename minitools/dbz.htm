@@ -52,6 +52,10 @@ input[type=button][value] {
 input[type=button]:hover {
     color:#10ff00;
 }
+a {
+    display:block;
+    width:200;
+}
 </style>
 <script>
 function byId(x) { return document.getElementById(x); }
@@ -125,7 +129,7 @@ function addLink(el,bl,sp,ei) {
 <input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
 <input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
 <input type="button" value="link" onclick="addLink(document.body)">
-<input type="button" value="link v2" onclick="addLink(document.body, byId('baselink').value)">
+<input type="button" value="link v2" onclick="addLink(document.body, byId('baselink').value, '', byId('epno').value)">
 <input type="button" value="link v3"
  onclick="addLink(document.body, byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')) )">
 <br>
