@@ -99,15 +99,21 @@ function getNumber(s,d) {
   d.value = s[s.length-1];
 }
 
-function addLink(el,bl) {
+function epNo(n) {
+  var no = parseInt(n.value);
+  n.value = no+1;
+  return no;
+}
+
+function u(u) {
+  return u==undefined;
+}
+
+function addLink(el,bl,sp,ei) {
   var link = document.createElement('a');
-  var br = document.createElement('br');
-
-  link.href = prompt("Address for link",((bl==undefined) ? "" : bl));
-  link.innerText = prompt("Episode info","");
-
+  link.href = prompt("Address for link", (u(bl)?"":bl)+(u(sp)?"":sp));
+  link.innerText = prompt("Episode info", (u(ei)?"":ei));
   el.appendChild(link);
-  el.appendChild(br);
 }
 </script>
 </head>
@@ -120,7 +126,11 @@ function addLink(el,bl) {
 <input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
 <input type="button" value="link" onclick="addLink(document.body)">
 <input type="button" value="link v2" onclick="addLink(document.body, byId('baselink').value)">
-<input type="text" style="width:500px;" id="baselink">
+<input type="button" value="link v3"
+ onclick="addLink(document.body, byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')) )">
+<br>
+<input type="text" style="display:inline-block;width:50px;" id="epno">
+<input type="text" style="display:inline-block;width:455px;" id="baselink">
 <textarea id="ifrDcdSrc" class="decoded"></textarea>
 <textarea class="code" style="">function byId(x) { return document.getElementById(x); }
 
@@ -167,14 +177,20 @@ function getNumber(s,d) {
   d.value = s[s.length-1];
 }
 
-function addLink(el,bl) {
+function epNo(n) {
+  var no = parseInt(n.value);
+  n.value = no+1;
+  return no;
+}
+
+function u(u) {
+  return u==undefined;
+}
+
+function addLink(el,bl,sp,ei) {
   var link = document.createElement('a');
-  var br = document.createElement('br');
-
-  link.href = prompt("Address for link",((bl==undefined) ? "" : bl));
-  link.innerText = prompt("Episode info","");
-
+  link.href = prompt("Address for link", (u(bl)?"":bl)+(u(sp)?"":sp));
+  link.innerText = prompt("Episode info", (u(ei)?"":ei));
   el.appendChild(link);
-  el.appendChild(br);
 }</textarea>
 </body></html>
