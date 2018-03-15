@@ -1,0 +1,79 @@
+* {
+    border:1px solid #134e00;
+    background-color:black;
+    color:white;
+    margin:6px 0 6px 6px;
+    outline:0px;
+}
+textarea {
+    display:block;
+    width: 512px;
+    height:150px;
+    resize: none;
+}
+input[type=text] {
+    display:block;
+    width:275px;
+}
+.encoded {
+    color:#a872ee;
+    border:1px solid #a872ee;
+}
+.encoded::selection {
+    color:#000000;
+    background:#be97f2;
+}
+.numero {
+    color:#ff8924;
+    border:1px solid #ff8924;
+}
+.decoded {
+    color:#72caee;
+    border:1px solid #72caee;
+}
+#links {
+    height: 130px;
+    width: 90%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+.code {
+    position: fixed;
+    top: 7px;
+    right: -460px;
+    resize: none;
+    height: calc(100% - 19px);
+    color:#c1a200;
+    border:1px solid #c1a200;
+}
+.code:hover {
+    right: -1px;
+}
+input[type=button] {
+    width: 80px;
+    border:1px solid #10ff00;
+}
+input[type=button][value] {
+    position:relative;
+    top:-3px;
+}
+input[type=button]:hover {
+    color:#10ff00;
+}
+#epno, #baselink {
+    display:inline-block;
+}
+#epno {
+    width:50px;
+}
+#baselink {
+    width:455px;
+}
+a {
+    display:block;
+    width:200;
+}
+a:hover {
+    background-color:green;
+    color:black;
+}
