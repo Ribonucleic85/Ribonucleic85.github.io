@@ -1,142 +1,27 @@
-<html><head><title>DBZ</title><style>
-* {
-    border:1px solid #134e00;
-    background-color:black;
-    color:white;
-    margin:6px 0 6px 6px;
-    outline:0px;
-}
-textarea {
-    display:block;
-    width: 512px;
-    height:150px;
-    resize: none;
-
-}
-input[type=text] {
-    display:block;
-    width:275px;
-}
-.encoded {
-    color:#a872ee;
-    border:1px solid #a872ee;
-}
-.numero {
-    color:#ff8924;
-    border:1px solid #ff8924;
-}
-.decoded {
-    color:#72caee;
-    border:1px solid #72caee;
-}
-.code {
-    position: fixed;
-    top: 7px;
-    right: -460px;
-    resize: none;
-    height: calc(100% - 19px);
-    color:#c1a200;
-    border:1px solid #c1a200;
-}
-.code:hover {
-    right: -1px;
-}
-input[type=button] {
-    width: 80px;
-    border:1px solid #10ff00;
-}
-input[type=button][value] {
-    position:relative;
-    top:-3px;
-}
-input[type=button]:hover {
-    color:#10ff00;
-}
-a {
-    display:block;
-    width:200;
-}
-</style>
-<script>
-function byId(x) { return document.getElementById(x); }
-
-function decoder(enc, num) {
-  var dcd = "";
-  num = parseInt(num.value);
-  enc = makeArray(enc);
-  enc.forEach(
-    function _(value) {
-      dcd += String.fromCharCode(
-      parseInt(atob(value).replace(/\D/g,''))-num);
-    }
-  );
-  return decodeURIComponent(escape(dcd));
-}
-
-function stripSource(str) {// remove all:
-  s = str.value;
-  s = s.substring(s.indexOf('[')+1, s.indexOf(']'));
-  s = s.replace(/\"/g, "");  //   `"` from str
-  s = s.replace(/ /g, "");   //   `blank spaces` from str
-  s = s.replace(/\n/g, "");  //   `line breaks` from str
-  s = s.replace(/\[/g, "");  //   `[` from str
-  s = s.replace(/]/g, "");   //   `]` from str
-  s = s.replace(/;/g, "");   //   `;` from str
-  str.value = s;
-}
-
-function makeArray(str) {
-  var s = str.value;
-  return s.split(",");
-}
-
-function getURL(e) {
-  var s = e.value;
-  e.value = s.substring(
-    s.indexOf("/", 0),
-    s.indexOf("\"", s.indexOf("/",0)+1)
-  );
-}
-
-function getNumber(s,d) {
-  s = s.value.match(/\d+/g);
-  d.value = s[s.length-1];
-}
-
-function epNo(n) {
-  var no = parseInt(n.value);
-  n.value = no+1;
-  return no;
-}
-
-function u(u) {
-  return u==undefined;
-}
-
-function addLink(el,bl,sp,ei) {
-  var link = document.createElement('a');
-  link.href = prompt("Address for link", (u(bl)?"":bl)+(u(sp)?"":sp));
-  link.innerText = prompt("Episode info", (u(ei)?"":ei));
-  el.appendChild(link);
-}
-</script>
+<html>
+<head>
+	<title>DBZ</title>
+	<link rel="stylesheet" href="./css/dbz.css">
+	<script src="./js/dbz1.js"></script>
 </head>
 <body>
-<textarea class="encoded" id="ifrEncSrc"></textarea>
-<input type="text" class="numero" id="ifrDecNum">
-<input type="button" value="number" onclick="getNumber(byId('ifrEncSrc'), byId('ifrDecNum'))">
-<input type="button" value="strip" onclick="stripSource(byId('ifrEncSrc'))">
-<input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
-<input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
-<input type="button" value="link" onclick="addLink(document.body)">
-<input type="button" value="link v2" onclick="addLink(document.body, byId('baselink').value, '', byId('epno').value)">
-<input type="button" value="link v3"
- onclick="addLink(document.body, byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')) )">
-<br>
-<input type="text" style="display:inline-block;width:50px;" id="epno">
-<input type="text" style="display:inline-block;width:455px;" id="baselink">
-<textarea id="ifrDcdSrc" class="decoded"></textarea>
-<textarea class="code" style="">function byId(x) { return document.getElementById(x); }
+	<textarea class="encoded" id="ifrEncSrc" onfocus="autoselect(this)"></textarea>
+	<input type="text" class="numero" id="ifrDecNum">
+	<input type="button" value="number" onclick="getNumber(byId('ifrEncSrc'), byId('ifrDecNum'))">
+	<input type="button" value="strip" onclick="stripSource(byId('ifrEncSrc'))">
+	<input type="button" value="decode" onclick="byId('ifrDcdSrc').value = decoder(byId('ifrEncSrc'), byId('ifrDecNum'))">
+	<input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
+	<br>
+	<input type="button" value="link page"
+		onclick="addLink(byId('links'), byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')))">
+	<input type="button" value="link vid"
+		onclick="addLink(byId('links'), byId('baselink').value, '', byId('epno').value-1, '\x64\x62\x7A\x20\x65\x70')">
+	<br>
+	<input type="text" id="epno">
+	<input type="text" id="baselink">
+	<textarea id="ifrDcdSrc" class="decoded"></textarea>
+	<div id="links" onmouseover="autoscroll(this)"></div>
+	<textarea class="code">function byId(x) { return document.getElementById(x); }
 
 function decoder(enc, num) {
   var dcd = "";
@@ -151,15 +36,15 @@ function decoder(enc, num) {
   return decodeURIComponent(escape(dcd));
 }
 
-function stripSource(str) {// remove all:
+function stripSource(str) {
   s = str.value;
   s = s.substring(s.indexOf('[')+1, s.indexOf(']'));
-  s = s.replace(/\"/g, "");  //   `"` from str
-  s = s.replace(/ /g, "");   //   `blank spaces` from str
-  s = s.replace(/\n/g, "");  //   `line breaks` from str
-  s = s.replace(/\[/g, "");  //   `[` from str
-  s = s.replace(/]/g, "");   //   `]` from str
-  s = s.replace(/;/g, "");   //   `;` from str
+  s = s.replace(/\"/g, "");
+  s = s.replace(/ /g, "");
+  s = s.replace(/\n/g, "");
+  s = s.replace(/\[/g, "");
+  s = s.replace(/]/g, "");
+  s = s.replace(/;/g, "");
   str.value = s;
 }
 
@@ -187,14 +72,42 @@ function epNo(n) {
   return no;
 }
 
+function uS(u) {
+  if (u == undefined) return "";
+  if (typeof u == "object") return u.value;
+  return u;
+}
+
 function u(u) {
   return u==undefined;
 }
 
-function addLink(el,bl,sp,ei) {
+function addLink(el,bl,sp,ei,dl) {
   var link = document.createElement('a');
-  link.href = prompt("Address for link", (u(bl)?"":bl)+(u(sp)?"":sp));
-  link.innerText = prompt("Episode info", (u(ei)?"":ei));
+
+  link.href = prompt("Address for link", uS(bl) + uS(sp));
+  link.innerText = prompt("Episode info", uS(ei));
+
+  if (!u(dl))
+    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64",
+    en[parseInt(uS(ei))] );
+	//dl +" "+ uS(ei));
+
   el.appendChild(link);
+}
+
+// inline version:
+//   onfocus="(function(t){t.select();return false})(this)"
+function autoselect(t) {
+  t.select();
+  return false;
+}
+    
+// incremental inline version
+//   onmouseover="this.scrollBy(0,40)"
+function autoscroll(t) {
+  t.scrollBy(0,40);
 }</textarea>
-</body></html>
+
+</body>
+</html>
