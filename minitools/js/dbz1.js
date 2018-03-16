@@ -64,7 +64,7 @@ function addLink(el,bl,sp,ei,dl) {
   link.href = prompt("Address for link", uS(bl) + uS(sp));
   link.innerText = prompt("Episode info", uS(ei));
   if (dl)
-    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64", __(uS(ei)));
+    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64", __(uS(ei)-1));
   el.appendChild(link);
 }
 
