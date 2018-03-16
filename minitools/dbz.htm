@@ -3,6 +3,7 @@
 	<title>DBZ</title>
 	<link rel="stylesheet" href="./css/dbz.css">
 	<script src="./js/dbz1.js"></script>
+	<script src="./js/dbz.js"></script>
 </head>
 <body>
 	<textarea class="encoded" id="ifrEncSrc" onfocus="autoselect(this)"></textarea>
@@ -13,9 +14,9 @@
 	<input type="button" value="get" onclick="getURL(byId('ifrDcdSrc'))">
 	<br>
 	<input type="button" value="link page"
-		onclick="addLink(byId('links'), byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')))">
+		onclick="addLink(byId('links'), byId('baselink').value, byId('ifrDcdSrc').value, epNo(byId('epno')), false)">
 	<input type="button" value="link vid"
-		onclick="addLink(byId('links'), byId('baselink').value, '', byId('epno').value-1, '\x64\x62\x7A\x20\x65\x70')">
+		onclick="addLink(byId('links'), byId('baselink').value, '', byId('epno').value-1, true)">
 	<br>
 	<input type="text" id="epno">
 	<input type="text" id="baselink">
@@ -84,15 +85,10 @@ function u(u) {
 
 function addLink(el,bl,sp,ei,dl) {
   var link = document.createElement('a');
-
   link.href = prompt("Address for link", uS(bl) + uS(sp));
   link.innerText = prompt("Episode info", uS(ei));
-
-  if (!u(dl))
-    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64",
-    en[parseInt(uS(ei))] );
-	//dl +" "+ uS(ei));
-
+  if (dl)
+    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64", __(uS(ei)));
   el.appendChild(link);
 }
 
