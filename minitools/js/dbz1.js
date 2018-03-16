@@ -56,7 +56,7 @@ function uS(u) {
 }
 
 function u(u) {
-  return u==undefined;
+  return (u==undefined)==true;
 }
 
 function addLink(el,bl,sp,ei,dl) {
