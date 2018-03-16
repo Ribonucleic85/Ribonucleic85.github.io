@@ -56,13 +56,13 @@ function uS(u) {
 }
 
 function u(u) {
-  return (u==undefined)==true;
+  return u==undefined;
 }
 
 function addLink(el,bl,sp,ei,dl) {
   var link = document.createElement('a');
   link.href = prompt("Address for link", uS(bl) + uS(sp));
-  link.innerText = prompt("Episode info", (!u(dl))? __(uS(ei)) : uS(ei));
+  link.innerText = prompt("Episode info", (dl)?__(uS(ei)-1):uS(ei));
   if (dl)
     link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64", __(uS(ei)-1));
   el.appendChild(link);
