@@ -61,14 +61,10 @@ function u(u) {
 
 function addLink(el,bl,sp,ei,dl) {
   var link = document.createElement('a');
-
   link.href = prompt("Address for link", uS(bl) + uS(sp));
   link.innerText = prompt("Episode info", uS(ei));
-
-  if (!u(dl))
-    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64",
-    dl +" "+ uS(ei));
-
+  if (dl)
+    link.setAttribute("\x64\x6F\x77\x6E\x6C\x6F\x61\x64", __(uS(ei)));
   el.appendChild(link);
 }
 
