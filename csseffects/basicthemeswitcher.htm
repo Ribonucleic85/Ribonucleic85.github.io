@@ -1,0 +1,94 @@
+<html><head>
+<style>
+body {
+        margin:0;
+}
+#body {
+        margin:0;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+}
+div {
+        margin:24px;
+}
+div.hi {
+        margin: 24px 0px;
+        padding: 0px 24px;
+}
+input {
+        position:relative;
+        z-index:20;
+}
+
+#cobalt:checked
+ ~ #body {
+        color:white;
+/* orig background-color:#001b33;
+*/      background-color:#001b33;
+}
+#cobalt:checked
+ ~ #body div.hi {
+/* orig background-color:#003b70;
+*/      background-color:#002e57;
+}
+
+
+#oblivion:checked
+ ~ #body {
+        color:#d3d7cf;
+/* orig background-color:#2e3436;
+*/      background-color:#2e3436;
+}
+#oblivion:checked
+ ~ #body div.hi {
+        color:#eeeeec;
+/* orig background-color:#484946;
+*/      background-color:#484946;
+}
+
+
+#hybridObCo:checked
+ ~ #body {
+        color:#d3d7cf;
+/* orig background-color:#2e3436;
+*/      background-color:#2e3436;
+}
+#hybridObCo:checked
+ ~ #body div.hi {
+        color:#eeeeec;
+/* orig background-color:#484946;
+*/      background-color:#0c485a;
+}
+
+#hybridCoOb:checked
+ ~ #body {
+        color:#d3d7cf;
+/* orig background-color:#2e3436;
+*/      background-color:#001b33;
+}
+#hybridCoOb:checked
+ ~ #body div.hi {
+        color:#eeeeec;
+/* orig background-color:#484946;
+*/      background-color:#31312f;
+}
+</style>
+</head>
+<body>
+<p>This is a basic (few styles) simple theme switcher, it uses only radio buttons and css selectors, it can support more css, as much as any standard website, it would be best to seperate the themes into seperate css files</p>
+<input type="radio" name="theme" id="cobalt">
+<input type="radio" name="theme" id="oblivion">
+<input type="radio" name="theme" id="notheme">
+<input type="radio" name="theme" id="hybridCoOb">
+<input type="radio" name="theme" id="hybridObCo">
+<div id="body">
+  <div class="hi">&lt;color name="faded_yellow" value="#ffee80"/&gt;</div>
+  <div>&lt;color name="faded_yellow" value="#ffee80"/&gt;</div>
+  <div>&lt;color name="faded_yellow" value="#ffee80"/&gt;</div>
+  <div>&lt;color name="faded_yellow" value="#ffee80"/&gt;</div>
+  <div>&lt;color name="faded_yellow" value="#ffee80"/&gt;</div>
+</div>
+</body></html>
