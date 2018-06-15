@@ -1,6 +1,20 @@
 <html><head><title>Welcome..</title><style>
 [type=text] {width:60px;}
-</style></head>
+</style><script>
+const byId = (i) => {
+  return document.getElementById(i);
+}
+const selectedRange = (ta, st, en) => {
+  st.value = ta.selectionStart;
+  en.value = ta.selectionEnd;
+  ta.focus();
+}
+const doSelect = (ta, st, en) => {
+  ta.selectionStart = st.value;
+  ta.selectionEnd = en.value;
+  ta.focus();
+}
+</script></head>
 <body><textarea id="selectTest" style="margin: 0px;width: 472px;height: 247px;resize: none;">var thiS = {
   gusto: 'x',
   musto: 'y',
