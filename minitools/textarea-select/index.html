@@ -1,0 +1,32 @@
+<html><head><title>Welcome..</title><style>
+[type=text] {width:60px;}
+</style></head>
+<body><textarea id="selectTest" style="margin: 0px;width: 472px;height: 247px;resize: none;">var thiS = {
+  gusto: 'x',
+  musto: 'y',
+  endo:  'z'
+}
+
+function that(a,b,c) {
+  if (a) return 1;
+  if (b) return "banana";
+  if (c) return "error";
+
+  return "defghijklmnopqrstuvw....";
+}
+
+var Are = ["you", "trying", "to",
+    "make", "sense", "of", "this"]; // ?
+
+var Well = "you can't because while it is valid \
+    javascript it has no purpose other than being a \
+    block of text to test selecting text in this \
+    textarea";</textarea><br><br>Put
+selection start and end positions into the fields below and click select..<br>
+<input type="text" id="selectStart"> -
+<input type="text" id="selectEnd">
+<input type="button" value="select" onclick="doSelect(byId('selectTest'),byId('selectStart'),byId('selectEnd'))"><br><br>
+<input type="text" id="selectedStart"> -
+<input type="text" id="selectedEnd">
+<input type="button" id="selectedGet" value="get selection range" onclick="selectedRange(byId('selectTest'),byId('selectedStart'),byId('selectedEnd'))">
+</body></html>
