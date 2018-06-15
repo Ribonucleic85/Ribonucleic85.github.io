@@ -28436,4 +28436,16 @@ item_templates {
     buddy_size: BUDDY_BIG
     model_height: 1.55
   }
-}</textarea></body></html>
+}</textarea>
+<div class="jsbox"><script>
+const jsbox = (src) => {
+  try { src = document.getElementById(src); }
+  catch(e) { return; }
+
+  try { eval(src.value); }
+  catch(err) { src.style.backgroundColor = "#fa8072"; }
+  finally { setTimeout(() => { src.style.backgroundColor="#ffffff"; }, 3000); }
+}
+</script>
+<textarea id="jsta" style="width:495px; height:287px; background-color:#FFFFFF;"></textarea><br>
+<input type="button" value="run js" onclick="jsbox('jsta')"></div></body></html>
