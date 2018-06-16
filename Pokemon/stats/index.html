@@ -28452,7 +28452,44 @@ const jsbox = (src) => {
 }
 </script>
 javascript tester:<br>
-<textarea id="jsta" style="width: 497px; height: 244px; background-color: rgb(255, 255, 255); margin: 0px;"></textarea><br>
+<textarea id="jsta" style="width: 497px; height: 244px; background-color: rgb(255, 255, 255); margin: 0px;">var pkmn,
+
+byId = (i) => { return document.getElementById(i); },
+
+pkmn = byId('stats').value.split('\n');
+
+byId('debug').value = "number of lines:\n" + pkmn.length;
+
+byId('finished').value = pkmn[3] +'\n';
+byId('finished').value += pkmn[32] +'\n';
+byId('finished').value += pkmn[33] +'\n';
+byId('finished').value += pkmn[34];
+
+// because i was so tired i only got as far as
+// splitting the master into individual lines
+// and then pinpointing line numbers specific
+// to Bulbasaur, i need to work on automating
+// line selection and the formatting each line
+// in to code to build a database
+
+// later projects will involve similar things
+// except it will be to process the entire master
+// file, for example moves and the timing and
+// associated with such
+
+/*
+  arrIter = (a,d) => {
+    for (var i=0; i<a.length; i++) {
+      d.value += a;
+    }
+  }
+
+  arrFilter = (a,d) => {
+    for (var i=0; i<a.length; i++) {
+      d.value += a;
+    }
+  }
+*/</textarea><br>
 <input type="button" value="run js" onclick="jsbox('jsta')"></div>
 <div style="display:inline-block">id = debug:<br>
 <textarea id="debug" style="margin: 0px; width: 576px; height: 260px;"></textarea></div></div></body></html>
