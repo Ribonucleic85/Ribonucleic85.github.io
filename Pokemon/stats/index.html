@@ -1,4 +1,9 @@
-<html><head></head><body>
+<html><head><style>
+* {
+  color:white;
+  background-color:black;
+}
+</style></head><body>
 <div><div style="display:inline-block">id = stats<br><textarea style="margin: 0px; height: 629px; width: 441px;" id="stats">item_templates {
   template_id: "V0001_POKEMON_BULBASAUR"
   pokemon_settings {
@@ -28448,7 +28453,7 @@ const jsbox = (src) => {
 
   try { eval(src.value); }
   catch(err) { src.style.backgroundColor = "#fa8072"; }
-  finally { setTimeout(() => { src.style.backgroundColor="#ffffff"; }, 3000); }
+  finally { setTimeout(() => { src.style.backgroundColor=""; }, 3000); }
 }
 </script>
 javascript tester:<br>
