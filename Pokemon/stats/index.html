@@ -4,7 +4,7 @@
   background-color:black;
 }
 </style></head><body>
-<div><div style="display:inline-block">id = stats<br><textarea style="margin: 0px; height: 629px; width: 441px;" id="stats">item_templates {
+<div><div style="display:inline-block">id = stats<br><textarea readonly style="height:629px; width:441px; resize:none;" id="stats">item_templates {
   template_id: "V0001_POKEMON_BULBASAUR"
   pokemon_settings {
     pokemon_id: BULBASAUR
@@ -28444,7 +28444,7 @@ item_templates {
   }
 }</textarea></div>
 <div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
-<textarea style="margin: 0px; height: 629px; width: 441px;" id="finished"></textarea></div></div>
+<textarea style="height:629px; width:441px; resize:none;" id="finished"></textarea></div></div>
 <hr>
 <div><div class="jsbox" style="display:inline-block"><script>
 const jsbox = (src) => {
@@ -28457,7 +28457,7 @@ const jsbox = (src) => {
 }
 </script>
 javascript tester:<br>
-<textarea id="jsta" style="width: 497px; height: 244px; background-color: rgb(255, 255, 255); margin: 0px;">var pkmn,
+<textarea id="jsta" style="width:497px; height:244px; resize:none;">var pkmn,
 
 byId = (i) => { return document.getElementById(i); },
 
@@ -28497,4 +28497,4 @@ byId('finished').value += pkmn[34];
 */</textarea><br>
 <input type="button" value="run js" onclick="jsbox('jsta')"></div>
 <div style="display:inline-block">id = debug:<br>
-<textarea id="debug" style="margin: 0px; width: 576px; height: 260px;"></textarea></div></div></body></html>
+<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div></body></html>
