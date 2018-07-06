@@ -12,7 +12,7 @@
        d = element to dump text into
 */
 function getTxtFile(f,d) {
-  f = document.getElementById(f);
+  f = document.getElementById(f).value;
   d = document.getElementById(d);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -24,7 +24,8 @@ function getTxtFile(f,d) {
   xhttp.send();
 }
 </script></head><body>
-<div><div style="display:inline-block">id = stats<br>
+<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile('gmf','stats')">
+game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
 <textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
 <div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
 <textarea style="height:629px; width:441px; resize:none;" id="finished"></textarea></div></div>
@@ -68,6 +69,4 @@ byId('finished').value += pkmn[34];
 */</textarea><br>
 <input type="button" value="run js" onclick="jsbox('jsta')"></div>
 <div style="display:inline-block">id = debug:<br>
-<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div>
-<input type="button" value="load" onclick="getTxtFile('gmf','stats')">
-game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></body></html>
+<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div></body></html>
