@@ -3,7 +3,27 @@
   color:white;
   background-color:black;
 }
-</style></head><body>
+</style><script>
+/* original javascript here:
+     https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first
+     
+     params
+       f = source file
+       d = element to dump text into
+*/
+function getTxtFile(f,d) {
+  f = document.getElementById(f);
+  d = document.getElementById(d);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      d.value = this.responseText;
+    }
+  };
+  xhttp.open("GET", f, true);
+  xhttp.send();
+}
+</script></head><body>
 <div><div style="display:inline-block">id = stats<br>
 <textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
 <div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
@@ -49,4 +69,5 @@ byId('finished').value += pkmn[34];
 <input type="button" value="run js" onclick="jsbox('jsta')"></div>
 <div style="display:inline-block">id = debug:<br>
 <textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div>
-https://github.com/Ribonucleic85/cdn/blob/master/july6th.txt</body></html>
+<input type="button" value="load" onclick="getTxtFile('gmf','stats')">
+game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></body></html>
