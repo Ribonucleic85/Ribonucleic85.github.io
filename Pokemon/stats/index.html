@@ -11,7 +11,7 @@
        f = source file
        d = element to dump text into
 */
-function getTxtFile(f,d) {
+const getTxtFile = (f,d) => {
   f = document.getElementById(f).value;
   d = document.getElementById(d);
   var xhttp = new XMLHttpRequest();
@@ -23,14 +23,7 @@ function getTxtFile(f,d) {
   xhttp.open("GET", f, true);
   xhttp.send();
 }
-</script></head><body>
-<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile('gmf','stats')">
-game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
-<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
-<div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
-<textarea style="height:629px; width:441px; resize:none;" id="finished"></textarea></div></div>
-<hr>
-<div><div class="jsbox" style="display:inline-block"><script>
+
 const jsbox = (src) => {
   try { src = document.getElementById(src); }
   catch(e) { return; }
@@ -39,14 +32,20 @@ const jsbox = (src) => {
   catch(err) { src.style.backgroundColor = "#fa8072"; }
   finally { setTimeout(() => { src.style.backgroundColor=""; }, 3000); }
 }
-</script>
-javascript tester:<br>
+</script></head><body>
+<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile('gmf','stats')">
+game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
+<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
+<div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
+<textarea style="height:629px; width:441px; resize:none;" id="finished"></textarea></div></div>
+<hr>
+<div><div class="jsbox" style="display:inline-block">javascript tester:<br>
 <textarea id="jsta" style="width:497px; height:244px; resize:none;">/*
  To do:
 
- { 1 } Loop for lines containing "pokemon_id:"
+ { 1 } Loop for lines containing "pokemon_id:" -- [done]
 
- { 2 } Go back two lines from each find and
+ { 2 } Go back two lines from each find and -- [done]
     extract internal pokemon name
 
  { 3 } Scan between finds for "base_stamina",
@@ -80,16 +79,16 @@ pkmn = byId('stats').value.split('\n');
 
 
 var matches = [], lineno = [],
-i=0, L=pkmn.length, res;
+i=0, L=pkmn.length, rslt;
 
 clear();
 
 for (; i<L; i++) {
-  res = / pokemon_id/.test(pkmn[i]);
+  rslt = / pokemon_id/.test(pkmn[i]);
 
-  if (res) {
-    //lineno.push(i);
-    //matches.push(pkmn[i]);
+  if (rslt) {
+    lineno.push(i);
+    matches.push(pkmn[i]);
     print(i + ':' +pkmn[i]+ pkmn[i-2]);
   }
 }
