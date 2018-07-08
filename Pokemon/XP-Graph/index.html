@@ -1,0 +1,71 @@
+  <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Total XP', 'XP to reach level'],
+          ['1',  0, 0],
+          ['2',  1000,       1000],
+          ['3',  3000,       2000],
+          ['4',  6000,       3000],
+					['5',  10000,      4000],
+          ['6',  15000,      5000],
+          ['7',  21000,      6000],
+          ['8',  28000,      7000],
+					['9',  36000,      8000],
+          ['10', 45000,      9000],
+					['11',  55000,     10000],
+					['12',  65000,     10000],
+					['13',  75000,     10000],
+					['14',  85000,     10000],
+					['15',  100000,    15000],
+          ['16',  120000,    20000],
+					['17',  140000,    20000],
+					['18',  160000,    20000],
+					['19',  185000,    25000],
+					['20',  210000,    25000],
+          ['21',  260000,    50000],
+					['22',  335000,    75000],
+					['23',  435000,    100000],
+					['24',  560000,    125000],
+					['25',  710000,    150000],
+					['26',  900000,    190000],
+					['27',  1100000,   200000],
+					['28',  1350000,   250000],
+					['29',  1650000,   300000],
+					['30',  2000000,   350000],
+					['31',  2500000,   500000],
+					['32',  3000000,   500000],
+					['33',  3750000,   750000],
+					['34',  4750000,   1000000],
+					['35',  6000000,   1250000],
+					['36',  7500000,   1500000],
+					['37',  9500000,   2000000],
+					['38',  12000000,  2500000],
+					['39',  15000000,  3000000],
+					['40',  20000000,  5000000],
+          
+          
+          
+        ]);
+
+        var options = {
+          title: 'Pokemon Go XP curves',
+          curveType: 'function',
+          legend: { position: 'top' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+      
+          </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="height:1000px; width:1500px"></div>
+  </body>
+</html>
