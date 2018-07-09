@@ -1,0 +1,66 @@
+/*
+ To do:
+
+ { 1 } Loop for lines containing "pokemon_id:" -- [done]
+
+ { 2 } Go back two lines from each find and -- [done]
+    extract internal pokemon name
+
+ { 3 } Scan between finds for "base_stamina",
+    "base_attack", "base_defense" and extract
+    the number from each
+
+ { 4 } Format the data into compact readable
+    form and determine which internal names
+    correspond to which Pokemon
+
+ { 5 } Finally rewrite the extracted data with
+    relevant dex numbers and form info
+
+ ////----
+  str.search( pat || exp ) // gives index of the match
+  exp.exec(str) // returns found text
+  exp.test(src)// gives true or false
+  "".replace()
+
+*/
+
+
+
+var
+byId = (i) => { return document.getElementById(i); },
+print = (t) => { byId("finished").value += t + "\n"; },
+clear = () => { byId("finished").value = ""; },
+
+pkmn = byId('stats').value.split('\n');
+
+
+
+var matches = [], lineno = [],
+i=0, lim=pkmn.length, rslt;
+
+clear();
+
+for (; i<lim; i++) {
+  rslt = / pokemon_id/.test(pkmn[i]);
+
+  if (rslt) {
+    lineno.push(i);
+    matches.push(pkmn[i]);
+    // print(i + ':' +pkmn[i]+ pkmn[i-2]);
+  }
+}
+
+
+/*
+arrIter = (a,d) => {
+  for (var i=0; i<a.length; i++) {
+    d.value += a;
+  }
+},
+arrFilter = (a,d) => {
+    for (var i=0; i<a.length; i++) {
+      d.value += a;
+    }
+  }
+*/
