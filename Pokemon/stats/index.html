@@ -12,8 +12,6 @@
        d = element to dump text into
 */
 const getTxtFile = (f,d) => {
-  f = document.getElementById(f).value;
-  d = document.getElementById(d);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -33,79 +31,15 @@ const jsbox = (src) => {
   finally { setTimeout(() => { src.style.backgroundColor=""; }, 3000); }
 }
 </script></head><body>
-<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile('gmf','stats')">
+<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile(document.getElementById('gmf').value, document.getElementById('stats'))">
 game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
 <textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
 <div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
 <textarea style="height:629px; width:441px; resize:horizontal;" id="finished"></textarea></div></div>
 <hr>
 <div><div class="jsbox" style="display:inline-block">javascript tester:<br>
-<textarea id="jsta" style="width:497px; height:244px; resize:none;">/*
- To do:
-
- { 1 } Loop for lines containing "pokemon_id:" -- [done]
-
- { 2 } Go back two lines from each find and -- [done]
-    extract internal pokemon name
-
- { 3 } Scan between finds for "base_stamina",
-    "base_attack", "base_defense" and extract
-    the number from each
-
- { 4 } Format the data into compact readable
-    form and determine which internal names
-    correspond to which Pokemon
-
- { 5 } Finally rewrite the extracted data with
-    relevant dex numbers and form info
-
- ////----
-  str.search( pat || exp ) // gives index of the match
-  exp.exec(str) // returns found text
-  exp.test(src)// gives true or false
-  "".replace()
-
-*/
-
-
-
-var
-byId = (i) => { return document.getElementById(i); },
-print = (t) => { byId("finished").value += t + "\n"; },
-clear = () => { byId("finished").value = ""; },
-
-pkmn = byId('stats').value.split('\n');
-
-
-
-var matches = [], lineno = [],
-i=0, L=pkmn.length, rslt;
-
-clear();
-
-for (; i<L; i++) {
-  rslt = / pokemon_id/.test(pkmn[i]);
-
-  if (rslt) {
-    lineno.push(i);
-    matches.push(pkmn[i]);
-    print(i + ':' +pkmn[i]+ pkmn[i-2]);
-  }
-}
-
-
-/*
-arrIter = (a,d) => {
-  for (var i=0; i<a.length; i++) {
-    d.value += a;
-  }
-},
-arrFilter = (a,d) => {
-    for (var i=0; i<a.length; i++) {
-      d.value += a;
-    }
-  }
-*/</textarea><br>
-<input type="button" value="run js" onclick="jsbox('jsta')"></div>
+<textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
+<input type="button" value="run js" onclick="jsbox('jsta')">
+<input type="button" style="float:right" onclick="this.parentElement.removeChild(this); getTxtFile('https://cdn.rawgit.com/Ribonucleic85/Ribonucleic85.github.io/master/Pokemon/stats/jsbox.txt', document.getElementById('jsta');"></div>
 <div style="display:inline-block">id = debug:<br>
 <textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div></body></html>
