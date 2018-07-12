@@ -1,9 +1,4 @@
-<html><head><style>
-* {
-  color:white;
-  background-color:black;
-}
-</style><script>
+<html><head><script>
 /* original javascript here:
      https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first
      
@@ -22,6 +17,9 @@ const getTxtFile = (f,d) => {
   xhttp.send();
 }
 
+
+/* own code for a simple javascript console
+*/
 const jsbox = (src) => {
   try { src = document.getElementById(src); }
   catch(e) { return; }
@@ -30,16 +28,79 @@ const jsbox = (src) => {
   catch(err) { src.style.backgroundColor = "#fa8072"; }
   finally { setTimeout(() => { src.style.backgroundColor=""; }, 3000); }
 }
-</script></head><body>
-<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile(document.getElementById('gmf').value, document.getElementById('stats'))">
-game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
-<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
-<div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
-<textarea style="height:629px; width:441px; resize:horizontal;" id="finished"></textarea></div></div>
+
+const jsboxcontent = "https://cdn.rawgit.com/Ribonucleic85/Ribonucleic85.github.io/master/Pokemon/stats/jsbox.txt";
+
+const removeSelf = (t) => {
+  t.parentElement.removeChild(t);
+}
+</script><style>
+* {
+  color:white;
+  background-color:black;
+}
+
+/* js tester container */
+.jsbox { display: inline-block; }
+
+/* check-box for expand / contract */
+#jsec { display: none; }
+
+/* labels for #jsec check-box */
+#jsec:not(:checked) + .jsbox span #jsecc { display:none; }
+#jsec:checked       + .jsbox span #jsece { display:none; }
+.jsbox > span label       { color:#2b2b2b; }
+.jsbox > span label:hover { color:#cccc00; }
+.jsbox > span { float: right; }
+
+/* js tester in expanded state */
+#jsec:checked + .jsbox {
+  position: fixed;  top:  0px;
+  bottom:   0px;    left: 5px;
+  padding:  4px;
+}
+#jsec:checked + .jsbox #jsta {
+  height: calc(100% - 42px) !important;
+  resize: none;
+  margin: 0px;
+}
+
+</style></head>
+  
+<body>
+<div>
+  <div style="display:inline-block">id = stats
+    <span style="float:right;">
+      <input type="button" value="load"
+      onclick="getTxtFile(document.getElementById('gmf').value, document.getElementById('stats'))">
+      game master from
+      <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt">
+    </span>
+    <br>
+    <textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea>
+  </div>
+  <div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
+    <textarea style="height:629px; width:441px; resize:horizontal;" id="finished"></textarea>
+  </div>
+</div>
+
 <hr>
-<div><div class="jsbox" style="display:inline-block">javascript tester:<br>
-<textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
-<input type="button" value="run js" onclick="jsbox('jsta')">
-<input type="button" style="float:right" onclick="this.parentElement.removeChild(this); getTxtFile('https://cdn.rawgit.com/Ribonucleic85/Ribonucleic85.github.io/master/Pokemon/stats/jsbox.txt', document.getElementById('jsta'));"></div>
-<div style="display:inline-block">id = debug:<br>
-<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div></body></html>
+
+<div>
+  <input type="checkbox" id="jsec">
+  <div class="jsbox" style="display:inline-block">javascript tester:
+    <span>
+      <label for="jsec" id="jsece">expand</label>
+      <label for="jsec" id="jsecc">contract</label>
+    </span>
+    <br>
+    <textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
+    <input type="button" value="run js" onclick="jsbox('jsta')">
+    <input type="button" style="float:right"
+    onclick="getTxtFile(jsboxcontent, document.getElementById('jsta')); removeSelf(this)">
+  </div>
+  <div style="display:inline-block">id = debug:<br>
+    <textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea>
+  </div>
+</div>
+</body></html>
