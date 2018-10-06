@@ -1,0 +1,74 @@
+<html><head><title>Pokemon Power Up Stardust and Candy Calculator</title>
+<script>
+function byId(i) { return doucment.getElementById(i); }
+
+/* Arrays of Candy Cost and Stardust Cost
+Begins at level 1, ends at level 39.5, each has the candy / stardust
+cost to reach the next level.
+So the first entry is for level 1 to 1.5 and the last entry is for
+level 39.5 to 40.
+------
+to match the level to the array index do: Lvl/0.5-2
+*/
+
+const Candy = [
+  1, 1, 1, 1,  1, 1, 1, 1,  1, 1, 1, 1,
+  1, 1, 1, 1,  1, 1, 1, 1,  2, 2, 2, 2,
+  2, 2, 2, 2,  2, 2, 2, 2,  2, 2, 2, 2,
+  2, 2, 2, 2,  3, 3, 3, 3,  3, 3, 3, 3,
+  3, 3, 4, 4,  4, 4, 4, 4,  4, 4, 4, 4,
+  6, 6, 6, 6,  8, 8, 8, 8, 10,10,10,10,
+  12,12,12,12, 15,15
+];
+const SDust = [
+   200,  201,    202,  203,    400,  401,    402,  403,    600,  601,    602,  603,
+   800,  801,    802,  803,   1000, 1001,   1002, 1003,   1300, 1301,   1302, 1303,
+  1600, 1601,   1602, 1603,   1900, 1901,   1902, 1903,   2200, 2201,   2202, 2203,
+  2500, 2501,   2502, 2503,   3000, 3001,   3002, 3003,   3500, 3501,   3502, 3503,
+  4000, 4001,   4002, 4003,   4500, 4501,   4502, 4503,   5000, 5001,   5002, 5003,
+  6000, 6001,   6002, 6003,   7000, 7001,   7002, 7003,   8000, 8001,   8002, 8003,
+  9000, 9001,   9002, 9003,  10000,10001
+];
+
+var candyField = byId('candyCost0'),  // these will become useful when we have multiple Pokemon 
+/**/ starField = byId('sdustCost0');  // to calculate for hence the appended 0 to count
+
+function calculateCost(from,to){
+  if (from>to) return;
+  from = convertLevel(from);
+  to = convertLevel(to);
+  var c = 0, s = 0;
+  for (; from<to; from++) {
+    c += Candy[from-1];
+    s += SDust[from-1];
+  }
+  candyField.value = c
+  starField.value = s;
+}
+
+function convertLevel(level) { return level/0.5-1; }
+</script>
+</head>
+<body>
+This for now is only very simple, you input
+the start level and the target level and
+whether or not the Pokemon is Lucky and the
+script tells you how much Candy and Stardust
+this will cost.
+
+I plan to make this work for multiple Pokemon
+with a combined cost listed, also i will try
+to work in an optional system which takes into
+account how much Stardust and Candy you have,
+the Candy will be more complicated to implement
+since it is Per Evolution Line including any Forms.
+<hr />
+Power Up<br />
+From level <input type="text" id="from0" /> to level <input type="text" id="to0" /><br />
+<input type="button" value="Click Me Calculate Power Up Cost" onclick="calculateCost(byId('from0'),byId('to0'))" /><br />
+This Power will cost <input type="text" id="candyCost0" /> Candy and <input type="text" id="sdustCost0" /> Stardust
+
+
+function calculateCost(from,to)
+</body>
+</html>
