@@ -31,10 +31,6 @@ const SDust = [
 ];
 
 var candyField, starField;
-document.body.onload = (()=>{
- candyField = byId('candyCost0');  // these will become useful when we have multiple Pokemon 
-  starField = byId('sdustCost0');  // to calculate for hence the appended 0 to count
-})()
 
 function calculateCost(from,to){
   if (from>to) return;
@@ -71,5 +67,12 @@ Power Up<br />
 From level <input type="text" id="from0" value="1" /> to level <input type="text" id="to0" value="1.5" /><br />
 <input type="button" value="Click Me Calculate Power Up Cost" onclick="calculateCost(byId('from0').value,byId('to0').value)" /><br />
 This Power will cost <input type="text" id="candyCost0" /> Candy and <input type="text" id="sdustCost0" /> Stardust
+
+<script>
+document.body.onload = (()=>{
+ candyField = byId('candyCost0');  // these will become useful when we have multiple Pokemon 
+  starField = byId('sdustCost0');  // to calculate for hence the appended 0 to count
+})();
+</script>
 </body>
 </html>
