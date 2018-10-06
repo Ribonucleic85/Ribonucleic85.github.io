@@ -41,19 +41,6 @@ function convertLevel(level) { return level/0.5-1; }
 </script>
 </head>
 <body>
-This for now is only very simple, you input
-the start level and the target level and
-whether or not the Pokemon is Lucky and the
-script tells you how much Candy and Stardust
-this will cost.
-
-I plan to make this work for multiple Pokemon
-with a combined cost listed, also i will try
-to work in an optional system which takes into
-account how much Stardust and Candy you have,
-the Candy will be more complicated to implement
-since it is Per Evolution Line including any Forms.
-<hr />
 Power Up<br />
 From level <input type="text" id="from0" value="1" /> to level <input type="text" id="to0" value="1.5" /><br />
 <input type="button" value="Click Me Calculate Power Up Cost" onclick="calculateCost(byId('from0').value,byId('to0').value)" /><br />
