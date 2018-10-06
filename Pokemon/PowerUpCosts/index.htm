@@ -30,8 +30,11 @@ const SDust = [
   9000, 9001,   9002, 9003,  10000,10001
 ];
 
-var candyField = byId('candyCost0');  // these will become useful when we have multiple Pokemon 
-var  starField = byId('sdustCost0');  // to calculate for hence the appended 0 to count
+var candyField, starField;
+document.body.onload = (()=>{
+ candyField = byId('candyCost0');  // these will become useful when we have multiple Pokemon 
+  starField = byId('sdustCost0');  // to calculate for hence the appended 0 to count
+})()
 
 function calculateCost(from,to){
   if (from>to) return;
@@ -42,11 +45,12 @@ function calculateCost(from,to){
     c += Candy[from-1];
     s += SDust[from-1];
   }
-  //candyField.value = c
+  candyField.value = c
   starField.value = s;
 }
 
 function convertLevel(level) { return level/0.5-1; }
+}
 </script>
 </head>
 <body>
@@ -64,7 +68,7 @@ the Candy will be more complicated to implement
 since it is Per Evolution Line including any Forms.
 <hr />
 Power Up<br />
-From level <input type="text" id="from0" /> to level <input type="text" id="to0" /><br />
+From level <input type="text" id="from0" value="1" /> to level <input type="text" id="to0" value="1.5" /><br />
 <input type="button" value="Click Me Calculate Power Up Cost" onclick="calculateCost(byId('from0').value,byId('to0').value)" /><br />
 This Power will cost <input type="text" id="candyCost0" /> Candy and <input type="text" id="sdustCost0" /> Stardust
 </body>
