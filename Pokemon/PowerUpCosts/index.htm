@@ -21,18 +21,20 @@ const SDust = [
   9000, 9000,   9000, 9000,  10000,10000
 ];
 
-var candyField, starField;
+var candyField, starField, luckyBox;
 
 function calculateCost(from,to){
-  if (from>to) return;
+  if (from>to)
+    return candyField.value = 0,
+    starField.value = 0;
   from = convertLevel(from);
   to = convertLevel(to);
   var c = 0, s = 0;
-  for (; from<to; from++) {
-    c += Candy[from-1];
+  for (; from<to; from++)
+    c += Candy[from-1],
     s += SDust[from-1];
-  }
-  candyField.value = c
+  if (luckyBox.checked) s /= 2; 
+  candyField.value = c;
   starField.value = s;
 }
 
@@ -42,10 +44,10 @@ function convertLevel(level) { return level/0.5-1; }
 </head>
 <body>
 Power Up<br />
-From level <input type="text" id="from0" value="1" /> to level <input type="text" id="to0" value="1.5" /><br />
+From level <input type="text" id="from0" value="1" /> to level <input type="text" id="to0" value="1.5" /><label><input type="checkbox" id="luckyBox0" /> Lucky?</label><br />
 <input type="button" value="Click Me Calculate Power Up Cost" onclick="calculateCost(byId('from0').value,byId('to0').value)" /><br />
-This Power will cost <input type="text" id="candyCost0" /> Candy and <input type="text" id="sdustCost0" /> Stardust
+This Power Up will cost <input type="text" id="candyCost0" /> Candy and <input type="text" id="sdustCost0" /> Stardust
 
-<script>candyField = byId('candyCost0'); starField = byId('sdustCost0');</script>
+<script>candyField = byId('candyCost0'); starField = byId('sdustCost0'); luckyBox = byId('luckyBox0');</script>
 </body>
 </html>
