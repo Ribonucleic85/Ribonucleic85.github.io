@@ -30,6 +30,8 @@ function formSet(n) {
 var candyField, starField, luckyBox, formNo;
 
 function calculateCost(from,to){
+  from = +from;
+  to = +to;
   if (from>=to)
     return candyField.value = 0,
     starField.value = 0;
