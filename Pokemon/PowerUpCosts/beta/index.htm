@@ -37,8 +37,8 @@ function calculateCost(from,to){
   to /= 0.5;
   var c = 0, s = 0;
   for (; from<to; from++)
-    c += Candy[from-1],
-    s += SDust[from-1];
+    c += Candy[from],
+    s += SDust[from];
   if (luckyBox.checked)
     s /= 2; 
   candyField.value = c;
