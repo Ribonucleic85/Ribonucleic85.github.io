@@ -3,9 +3,9 @@
 <body>
 <script>
   (()=>{
-    var i = 1, t;
+    var i=1, t="";
     for(; i<494; i++)
-      t+=Pokemon.Dex.No(i) +", "+ (i%8==0?"<br>":"");
+      t+=Pokemon.Dex.No(i) + (i!=493?",":"") +" "+ (i%8==0?"<br>":"");
     document.body.innerHTML=t;
   })()
 </script>
