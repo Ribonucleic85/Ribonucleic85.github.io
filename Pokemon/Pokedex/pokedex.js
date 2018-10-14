@@ -11,7 +11,7 @@ Pokemon = {
       
       // if not a Meltan lookup then do standard bounds checks
       // and if in bounds continue to lookup the relevant Pokemon
-      if (n<0 || n>802) return false;  // exit with false if out of range 1-802
+      if (n<0 || n>807) return false;  // exit with false if out of range 1-802
 
       if (n>0 && n<152)   return Pokemon.Dex.Gen1[n-1];    //  Gen 1 001-151     subtracting the
       if (n>151 && n<252) return Pokemon.Dex.Gen2[n-152];  //  Gen 2 152-251   lower part  of the
