@@ -1,1 +1,13 @@
-blank
+<html>
+<head><script src="http://Ribonucleic85.github.io/Pokemon/Pokedex/pokedex.js"></script></head>
+<body>
+<script>
+  (()=>{
+    var i = 1, t;
+    for(; i<494; i++)
+      t+=Pokemon.Dex.No(i) +", "+ (i%8==0?"<br>":"");
+    document.body.innerHTML=t;
+  })()
+</script>
+</body>
+</html>
