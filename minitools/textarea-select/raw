@@ -1,0 +1,81 @@
+<textarea id="selectTest">var thiS = {
+  gusto: 'x',
+  musto: 'y',
+  endo:  'z'
+}
+
+function that(a,b,c) {
+  if (a) return 1;
+  if (b) return "banana";
+  if (c) return "error";
+
+  return "defghijklmnopqrstuvw....";
+}
+
+var Are = ["you", "trying", "to",
+    "make", "sense", "of", "this"]; // ?
+
+var Well = "you can't because while it is valid \
+    javascript it has no purpose other than being a \
+    block of text to test selecting text in this \
+    textarea";</textarea><br><br>Put
+selection start and end positions into the fields below and click select..<br>
+<input type="text" id="selectStart"> -
+<input type="text" id="selectEnd">
+<input type="button" value="select" onclick="doSelect(byId('selectTest'),byId('selectStart'),byId('selectEnd'))"><br>___________________________________________________________<br><br>
+To get the start and end selection positions from the textarea click "get",<br>
+if both numbers match then it is simply the position of the caret (text cursor).<br>
+<input type="text" id="selectedStart"> -
+<input type="text" id="selectedEnd">
+
+
+<input type="button" id="selectedGet" value="get" onclick="selectedRange(byId('selectTest'),byId('selectedStart'),byId('selectedEnd'))"><hr>___________________________________________________________<br><input type="text" id="selectLine"><input type="button" value="select line" onclick="selectLine(byId('selectTest'),byId('selectLine').value)"><hr><div class="jsbox" style="display:inline-block">javascript tester:<input type="button" value="run js" onclick="jsbox('jsta')"><br>
+<textarea id="jsta" style="width: 478px; height: 330px; resize: none;"></textarea>
+</div>
+
+const ta = {
+  s: 0,
+  e: 0,
+  set sel(n) {
+    n.focus();
+    n.selectionStart=this.s
+    n.selectionEnd=this.e;
+  }
+}
+
+const LnBrFndr = (src) => {
+  var A = [],
+  i = 0,
+  s = 0,
+  a = 0;
+  while (i!=-1) {
+    i = src.indexOf("\n", s);
+    if (i!=-1)
+      A[a] = i,
+      s = i+1,
+      a++;
+  }
+  return A;
+}
+
+
+
+const selectLine = (src,lnNo) => {
+  if (lnNo==0)
+    return;
+  const lnBr = LnBrFndr(src.value);
+  if (lnNo>lnBr.length+1)
+    return;
+  const srcLen = src.value.length;
+  if (lnBr.length==0)
+    ta.s = 0, ta.e = srcLen;
+  else if (lnNo==1)
+    ta.s = 0, ta.e = lnBr[0];
+  else if (lnNo==lnBr.length+1)
+    ta.s = lnBr[lnBr.length-1]+1, ta.e = srcLen;
+  else
+    ta.s = lnBr[lnNo-2]+1, ta.e = lnBr[lnNo-1];
+  ta.sel = src;
+}
+
+selectLine(byId('selectTest'),byId('selectLine').value)
