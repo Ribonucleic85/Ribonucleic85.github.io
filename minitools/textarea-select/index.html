@@ -67,8 +67,8 @@ const selectedRange = (ta, st, en) => {
 }
 
 const doSelect = (src, st, en) => {
-  ta.s = st;
-  ta.e = en;
+  ta.s = st.value;
+  ta.e = en.value;
   ta.sel = src;
 }
 
