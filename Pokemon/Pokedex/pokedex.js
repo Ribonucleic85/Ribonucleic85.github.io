@@ -3,7 +3,7 @@ Pokemon = {
 	Dex: {
 		No: (n) => {
 			if (n>807) {
-				n = n-((n==891||n=892) ? 83 : 0);
+				n -= (n==891||n==892) ? 83 : 0 ;
 				if (n==808||n==809)
 					return Pokemon.Dex.Gen7or8[n-808];
 				else
