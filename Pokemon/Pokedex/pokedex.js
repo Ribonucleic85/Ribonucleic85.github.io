@@ -1,33 +1,46 @@
-var
+const
 Pokemon = {
   Dex: {
-    /* ------------------------------------------- */
-    /* Pokemon look-up function, pass it a Dex No. */
-    /* and it will return the Pokemon name         */
-    /* ------------------------------------------- */
+    /* --------------------------------------------- **
+    **  Pokemon look-up function, pass it a Dex No.  **
+    **  and it will return the Pokemon name          **
+    ** --------------------------------------------- */
 
-    No: function(n) {
-      if (n==808||n==891) return Pokemon.Dex.Gen7or8[0];   //  Check for Meltan' suspected Dex Numbers
-      
-      // if not a Meltan lookup then do standard bounds checks
-      // and if in bounds continue to lookup the relevant Pokemon
-      if (n<0 || n>807) return false;  // exit with false if out of range 1-802
+    No: (n) => {
+      if (n>807) {
+        n -= (n==891||n=892) ? 83 : 0 ;       // Check for Meltan and Melmetal dex numbers it is now 
+        if (n==808||n==809)                   // likely that their real dex numbers are 808 and 809
+          return Pokemon.Dex.Gen7or8[n-808];
+        else
+          return false;   // First half of the standard bounds check, since the parent if shows us n>807 and
+      }                   // the partner if shows us n != 808||809 then it is safe to assume n is out of bounds
 
-      if (n>0 && n<152)   return Pokemon.Dex.Gen1[n-1];    //  Gen 1 001-151     subtracting the
-      if (n>151 && n<252) return Pokemon.Dex.Gen2[n-152];  //  Gen 2 152-251   lower part  of the
-      if (n>251 && n<387) return Pokemon.Dex.Gen3[n-252];  //  Gen 3 252-386   range reduces n to
-      if (n>386 && n<494) return Pokemon.Dex.Gen4[n-387];  //  Gen 4 387-493    0+ which puts it
-      if (n>493 && n<650) return Pokemon.Dex.Gen5[n-494];  //  Gen 5 494-649    within the index
-      if (n>649 && n<722) return Pokemon.Dex.Gen6[n-650];  //  Gen 6 650-721      range of the
-      if (n>721 && n<808) return Pokemon.Dex.Gen7[n-722];  /*  Gen 7 722-807      relevant gen
-      if (n>807 && n<???) return Pokemon.Dex.Gen8[n-802];  << redundant Gen 8 code
-            ^ Gen 7 currently officially ends at 807 but it may stretch to 808 or 809 */
+      // If not a Meltan or Melmetal lookup then do standard bounds checks and if in
+      // bounds continue to look-up the relevant Pokemon.
+      // The first half of this was done above as part of a restructure to compensate
+      // for the addition of Melmetal.
+      if (n<0)
+        return false;
+
+      // This return is restructured to remove repeated return statements, and also i
+      // realised we don't need to check the lower bounds as each check would catch
+      // an n value to low for the next
+      return (
+        n<152? Pokemon.Dex.Gen1[n-1]   : // Gen 1 001-151  |  Subtracting the lowest dex number
+        n<252? Pokemon.Dex.Gen2[n-152] : // Gen 2 152-251  |  of each gen brings the array index
+        n<387? Pokemon.Dex.Gen3[n-252] : // Gen 3 252-386  |  in range of that gens array, so if
+        n<494? Pokemon.Dex.Gen4[n-387] : // Gen 4 387-493  |  n==1 then n-1=0w hich refers to
+        n<650? Pokemon.Dex.Gen5[n-494] : // Gen 5 494-649  |  Bulbasaur. Lastly i might have to
+        n<722? Pokemon.Dex.Gen6[n-650] : // Gen 6 650-721  |  adjust Gen 7 check to n<810 ...
+        n<808? Pokemon.Dex.Gen7[n-722] :;/* Gen 7 722-807  +---------------------------------------
+        n<?  ? Pokemon.Dex.Gen8[n-8xx];  << Redundant Gen 8 code; 8xx = 808 or 810, not sure yet */
+      );
     },
 
 
-    /* --------------------------------- */
-    /* Pokemon by Generation and Dex No. */
-    /* --------------------------------- */
+    /* ----------------------------------- **
+    **  Pokemon by Generation and Dex No.  **
+    ** ----------------------------------- */
 
     Gen1: [
       "Bulbasaur",    "Ivysaur",    "Venusaur",   "Charmander",    "Charmeleon",   "Charizard",
@@ -180,6 +193,8 @@ Pokemon = {
       "Necrozma",     "Magearna",   "Marshadow",  "Poipole",       "Naganadel",    "Stakataka",
       "Blacephalon",  "Zeraora"
     ],
-    Gen7or8: ["Meltan"]
+    Gen7or8: [
+      "Meltan", "Melmetal"
+    ]
   }
 }
