@@ -20,7 +20,7 @@ Pokemon = {
 				n<494? Pokemon.Dex.Gen4[n-387] :
 				n<650? Pokemon.Dex.Gen5[n-494] :
 				n<722? Pokemon.Dex.Gen6[n-650] :
-				n<808? Pokemon.Dex.Gen7[n-722] :;
+				n<808? Pokemon.Dex.Gen7[n-722] :
 			);
 		},
 
