@@ -45,19 +45,28 @@ const findLineBreaks = (src) => {
 
 const selectLine = (src,lnNo) => {
   if (lnNo==0)
-    return;
+    return ck(0);
   const lnBr = findLineBreaks(src.value);
   if (lnNo>lnBr.length+1)
-    return;
+    return ck(1);
   const srcLen = src.value.length;
+  ck(src+6);
   if (lnBr.length==0)
-    ta.s = 0, ta.e = srcLen;
+    ta.s = 0,
+    ta.e = srcLen,
+    ck(2);
   else if (lnNo==1)
-    ta.s = 0, ta.e = lnBr[0];
+    ta.s = 0,
+    ta.e = lnBr[0],
+    ck(3);
   else if (lnNo==lnBr.length+1)
-    ta.s = lnBr[lnBr.length-1]+1, ta.e = srcLen;
+    ta.s = lnBr[lnBr.length-1]+1,
+    ta.e = srcLen,
+    ck(4);
   else
-    ta.s = lnBr[lnNo-2]+1, ta.e = lnBr[lnNo-1];
+    ta.s = lnBr[lnNo-2]+1,
+    ta.e = lnBr[lnNo-1],
+    ck(5);
   ta.sel = src;
 }
 
@@ -77,6 +86,12 @@ const doSelect = (src, st, en) => {
 *   didn't work to well so in future i will try inputTextarea.setSelectionRange()
 */
 
+
+/* left empty because it is a function i am going to rewrite on the live page,
+ it is only in the source to avoid errors and because i defined the function
+ i am testing as a constant which cannot be permanently overwritten */
+function ck(){}
+                
 
 
 
