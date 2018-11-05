@@ -1,45 +1,73 @@
 <html><head><style>
 * {
-  color:white;
-  background-color:black;
+	color: white;
+	background-color: black;
 }
 </style><script>
 /* original javascript here:
-     https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first
+	https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first
      
-     params
-       f = source file
-       d = element to dump text into
+	params
+	  f = source file
+	  d = element to dump text into
 */
 const getTxtFile = (f,d) => {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      d.value = this.responseText;
-    }
-  };
-  xhttp.open("GET", f, true);
-  xhttp.send();
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			d.value = this.responseText;
+		}
+	};
+	xhttp.open("GET", f, true);
+	xhttp.send();
 }
 
 const jsbox = (src) => {
-  try { src = document.getElementById(src); }
-  catch(e) { return; }
+	try {
+		src = document.getElementById(src);
+	}
+	catch(e) {
+		return;
+	}
 
-  try { eval(src.value); }
-  catch(err) { src.style.backgroundColor = "#fa8072"; }
-  finally { setTimeout(() => { src.style.backgroundColor=""; }, 3000); }
+	try {
+		eval(src.value);
+	}
+	catch(err) {
+		src.style.backgroundColor = "#fa8072";
+	}
+	finally {
+		setTimeout( ()=>{ src.style.backgroundColor=""; }, 3000);
+	}
 }
-</script></head><body>
-<div><div style="display:inline-block">id = stats<span style="float:right;"><input type="button" value="load" onclick="getTxtFile(document.getElementById('gmf').value, document.getElementById('stats'))">
-game master from <input type="text" id="gmf" value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
-<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea></div>
-<div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
-<textarea style="height:629px; width:441px; resize:horizontal;" id="finished"></textarea></div></div>
+</script>
+</head>
+<body>
+<div>
+	<div style="display:inline-block">id = stats
+		<span style="float:right;"><input type="button" value="load"
+		onclick="getTxtFile(document.getElementById('gmf').value,
+		document.getElementById('stats'))">game master from <input type="text" id="gmf"
+		value="https://cdn.rawgit.com/Ribonucleic85/cdn/master/july6th.txt"></span><br>
+
+		<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea>
+	</div>
+	<div style="display:inline-block;position:relative;left: 100px;">id = finished<br>
+		<textarea style="height:629px; width:441px; resize:horizontal;" id="finished"></textarea>
+	</div>
+</div>
 <hr>
-<div><div class="jsbox" style="display:inline-block">javascript tester:<br>
-<textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
-<input type="button" value="run js" onclick="jsbox('jsta')">
-<input type="button" style="float:right" onclick="this.parentElement.removeChild(this); getTxtFile('https://cdn.rawgit.com/Ribonucleic85/Ribonucleic85.github.io/master/Pokemon/stats/jsbox.txt', document.getElementById('jsta'));"></div>
-<div style="display:inline-block">id = debug:<br>
-<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea></div></div></body></html>
+<div>
+	<div class="jsbox" style="display:inline-block">javascript tester:<br>
+		<textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
+		<input type="button" value="run js" onclick="jsbox('jsta')">
+		<input type="button" style="float:right" onclick="this.parentElement.removeChild(this);
+		getTxtFile('https://cdn.rawgit.com/Ribonucleic85/Ribonucleic85.github.io/master/Pokemon/stats/jsbox.txt',
+		document.getElementById('jsta'));">
+	</div>
+	<div style="display:inline-block">id = debug:<br>
+		<textarea id="debug" style="width:576px; height:260px; resize:none;"></textarea>
+	</div>
+</div>
+</body>
+</html>
