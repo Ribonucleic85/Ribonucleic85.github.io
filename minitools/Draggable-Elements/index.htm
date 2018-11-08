@@ -1,0 +1,87 @@
+<html>
+<style>
+#mydiv {
+	position: absolute;
+	z-index: 9;
+	background-color: #f1f1f1;
+	text-align: center;
+	border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+	padding: 10px;
+	cursor: move;
+	z-index: 10;
+	background-color: #2196F3;
+	color: #fff;
+}
+
+a { text-decoration: underline; }
+
+a:hover { text-decoration: none; }
+</style>
+<body>
+
+<h1>Draggable Element</h1>
+
+<p>Adapted from <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable">W3Schools</a>, it looks the same but the internal code is modified.</p>
+
+<div id="mydiv">
+	<div id="mydivheader">Click here to move</div>
+	<p>Move</p>
+	<p>this</p>
+	<p>DIV</p>
+</div>
+
+<script>
+
+dragElement(document.getElementById("mydiv"));
+
+function dragElement(El) {
+	var Ex = 0
+	,   Ey = 0
+	,   Mx = 0
+	,   My = 0;
+
+	El.onmousedown = dragMouseDown;
+
+	function eventControl(e) {
+		e = e || window.event;
+		e.preventDefault();
+		return e;
+	}
+
+	function mouseXY(e) {
+		Mx = e.clientX;
+		My = e.clientY;
+	}
+
+	function dragMouseDown(e) {
+		e = eventControl(e);
+
+		mouseXY(e);
+
+		document.onmouseup = closeDragElement;
+		document.onmousemove = elementDrag;
+	}
+
+	function elementDrag(e) {
+		e = eventControl(e);
+
+		Ex = Mx-e.clientX;
+		Ey = My-e.clientY;
+		mouseXY(e);
+
+		El.style.top = El.offsetTop-Ey + "px";
+		El.style.left = El.offsetLeft-Ex + "px";
+	}
+
+	function closeDragElement() {
+		document.onmouseup = null;
+		document.onmousemove = null;
+	}
+}
+</script>
+
+</body>
+</html>
