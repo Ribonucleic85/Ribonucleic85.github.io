@@ -23,22 +23,12 @@ const getTxtFile = (f,d) => {
 }
 
 const jsbox = (src) => {
-	try {
-		src = document.getElementById(src);
-	}
-	catch(e) {
-		return;
-	}
+	try { src = document.getElementById(src); }
+	catch(e) { return; }
 
-	try {
-		eval(src.value);
-	}
-	catch(err) {
-		src.style.backgroundColor = "#fa8072";
-	}
-	finally {
-		setTimeout( ()=>{ src.style.backgroundColor=""; }, 3000);
-	}
+	try { eval(src.value); }
+	catch(E) { src.style.backgroundColor = "#fa8072"; }
+	finally { setTimeout(()=>{ src.style.backgroundColor=""; }, 3000); }
 }
 </script>
 </head>
