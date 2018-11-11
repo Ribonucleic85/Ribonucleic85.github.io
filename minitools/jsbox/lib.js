@@ -1,7 +1,3 @@
-/*
-  src = text element
-*/
-
 const jsbox = (src) => {
 	try { src = document.getElementById(src); }
 	catch(e) { return; }
