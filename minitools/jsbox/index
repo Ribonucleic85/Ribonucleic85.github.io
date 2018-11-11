@@ -1,0 +1,22 @@
+<html><head><title>JsBox Sample</title>
+<style>
+* {
+  color: white;
+  background-color: black;
+}
+
+.jsbox {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+</style>
+</head>
+<body>
+
+
+<div class="jsbox">Javascript Box:<br>
+  <textarea id="jsta" style="width:497px; height:244px; resize:none;"></textarea><br>
+	<input type="button" value="Run JS" onclick="jsbox('jsta')">
+</div>
+</body></html>
