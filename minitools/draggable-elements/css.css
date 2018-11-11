@@ -1,0 +1,20 @@
+#mydiv {
+	position: absolute;
+	background-color: #f1f1f1;
+	border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+	padding: 10px;
+	cursor: move;
+	background-color: #2196F3;
+	color: #fff;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
