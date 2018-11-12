@@ -1,0 +1,19 @@
+* {
+	color: white;
+	background-color: black;
+}
+
+.jsbox {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+pre {
+	margin: 0;
+	padding: 13px;
+}
+
+.jsbox * {
+	font-family: monospace;
+}
