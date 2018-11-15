@@ -1,0 +1,16 @@
+li {
+	white-space: pre;
+}
+ul ul {
+	padding-bottom: 10px;
+}
+a {
+	text-decoration: none;
+	color: #4169e1;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	color: #9100a9;
+}
