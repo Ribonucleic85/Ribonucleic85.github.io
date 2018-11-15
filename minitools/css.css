@@ -1,7 +1,7 @@
 li {
 	white-space: pre;
 }
-ul ul {
+ul ul, .noSubList {
 	padding-bottom: 10px;
 }
 a {
