@@ -5,9 +5,8 @@ function decoder(enc, num) {
   num = parseInt(num.value);
   enc = makeArray(enc);
   enc.forEach(
-    function _(value) {
-      dcd += String.fromCharCode(
-      parseInt(atob(value).replace(/\D/g,''))-num);
+    (value) => {
+      dcd += String.fromCharCode(parseInt(atob(value).replace(/\D/g,''))-num);
     }
   );
   return decodeURIComponent(escape(dcd));
@@ -69,7 +68,7 @@ function addLink(el,bl,sp,ei,dl) {
 }
 
 // inline version:
-//   onfocus="(function(t){t.select();return false})(this)"
+//   onfocus="((t)=>{return !t.select();})(this)"
 function autoselect(t) {
   t.select();
   return false;
