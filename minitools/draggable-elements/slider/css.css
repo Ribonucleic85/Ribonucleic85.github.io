@@ -1,6 +1,7 @@
 .sliderContR, .sliderContR2 {
     opacity:0.2;
 }
+
 .sliderContR {
     transform: rotate(180deg);
 }
