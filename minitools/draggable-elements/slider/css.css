@@ -1,0 +1,50 @@
+.sliderContR, .sliderContR2 {
+    opacity:0.2;
+}
+.sliderContR {
+    transform: rotate(180deg);
+}
+
+.sliderContR .sliderNob {
+    width: 62px !important;
+}
+
+.sliderContR2 {
+    display: block !important;
+    transform: rotate(180deg);
+}
+
+.sliderContR2 .sliderNob {
+    height: 212px !important;
+}
+
+.sliderCont, .sliderContR, .sliderContR2 {
+    display:inline-block;
+    position: relative;
+    border-color: #FF0000;
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-radius: 25px;
+    height: 197px;
+    width: 47px;
+}
+
+.slider {
+
+}
+
+.sliderTrack {
+
+}
+
+.sliderNob {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border-color: #FF0000;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    height: 11px;
+    width: 11px;
+}
