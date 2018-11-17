@@ -1,4 +1,4 @@
-(()=>{var divjs = [];
+(()=>{var m,c;
 m = document.createElement("div");
 m.setAttribute("style", "position:absolute; bottom:10px; right:10px;");
 
