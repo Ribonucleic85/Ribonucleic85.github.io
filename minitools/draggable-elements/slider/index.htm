@@ -1,0 +1,26 @@
+<html><head><title>Draggable Elements</title>
+<link rel="stylesheet" href="../css.css">
+<link rel="stylesheet" href="css.css">
+<script src="../drag-lib.js"></script>
+</head><body>
+
+<h1>Draggable Element</h1>
+
+<p>Adapted from <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable">W3Schools</a>,
+it looks the same but the internal code is modified.</p>
+
+<div id="mydiv" style="top: 90px; left: 343px;">
+	<div id="mydivheader">Header</div>
+	<p>Paragraph, word salad.</p>
+</div>
+
+<div>
+	<div class="sliderCont"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div>
+	<div class="sliderContR"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div>
+	<div class="sliderContR2"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div>
+</div>
+
+<script> dragElement(document.getElementById("mydiv")); </script>
+
+
+<div style="position:absolute;bottom:10px;right:10px;">Javascript Box:<br><textarea style="width:497px; height:244px; resize:none;" id="jsta"></textarea><br><input type="button" value="Run JS" onclick="jsbox('jsta')"></div></body></html>
