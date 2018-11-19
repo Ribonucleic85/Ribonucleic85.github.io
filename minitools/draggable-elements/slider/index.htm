@@ -1,25 +1,73 @@
 <html><head><title>Draggable Elements</title>
 <link rel="stylesheet" href="../css.css">
 <link rel="stylesheet" href="css.css">
-<script src="../drag-lib.js"></script>
+<!----<script src="../drag-lib.js"></script><!---->
 </head><body>
 
 <h1>Draggable Element</h1>
 
-<p>Adapted from <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable">W3Schools</a>,
-it looks the same but the internal code is modified.</p>
+<p>Adapted from <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable">W3Schools</a>.</p>
 
-<div id="mydiv" style="top: 90px; left: 343px;">
-	<div id="mydivheader">Header</div>
-	<p>Paragraph, word salad.</p>
-</div>
+<div id="mydiv" style="top: 100px;left: 125px;">
+	<div id="mydivheader">Coords Tracker</div>
+	<pre><input type="text" id="top"> El.style.top
+<input type="text" id="left"> El.style.left
+<input type="text" id="offtop"> El.offsetTop
+<input type="text" id="offleft"> El.offsetLeft
+<input type="text" id="x"> e.clientX
+<input type="text" id="y"> e.clientY</pre></div>
 
 <div><div
 	class="sliderCont"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div><div
 	class="sliderContR"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div><div
 	class="sliderContR2"><div class="slider"><div class="sliderTrack"></div><div class="sliderNob"></div></div></div></div>
 
-<script> dragElement(document.getElementById("mydiv")); </script>
+<div style="position:fixed;bottom:10px;right:10px;"><pre>Javascript Box:
+<textarea style="width:497px; height:244px; resize:none;" id="jsta"
+>function dragElement(El) {
+	El.onmousedown = dragMouseDown;
+	var Mx = 0, My = 0;
 
+	function eventControl(e) {
+		e = e || window.event;
+		e.preventDefault();
+		return e;
+	}
 
-<div style="position:absolute;bottom:10px;right:10px;">Javascript Box:<br><textarea style="width:497px; height:244px; resize:none;" id="jsta"></textarea><br><input type="button" value="Run JS" onclick="jsbox('jsta')"></div></body></html>
+	function mouseXY(e) {
+		Mx = e.clientX;
+		My = e.clientY;
+	}
+
+	function dragMouseDown(e) {
+		e = eventControl(e);
+		mouseXY(e);
+		document.onmouseup = closeDragElement;
+		document.onmousemove = elementDrag;
+	}
+
+	function elementDrag(e) {
+		e = eventControl(e);
+		mouseXY(e);
+		El.style.top = -(Mx-e.clientY)+El.offsetTop + "px";
+		El.style.left = -(My-e.clientX)+El.offsetLeft + "px";
+		showCoords(El.style.top, El.style.left, El.offsetTop, El.offsetLeft, e.clientX, e.clientY);
+	}
+
+	function closeDragElement() {
+		document.onmouseup = null;
+		document.onmousemove = null;
+	}
+}
+
+function showCoords(a,b,c,d,e,f) {
+	byId("top").value = a;
+	byId("left").value = b;
+	byId("offtop").value = c;
+	byId("offleft").value = d;
+	byId("x").value = e;
+	byId("y").value = f;
+}
+
+dragElement(byId("mydiv"));</textarea>
+<input type="button" value="Run JS" onclick="jsbox('jsta')"></pre></div></body></html>
