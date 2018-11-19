@@ -1,3 +1,12 @@
+pre {
+    margin: 10px 10px 0px 10px;
+}
+
+pre [type=text] {
+    margin: 0px 0px 10px 0px;
+    width: 40px;
+}
+
 .sliderContR, .sliderContR2 {
     opacity:0.2;
 }
