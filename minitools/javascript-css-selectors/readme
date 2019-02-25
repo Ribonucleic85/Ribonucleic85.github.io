@@ -1,0 +1,29 @@
+/*
+ Javascript based CSS element finders
+ ____________________________________
+
+ 'sel' does a global search and
+ finds any elements matched in
+ the DOM and returns them as an
+ array
+
+ USAGE:
+    sel("css_selectors");
+ 
+
+ 'rSel' works the same but finds
+ elements related to an element
+ either arbitrary or found from
+ 'sel' or other element finding
+ javascript 'rSel' also the
+ returns results as an array in
+ the same way that 'sel' does
+
+ USAGE:
+      rSel(sel("css_selectors")[n], "css_selectors" );
+ OR:  sel("css_selectors")[n].rSel("css_selectors");
+ OR:  rSel(element, "css_selectors");
+ OR:  element.rSel("css_selectors");
+ OR:  element.rSel("css_selectors")[n].rSel("css_selectors");
+
+*/
