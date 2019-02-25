@@ -8,7 +8,7 @@
  array
 
  USAGE:
-    sel("css_selectors");
+     sel("css_selectors");
  
 
  'rSel' works the same but finds
@@ -20,10 +20,10 @@
  the same way that 'sel' does
 
  USAGE:
-      rSel(sel("css_selectors")[n], "css_selectors" );
- OR:  sel("css_selectors")[n].rSel("css_selectors");
- OR:  rSel(element, "css_selectors");
- OR:  element.rSel("css_selectors");
- OR:  element.rSel("css_selectors")[n].rSel("css_selectors");
+     rSel(sel("css_selectors")[n], "css_selectors");
+ OR  sel("css_selectors")[n].rSel("css_selectors");
+ OR  rSel(element, "css_selectors");
+ OR  element.rSel("css_selectors");
+ OR  element.rSel("css_selectors")[n].rSel("css_selectors");
 
 */
