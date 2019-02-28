@@ -177,7 +177,7 @@ Pokemon = {
 		Gen7or8: [
 			"Meltan",	"Melmetal"
 		],
-    Gen8: [
+		Gen8: [
 			/* this list is assumed based on previous starters having
 				3 stages and being ordered by types grass, fire and water */
 			/*810*/ "Grookey",
