@@ -1,14 +1,21 @@
 <html>
-<head><script src="../gen8beta.js"></script></head>
+<head>
+<script src="pokedex.js"></script>
+<style>
+img {
+  
+}
+</style>
+</head>
 <body>
 <script>
-  (()=>{
-    var i=1, t="";
-    for(; i<819; i++)
-      t += "<img src=\"https://www.serebii.net/pokemon/art/" +
-      ((i<10)? "00" : (i<100)? "0" : "")+ i +".png\">" +(i%6==0?"<br>":"");
-    document.body.innerHTML=t;
-  })()
+	(()=>{
+		var i=1, t="";
+		for(; i<819; i++)
+			t += "<img src=\"https://www.serebii.net/pokemon/art/" +
+			((i<10)? "00" : (i<100)? "0" : "")+ i +".png\">" +(i%6==0?"<br>":"");
+		document.body.innerHTML=t;
+	})();
 </script>
 </body>
 </html>
