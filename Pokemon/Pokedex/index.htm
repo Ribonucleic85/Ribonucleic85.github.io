@@ -4,8 +4,8 @@
 <script>
   (()=>{
     var i=1, t="";
-    for(; i<494; i++)
-      t+=Pokemon.Dex.No(i) + (i!=493?",":"") +" "+ (i%8==0?"<br>":"");
+    for(; i<808; i++)
+      t += "<label><input type=\"checkbox\"><div>"+ i +"<br>"+ Pokemon.Dex.No(i) +"</div></label>";
     document.body.innerHTML=t;
   })()
 </script>
