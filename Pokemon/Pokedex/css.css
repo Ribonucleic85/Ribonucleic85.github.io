@@ -1,1 +1,30 @@
-.class {}
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label {
+    min-width: 87px;
+    max-width: 100px;
+}
+
+[type="checkbox"] {
+    display: none;
+}
+
+:checked + div {
+    border: 2px solid #008000;
+    background-color: #00ff00;
+    color: #003e00;
+}
+
+div {
+    margin: 4px;
+    border: 2px solid #adadad;
+    padding: 2px;
+}
+
+span:after {
+    content: attr(l);
+    display:block;
+}
