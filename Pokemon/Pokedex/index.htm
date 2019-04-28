@@ -1,13 +1,17 @@
 <html>
-<head><script src="https://Ribonucleic85.github.io/Pokemon/Pokedex/pokedex.js"></script></head>
+<head>
+	<script src="https://Ribonucleic85.github.io/Pokemon/Pokedex/pokedex.js"></script>
+	<link rel="stylesheet" href="css.css">
+</head>
 <body>
 <script>
-  (()=>{
-    var i=1, t="";
-    for(; i<808; i++)
-      t += "<label><input type=\"checkbox\"><div>"+ i +"<br>"+ Pokemon.Dex.No(i) +"</div></label>";
-    document.body.innerHTML=t;
-  })()
+	(()=>{
+		var i = 1
+		,   t = "";
+		for(; i<808; i++)
+			t += "<label><input type=\"checkbox\"><div><span l=\""+ i +"\"></span><br><span l=\""+ Pokemon.Dex.No(i) +"\"></span></div></label>";
+		document.body.innerHTML = t;
+	})()
 </script>
 </body>
 </html>
