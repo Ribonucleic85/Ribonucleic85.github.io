@@ -6,6 +6,7 @@ body {
 label {
     min-width: 87px;
     max-width: 100px;
+    margin: 4px;
 }
 
 [type="checkbox"] {
@@ -19,12 +20,11 @@ label {
 }
 
 div {
-    margin: 4px;
     border: 2px solid #adadad;
     padding: 2px;
 }
 
 span:after {
     content: attr(l);
-    display:block;
+    display: block;
 }
