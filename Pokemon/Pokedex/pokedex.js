@@ -179,7 +179,7 @@ Pokemon = {
 		],
 		Gen8: [
 			/* this list is assumed based on previous starters having
-				3 stages and being ordered by types grass, fire and water */
+			  3 stages and being ordered by types grass, fire and water */
 			/*810*/ "Grookey",
 			/*811*/ "Grookey 2",
 			/*812*/ "Grookey 3",
