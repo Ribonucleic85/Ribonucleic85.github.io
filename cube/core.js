@@ -21,9 +21,13 @@ Object.prototype.Lock = function() {
 			Object.freeze(i);
 	}
 }
-function listenForEventOn(el, att, fn) {
-	if (el.addEventListener)
-		el.addEventListener(att, fn));
+function listenForEventOn(els, att, fn) {
+	for (let el in els) {
+		el = document.getElementById(el);
+		if (el.addEventListener) {
+			el.addEventListener(att, fn));
+		}
+	}
 }
 
 //    x,y,z = 90 deg
