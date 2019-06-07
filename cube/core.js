@@ -64,7 +64,7 @@ const trans = (alg, ax) => {
 	mish = [...Midd[ax]];
 	mish.rightRot();
 
-	for (; cm<alg; cm++) {
+	for (; cm<alg.length; cm++) {
 		// ccw move?
 		if (alg[cm].indexOf("'") != -1)
 			ccw = !0, // move is ccw
