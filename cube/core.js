@@ -25,7 +25,7 @@ function listenForEventOn(els, att, fn) {
 	for (let el in els) {
 		el = document.getElementById(el);
 		if (el.addEventListener) {
-			el.addEventListener(att, fn));
+			el.addEventListener(att, fn);
 		}
 	}
 }
