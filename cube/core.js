@@ -80,9 +80,17 @@ const trans = (alg, ax) => {
 
 		// middle move?
 		if (mi.indexOf(alg[cm]) != -1) {
+			logBox("middle move routine log, is a move getting through despite the check?");
+			logBox(mi +" & "+ mish +" ; << mi & mish >> check arrays")
+			logBox(alg[cm] +" ; << alg[cm] >> before ccw check");
 			alg[cm] += ccw? "'": "";
+			logBox(alg[cm] +" ; << alg[cm] >> after ccw check, before move shift");
 			ccw = !1;
+			logBox(mish.indexOf(alg[cm]) +" ; << mish.indexOf(alg[cm]) >> before move shift");
+			logBox(alg[cm] +" in "+ mish +"? ; << alg[cm] in mish ? >> before move shift");
 			alg[cm] = mi[mish.indexOf(alg[cm])]; // is middle move so transform it to next move in the sequence
+			logBox(alg[cm] +" ; << alg[cm] >> after move shift");
+			logBox("-----------------------------------------------------------------");
 			continue;
 		}
 
@@ -90,13 +98,5 @@ const trans = (alg, ax) => {
 		// for example in a y transform L, R and M moves are not changed
 	}
 
-	alg.push(""); // add blank entry, this will hold the reconstructed array
-	alg.reverse();
-
-	while (alg.length>1) {
-		logBox(alg);
-		alg[0] += alg.pop() +" ";
-	}
-
-	return alg[0]; // if we returned alg then it would be a single item array
+	return alg.join(" ");
 }
