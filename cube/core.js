@@ -21,6 +21,10 @@ Object.prototype.Lock = function() {
 			Object.freeze(i);
 	}
 }
+function listenForEventOn(el, att, fn) {
+	if (el.addEventListener)
+		el.addEventListener(att, fn));
+}
 
 //    x,y,z = 90 deg
 // xi,yi,zi = 90 deg rev
@@ -37,7 +41,7 @@ const Midd = {
 	"z": [..."EMEM"],  "z'": [..."MEME"]
 };
 
-Midd.inv()
+Midd.inv();
 Edge.Lock();
 Midd.Lock();
 
