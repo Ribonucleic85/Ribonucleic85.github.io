@@ -90,9 +90,11 @@ const trans = (alg, ax) => {
 	}
 
 	alg.push(""); // add blank entry, this will hold the reconstructed array
+	alg.reverse();
 
 	while (alg.length>1) {
-		alg[alg.length-1] += alg.shift() + (alg.length>2? " ": "");
+		logBox(alg);
+		alg[0] += alg.pop() + (alg.length>2? " ": "");
 	}
 
 	return alg[0]; // if we returned alg then it would be a single item array
