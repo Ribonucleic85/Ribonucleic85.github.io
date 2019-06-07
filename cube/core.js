@@ -32,7 +32,7 @@ function listenForEventOn(els, att, fn) {
 }
 
 const trans = (alg, ax) => {
-	var Edge, Midd, ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
+	var Edge, Midd, cm, ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
 
 	//    x,y,z = 90 deg
 	// xi,yi,zi = 90 deg rev
@@ -53,6 +53,7 @@ const trans = (alg, ax) => {
 	// Midd.Lock(); // freezing these might be getting in the way?
 
 	alg = alg.split(" ");
+	cm = 0;
 	ccw = !1;
 
 	ed   = [...Edge[ax]];
@@ -63,25 +64,25 @@ const trans = (alg, ax) => {
 	mish = [...Midd[ax]];
 	mish.rightRot();
 
-	for (let cm of alg) {
+	for (; cm<alg; cm++) {
 		// ccw move?
-		if (cm.indexOf("'") != -1)
+		if (alg[cm].indexOf("'") != -1)
 			ccw = !0, // move is ccw
-			cm = cm[0]; // convert move to cw
+			alg[cm] = alg[cm][0]; // convert move to cw
 
 		// edge move?
-		if (ed.indexOf(cm) != -1) {
-			cm = ed[edsh.indexOf(cm)]; // is edge move so transform it to next move in the sequence
-			cm += ccw? "'": ""; // if move was ccw change it back
+		if (ed.indexOf(alg[cm]) != -1) {
+			alg[cm] = ed[edsh.indexOf(alg[cm])]; // is edge move so transform it to next move in the sequence
+			alg[cm] += ccw? "'": ""; // if move was ccw change it back
 			ccw = !1; // ccw indicator to false, no point in checking what it is, just do it
 			continue;
 		}
 
 		// middle move?
-		if (mi.indexOf(cm) != -1) {
-			cm += ccw? "'": "";
+		if (mi.indexOf(alg[cm]) != -1) {
+			alg[cm] += ccw? "'": "";
 			ccw = !1;
-			cm = mi[mish.indexOf(cm)]; // is middle move so transform it to next move in the sequence
+			alg[cm] = mi[mish.indexOf(alg[cm])]; // is middle move so transform it to next move in the sequence
 			continue;
 		}
 
@@ -94,7 +95,7 @@ const trans = (alg, ax) => {
 
 	while (alg.length>1) {
 		logBox(alg);
-		alg[0] += alg.pop() + (alg.length>2? " ": "");
+		alg[0] += alg.pop() +" ";
 	}
 
 	return alg[0]; // if we returned alg then it would be a single item array
