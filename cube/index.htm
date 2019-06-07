@@ -1,14 +1,19 @@
 
 <html><head><title>Rubiks Cube Stuff</title>
-<!---<script src="core.js"></script>--->
+<script src="core.js"></script>
 </head>
 <body>
 <input type="text" id="origAlg" value="put original algorithm here" /><br />
-transform: <input type="button" value="x" />
-<input type="button" value="y" />
-<input type="button" value="z" />
-<input type="button" value="x'" />
-<input type="button" value="y'" />
-<input type="button" value="z'" /><br />
+transform: <input type="button" id="X" value="x" />
+<input type="button" id="Y" value="y" />
+<input type="button" id="Z" value="z" />
+<input type="button" id="Xi" value="x'" />
+<input type="button" id="Yi" value="y'" />
+<input type="button" id="Zi" value="z'" /><br />
 <input type="text" id="transAlg" value="new alg will appear here" />
+  
+<script>
+listenForEventOn(["X","Y","Z","Xi","Yi","Zi"], "onclick",
+  document.getElementById('transAlg').value = trans(document.getElementById('origAlg').value, this.value) );
+</script>
 </body></html>
