@@ -46,8 +46,8 @@ const Midd = {
 };
 
 Midd.inv();
-Edge.Lock();
-Midd.Lock();
+//Edge.Lock();
+//Midd.Lock();
 
 const trans = (alg, ax) => {
 	var /*cm*/ ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
