@@ -14,13 +14,14 @@ Object.prototype.inv = function() {
 			i[3] += "'";
 	}
 }
+/*
 Object.prototype.Lock = function() {
 	Object.freeze(this);
 	for (let i in this) {
 		if (this.hasOwnProperty(i))
 			Object.freeze(i);
 	}
-}
+}*/
 function listenForEventOn(els, att, fn) {
 	for (let el in els) {
 		el = document.getElementById(el);
@@ -30,27 +31,26 @@ function listenForEventOn(els, att, fn) {
 	}
 }
 
-//    x,y,z = 90 deg
-// xi,yi,zi = 90 deg rev
-// x2,y2,z2 = 180 deg done by running x, y or z twice
-
-const Edge = {
-	"x": [..."FUBD"],  "x'": [..."DBUF"],
-	"y": [..."FLBR"],  "y'": [..."RBLF"],
-	"z": [..."URDL"],  "z'": [..."LDRU"]
-};
-const Midd = {
-	"x": [..."ESES"],  "x'": [..."SESE"],
-	"y": [..."SMSM"],  "y'": [..."MSMS"],
-	"z": [..."EMEM"],  "z'": [..."MEME"]
-};
-
-Midd.inv();
-//Edge.Lock();
-//Midd.Lock();
-
 const trans = (alg, ax) => {
-	var /*cm*/ ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
+	var Edge, Midd, ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
+
+	//    x,y,z = 90 deg
+	// xi,yi,zi = 90 deg rev
+	// x2,y2,z2 = 180 deg done by running x, y or z twice
+
+	Edge = {
+		"x": [..."FUBD"],  "x'": [..."DBUF"],
+		"y": [..."FLBR"],  "y'": [..."RBLF"],
+		"z": [..."URDL"],  "z'": [..."LDRU"]
+	};
+	Midd = {
+		"x": [..."ESES"],  "x'": [..."SESE"],
+		"y": [..."SMSM"],  "y'": [..."MSMS"],
+		"z": [..."EMEM"],  "z'": [..."MEME"]
+	};
+	Midd.inv();
+	// Edge.Lock();
+	// Midd.Lock(); // freezing these might be getting in the way?
 
 	alg = alg.split(" ");
 	ccw = !1;
