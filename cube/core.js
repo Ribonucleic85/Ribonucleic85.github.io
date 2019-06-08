@@ -64,21 +64,23 @@ const trans = (alg, ax) => {
 
 	for (; cm<alg.length; cm++) {
 		if (alg[cm].indexOf("'") != -1)
-			ccw = !0,
+			ccw = true,
 			alg[cm] = alg[cm][0];
 
-		if (ed.indexOf(alg[cm]) != -1)
+		if (ed.indexOf(alg[cm]) != -1) {
 			alg[cm] = ed[edsh.indexOf(alg[cm])],
 			alg[cm] += ccw? "'": "",
-			ccw = !1,
+			ccw = false;
 			continue;
+		}
 
 		alg[cm] += ccw? "'": "";
-		ccw = !1;
+		ccw = false;
 
-		if (mi.indexOf(alg[cm]) != -1)
-			alg[cm] = mi[mish.indexOf(alg[cm])],
+		if (mi.indexOf(alg[cm]) != -1) {
+			alg[cm] = mi[mish.indexOf(alg[cm])];
 			continue;
+		}
 	}
 
 	return alg.join(" ");
