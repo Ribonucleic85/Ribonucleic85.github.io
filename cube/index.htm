@@ -2,20 +2,26 @@
 <script src="core.js"></script>
 </head>
 <body>
-<input type="text" id="origAlg" value="put original algorithm here" /><br />
+<input type="text" id="origAlg" value="original algorithm" /><br />
+<input type="text" id="transAlg" value="new algorithm" /><br />
 transform: <input type="button" id="X" value="x" />
 <input type="button" id="Y" value="y" />
 <input type="button" id="Z" value="z" />
 <input type="button" id="Xi" value="x'" />
 <input type="button" id="Yi" value="y'" />
-<input type="button" id="Zi" value="z'" /><br />
-<input type="text" id="transAlg" value="new alg will appear here" />
+<input type="button" id="Zi" value="z'" />
   
 <script>  
-/*
-listenForEventOn(["X","Y","Z","Xi","Yi","Zi"], "onclick", function(t=this){
-  document.getElementById('transAlg').value = trans(document.getElementById('origAlg').value, t.value);} );
-*/
+listenForEventOn(
+	["X","Y","Z","Xi","Yi","Zi"],
+	"onclick",
+	function(t=this) {
+		document.getElementById('transAlg').value = trans(
+			document.getElementById('origAlg').value, t.value
+		);
+	}
+);
+
 function logBox(v) {
   document.getElementById('logBox').value += v +"\n";
 }
