@@ -15,10 +15,8 @@ transform: <input type="button" id="X" value="x" />
 listenForEventOn(
 	["X","Y","Z","Xi","Yi","Zi"],
 	"onclick",
-	function(t=this) {
-		document.getElementById('transAlg').value = trans(
-			document.getElementById('origAlg').value, t.value
-		);
+	function(this) {
+		alert(this.value);
 	}
 );
 
