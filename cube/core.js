@@ -24,10 +24,10 @@ Object.prototype.Lock = function() {
 	}
 }*/
 function listenForEventOn(els, att, fn) {
-	for (let el in els) {
-		el = document.getElementById(el);
-		if (el.addEventListener) {
-			el.addEventListener(att, fn);
+	for (var i=0; i<els.length; i++) {
+		els[i] = document.getElementById(els[i]);
+		if (els[i].addEventListener) {
+			els[i].addEventListener(att, fn);
 		}
 	}
 }
