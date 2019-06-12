@@ -5,13 +5,13 @@
 <input type="text" id="origAlg" value="original algorithm" /><br />
 <input type="text" id="transAlg" value="new algorithm" /><br />
 transform:
-	<input type="button" id="X" onclick="roll('x')" />
-	<input type="button" id="Y" onclick="roll('y')" />
-	<input type="button" id="Z" onclick="roll('z')" />
-	<input type="button" id="Xi" onclick="roll('x\'')" />
-	<input type="button" id="Yi" onclick="roll('y\'')" />
-	<input type="button" id="Zi" onclick="roll('z\'')" />
-  
+	<input type="button" id="X" onclick="roll('x')" value="x" />
+	<input type="button" id="Y" onclick="roll('y')" value="y" />
+	<input type="button" id="Z" onclick="roll('z')" value="z" />
+	<input type="button" id="Xi" onclick="roll('x\'')" value="x'" />
+	<input type="button" id="Yi" onclick="roll('y\'')" value="y'" />
+	<input type="button" id="Zi" onclick="roll('z\'')" value="z'" />
+
 <script>  
 roll = function(x) {
 	document.getElementById('transAlg').value = trans(
