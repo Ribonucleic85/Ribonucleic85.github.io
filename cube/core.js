@@ -2,12 +2,12 @@ Array.prototype.rightRot = function() {
 	this.unshift(this.pop());
 	return this;
 }
-/* not needed atm */ /*
+/* not needed atm
 Array.prototype.leftRot = function() {
 	this.push(this.shift());
 	return this;
 }*/
-/*
+/* used to work but doesn't now, dunno why
 Object.prototype.inv = function() {
 	for (let i in this) {
 		if (this.hasOwnProperty(i))
@@ -23,6 +23,7 @@ Object.prototype.Lock = function() {
 			Object.freeze(i);
 	}
 }*/
+/* events get added correctly but don't fire, i don't know why yet
 function listenForEventOn(els, att, fn) {
 	for (var i=0; i<els.length; i++) {
 		els[i] = document.getElementById(els[i]);
@@ -31,13 +32,14 @@ function listenForEventOn(els, att, fn) {
 		}
 	}
 }
+*/
 
 const trans = (alg, ax) => {
-	var Edge, Midd, cm, ccw, ed, mi, edsh, mish; // cm is dealt with in for..of loops
+	var Edge, Midd, cm, ccw, ed, edsh, mi, mish;
 
-	//    x,y,z = 90 deg
-	// xi,yi,zi = 90 deg rev
-	// x2,y2,z2 = 180 deg done by running x, y or z twice
+	//    x, y, z = 90 deg
+	// x', y', z' = 90 deg rev
+	// x2, y2, z2 = 180 deg done by running x, y or z twice
 
 	Edge = {
 		"x": [..."FUBD"],  "x'": [..."DBUF"],
@@ -62,7 +64,7 @@ const trans = (alg, ax) => {
 	mish = [...Midd[ax]];
 	mish.rightRot();
 
-	for (; cm<alg.length; cm++) {
+	while (++cm<alg.length) {
 		if (alg[cm].indexOf("'") != -1)
 			ccw = true,
 			alg[cm] = alg[cm][0];
