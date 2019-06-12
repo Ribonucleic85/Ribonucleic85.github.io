@@ -4,25 +4,28 @@
 <body>
 <input type="text" id="origAlg" value="original algorithm" /><br />
 <input type="text" id="transAlg" value="new algorithm" /><br />
-transform: <input type="button" id="X" value="x" />
-<input type="button" id="Y" value="y" />
-<input type="button" id="Z" value="z" />
-<input type="button" id="Xi" value="x'" />
-<input type="button" id="Yi" value="y'" />
-<input type="button" id="Zi" value="z'" />
+transform:
+	<input type="button" id="X" onclick="roll('x')" />
+	<input type="button" id="Y" onclick="roll('y')" />
+	<input type="button" id="Z" onclick="roll('z')" />
+	<input type="button" id="Xi" onclick="roll('x\'')" />
+	<input type="button" id="Yi" onclick="roll('y\'')" />
+	<input type="button" id="Zi" onclick="roll('z\'')" />
   
 <script>  
-listenForEventOn(
-	["X","Y","Z","Xi","Yi","Zi"],
-	"onclick",
-	function() {
-		alert(this.value);
-	}
-);
+roll = function(x) {
+	document.getElementById('transAlg').value = trans(
+		document.getElementById('origAlg').value, x
+	);
+}
 
+//redundant for now
+//*
 function logBox(v) {
   document.getElementById('logBox').value += v +"\n";
 }
+document.getElementById('logBox').style.display = ''; // show box when log function is active
+//*/
 </script>
-<textarea id="logBox" style="position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
+<textarea id="logBox" style="display:none; position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
 </body></html>
