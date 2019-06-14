@@ -1,5 +1,6 @@
 <html><head><title>Rubiks Cube Stuff</title>
 <script src="core.js"></script>
+<link rel="stylesheet" href="css.css" />
 </head>
 <body>
 <input type="text" id="origAlg" value="original algorithm" /><br />
@@ -11,7 +12,9 @@ transform:
 	<input type="button" id="Xi" onclick="roll('x\'')" value="x'" />
 	<input type="button" id="Yi" onclick="roll('y\'')" value="y'" />
 	<input type="button" id="Zi" onclick="roll('z\'')" value="z'" />
+<div id="textCube"><textarea class="tcF"></textarea><textarea class="tcB"></textarea><textarea class="tcU"></textarea><textarea class="tcD"></textarea><textarea class="tcL"></textarea><textarea class="tcR"></textarea></div>
 
+<textarea id="logBox" style="display:none; position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
 <script>  
 roll = function(x) {
 	document.getElementById('transAlg').value = trans(
@@ -26,6 +29,4 @@ function logBox(v) {
 }
 document.getElementById('logBox').style.display = ''; // show box when log function is active
 //*/
-</script>
-<textarea id="logBox" style="display:none; position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
-</body></html>
+</script></body></html>
