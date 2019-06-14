@@ -12,8 +12,16 @@ transform:
 	<input type="button" id="Xi" onclick="roll('x\'')" value="x'" />
 	<input type="button" id="Yi" onclick="roll('y\'')" value="y'" />
 	<input type="button" id="Zi" onclick="roll('z\'')" value="z'" />
-<div id="textCube"><textarea class="tcF"></textarea><textarea class="tcB"></textarea><textarea class="tcU"></textarea><textarea class="tcD"></textarea><textarea class="tcL"></textarea><textarea class="tcR"></textarea></div>
-
+<div id="cubeholder">
+	<div id="textCube">
+		<textarea class="tcF"></textarea>
+		<textarea class="tcB"></textarea>
+		<textarea class="tcU"></textarea>
+		<textarea class="tcD"></textarea>
+		<textarea class="tcL"></textarea>
+		<textarea class="tcR"></textarea>
+	</div>
+</div>
 <textarea id="logBox" style="display:none; position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
 <script>  
 roll = function(x) {
