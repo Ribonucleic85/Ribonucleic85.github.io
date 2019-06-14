@@ -1,0 +1,62 @@
+#textCube {
+    position: absolute;
+    bottom: 103px;
+    right: 100px;
+    transform-style: preserve-3d;
+    animation-name: rotatey;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotatey {
+  33% { transform:rotateX(180deg); }
+  67% { transform:rotateY(180deg); }
+  99% { transform:rotateZ(180deg); }
+}
+
+}
+#textCube textarea {
+    position:absolute;
+    top:25px;
+    left:25px;
+}
+
+textarea {
+    resize: none;
+    width:100px;
+    height:100px;
+    background-color:black;
+    font-weight:800;
+    font-size:28px;
+    letter-spacing:12px;
+    line-height:31px;
+    text-align:center;
+    overflow:hidden;
+    padding-left:10px;
+    padding-top:4px;
+}
+
+.tcF {
+    color:#FF0000;
+    transform: translateZ(50px);
+}
+.tcB {
+    color:#FF7043;
+    transform: rotateX(180deg) translateZ(50px);
+}
+.tcU {
+    color:#dedede;
+    transform: rotateX(90deg) translateZ(50px);
+}
+.tcD {
+    color:#FFB300;
+    transform: rotateX(-90deg) translateZ(50px);
+}
+.tcL {
+    color:#2e8800;
+    transform: rotateY(-90deg) translateZ(50px);
+}
+.tcR {
+    color:#1565C0;
+    transform: rotateY(90deg) translateZ(50px);
+}
