@@ -1,3 +1,9 @@
+#cubeholder {
+     position:relative;
+     top:0px;
+     transform-style:preserve-3d;
+}
+
 #textCube {
     position: absolute;
     bottom: 103px;
