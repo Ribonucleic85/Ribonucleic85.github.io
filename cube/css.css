@@ -1,14 +1,11 @@
-#cubeholder {
-     position:relative;
-     top:0px;
-     transform-style:preserve-3d;
-}
 
 #textCube {
     position: absolute;
     bottom: 103px;
     right: 100px;
-    transform-style: preserve-3d;
+    width:100px;
+    height:100px;
+    transform-style: preserve-3d !important;
     animation-name: rotatey;
     animation-duration: 10s;
     animation-iteration-count: infinite;
