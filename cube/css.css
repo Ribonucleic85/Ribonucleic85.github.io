@@ -1,6 +1,14 @@
+#cubeholder{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	width: 70px;
+	height: 50px;
+}
+
 #textCube {
-	position: absolute;
-	bottom: 100px;
+	position: relative;
+	bottom: 150px;
 	right: 100px;
 	width: 100px;
 	height: 100px;
@@ -15,8 +23,6 @@
 } 
 
 #cubeStaticCheck:checked ~ #textCube {
-	transition-property: all;
-	transition-duration: 5s;
 	transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg);
 } 
 
