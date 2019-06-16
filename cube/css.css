@@ -1,44 +1,61 @@
-
 #textCube {
-    position: absolute;
-    bottom: 100px;
-    right: 100px;
-    width:100px;
-    height:100px;
-    transform-style: preserve-3d;
-    transform-origin:50px 50px 0px;
-    animation-name: rotatey;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+	position: absolute;
+	bottom: 100px;
+	right: 100px;
+	width: 100px;
+	height: 100px;
+	transform-style: preserve-3d;
+	transform-origin: 50px 50px 0px;
 }
 
+#cubeRotateCheck:checked ~ #textCube {
+	animation-name: rotatey;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+} 
+
+#cubeStaticCheck:checked ~ #textCube {
+	transition-property: all;
+	transition-duration: 5s;
+	transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg);
+} 
+
+#cubeRotateCheck:checked ~ [for=cubeRotateCheck],
+#cubeStaticCheck:checked ~ [for=cubeStaticCheck] {
+	background-color: #aeff81;
+} 
+
+[name=rotorstatic] { display: none; }
+
+#cubeholder label { padding: 3px; }
+
 @keyframes rotatey {
-  0% { transform:rotateX(10deg) rotateY(10deg) rotateZ(10deg); }
-  25% { transform:rotateX(370deg) rotateY(10deg) rotateZ(10deg); }
-  50% { transform:rotateX(10deg) rotateY(370deg) rotateZ(10deg); }
-  75% { transform:rotateX(10deg) rotateY(10deg) rotateZ(370deg); }
-  100% { transform:rotateX(10deg) rotateY(10deg) rotateZ(10deg); }
+	0% { transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg); }
+	25% { transform: rotateX(370deg) rotateY(10deg) rotateZ(10deg); }
+	50% { transform: rotateX(10deg) rotateY(370deg) rotateZ(10deg); }
+	75% { transform: rotateX(10deg) rotateY(10deg) rotateZ(370deg); }
+	100% { transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg); }
 }
 
 #textCube textarea {
-    position:absolute;
-    top:0px;
-    left:0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 textarea {
-    resize: none;
-    width:100px;
-    height:100px;
-    background-color:rgba(0, 0, 0, 0.6);
-    font-weight:800;
-    font-size:28px;
-    letter-spacing:12px;
-    line-height:31px;
-    text-align:center;
-    overflow:hidden;
-    padding-left:10px;
-    padding-top:4px;
+	resize: none;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0, 0, 0, 0.6);
+	font-weight: 800;
+	font-size: 28px;
+	letter-spacing: 12px;
+	line-height: 31px;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 10px;
+	padding-top: 4px;
 }
 
 .tcF { transform: translateZ(50px); }
