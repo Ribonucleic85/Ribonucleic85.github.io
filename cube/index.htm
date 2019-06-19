@@ -1,22 +1,22 @@
 <html><head><title>Rubiks Cube Stuff</title>
 <script src="core.js"></script>
-<link rel="stylesheet" href="css.css" />
+<link rel="stylesheet" href="css.css">
 </head>
 <body>
-<input type="text" id="origAlg" value="original algorithm" /><br />
-<input type="text" id="transAlg" value="new algorithm" /><br />
+<input type="text" id="origAlg" value="original algorithm"><br>
+<input type="text" id="transAlg" value="new algorithm"><br>
 transform:
-	<input type="button" id="X" onclick="roll('x')" value="x" />
-	<input type="button" id="Y" onclick="roll('y')" value="y" />
-	<input type="button" id="Z" onclick="roll('z')" value="z" />
-	<input type="button" id="Xi" onclick="roll('x\'')" value="x'" />
-	<input type="button" id="Yi" onclick="roll('y\'')" value="y'" />
-	<input type="button" id="Zi" onclick="roll('z\'')" value="z'" />
+	<input type="button" id="X" onclick="roll('x')" value="x">
+	<input type="button" id="Y" onclick="roll('y')" value="y">
+	<input type="button" id="Z" onclick="roll('z')" value="z">
+	<input type="button" id="Xi" onclick="roll('x\'')" value="x'">
+	<input type="button" id="Yi" onclick="roll('y\'')" value="y'">
+	<input type="button" id="Zi" onclick="roll('z\'')" value="z'">
 <div id="cubeholder">
-	<input type="radio" id="cubeRotateCheck" name="rotorstatic" value="cuberotate" checked />
-	<input type="radio" id="cubeStaticCheck" name="rotorstatic" value="cubestatic" />
-	<label for="cubeRotateCheck">Rotate</label><br />
-	<label for="cubeStaticCheck">Static</label>
+	<input type="radio" id="cubeRotateCheck" name="rotorstatic" value="cuberotate" checked="">
+	<input type="radio" id="cubeRotateXCheck" name="rotorstatic" value="cuberotatex"><input type="radio" id="cubeRotateYCheck" name="rotorstatic" value="cuberotatey"><input type="radio" id="cubeRotateZCheck" name="rotorstatic" value="cuberotatez"><input type="radio" id="cubeStaticCheck" name="rotorstatic" value="cubestatic">
+	<label for="cubeStaticCheck">Static</label><br><label for="cubeRotateCheck">Rotate</label>:&nbsp;<label for="cubeRotateXCheck">X</label>&nbsp;<label for="cubeRotateYCheck">Y</label>&nbsp;<label for="cubeRotateZCheck">Z</label>
+	
 	<div id="textCube">
 		<textarea class="tcF">123456789</textarea>
 		<textarea class="tcB">123456789</textarea>
@@ -26,7 +26,7 @@ transform:
 		<textarea class="tcR">123456789</textarea>
 	</div>
 </div>
-<textarea id="logBox" style="display:none; position:fixed; bottom:5px; right:5px; width:325px; height:500px; white-space:nowrap; resize:none;"></textarea>
+<textarea id="logBox"></textarea>
 <script>  
 roll = function(x) {
 	document.getElementById('transAlg').value = trans(
@@ -41,4 +41,5 @@ function logBox(v) {
 }
 document.getElementById('logBox').style.display = ''; // show box when log function is active
 //*/
-</script></body></html>
+</script>
+</body></html>
