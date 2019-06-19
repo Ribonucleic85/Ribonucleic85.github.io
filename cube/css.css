@@ -2,14 +2,14 @@
 	position: fixed;
 	bottom: 0px;
 	right: 0px;
-	width: 70px;
+	width: 120px;
 	height: 50px;
 }
 
 #textCube {
 	position: relative;
 	bottom: 150px;
-	right: 100px;
+	right: 50px;
 	width: 100px;
 	height: 100px;
 	transform-style: preserve-3d;
@@ -19,14 +19,33 @@
 #cubeRotateCheck:checked ~ #textCube {
 	animation-name: rotatey;
 	animation-duration: 10s;
+}
+#cubeRotateXCheck:checked ~ #textCube {
+	animation-name: rotateX;
+}
+#cubeRotateYCheck:checked ~ #textCube {
+	animation-name: rotateY;
+}
+#cubeRotateZCheck:checked ~ #textCube {
+	animation-name: rotateZ;
+}
+
+[type]:checked ~ #textCube {
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-duration: 5s;
 	animation-iteration-count: infinite;
 } 
 
+
 #cubeStaticCheck:checked ~ #textCube {
+	animation-name: none;
 	transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg);
 } 
 
 #cubeRotateCheck:checked ~ [for=cubeRotateCheck],
+#cubeRotateXCheck:checked ~ [for=cubeRotateXCheck],
+#cubeRotateYCheck:checked ~ [for=cubeRotateYCheck],
+#cubeRotateZCheck:checked ~ [for=cubeRotateZCheck],
 #cubeStaticCheck:checked ~ [for=cubeStaticCheck] {
 	background-color: #aeff81;
 } 
@@ -42,14 +61,23 @@
 	75% { transform: rotateX(10deg) rotateY(10deg) rotateZ(370deg); }
 	100% { transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg); }
 }
+@keyframes rotateX {
+	0% { transform: rotateX(2deg) rotateY(2deg) rotateZ(0deg); }
+	100% { transform: rotateX(361deg) rotateY(2deg) rotateZ(0deg); }
+}
+@keyframes rotateY {
+	0% { transform: rotateX(1deg) rotateY(1deg) rotateZ(1deg); }
+	100% { transform: rotateX(1deg) rotateY(361deg) rotateZ(1deg); }
+}
+@keyframes rotateZ {
+	0% { transform: rotateX(1deg) rotateY(1deg) rotateZ(1deg); }
+	100% { transform: rotateX(1deg) rotateY(1deg) rotateZ(361deg); }
+}
 
 #textCube textarea {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-}
-
-textarea {
 	resize: none;
 	width: 100px;
 	height: 100px;
@@ -77,3 +105,15 @@ textarea {
 .tcD { color:#FFB300; }
 .tcL { color:#2e8800; }
 .tcR { color:#1565C0; }
+
+
+#logBox {
+	position:fixed;
+	bottom:5px;
+	left:5px;
+	width:325px;
+	height:500px;
+	white-space:nowrap;
+	resize:none;
+	background-color:transparent;
+}
