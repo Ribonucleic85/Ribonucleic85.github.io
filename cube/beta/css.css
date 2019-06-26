@@ -1,0 +1,265 @@
+/* Cube and Controls holder */
+#sceneManager {
+	position:absolute;
+	bottom: 40px;
+	right: 40px;
+	border: 1px solid darkgrey;
+	border-radius: 15px;
+	padding: 10px 0 0 10px;
+	width:275px;
+	height:110px;
+}
+
+/* as name suggests */
+#cubeholder {
+	position: absolute;
+	top: 10px;
+	right:10px;
+	width: 100px;
+	height: 100px;
+	perspective: 200px;
+	perspective-origin: 50% 50%;
+}
+
+#cubePerspective:checked ~ #cubeholder {
+	perspective: initial;
+}
+
+#textCube {
+	position:absolute;
+	width: 100px;
+	height: 100px;
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% 0;
+}
+
+#cubeRotateCheck:checked ~ div > div {
+	animation-name: rotatey;
+	animation-duration: 20s;
+}
+#cubeRotateXCheck:checked ~ div > div {
+	animation-name: rotateX;
+}
+#cubeRotateYCheck:checked ~ div > div {
+	animation-name: rotateY;
+}
+#cubeRotateZCheck:checked ~ div > div {
+	animation-name: rotateZ;
+}
+
+[type]:checked ~ div > div {
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+} 
+
+#cubeStaticCheck:checked ~ div > div {
+	animation-name: none;
+} 
+
+#cubeTypeR:checked ~ [for=cubeTypeR],
+#cubeTypeN:checked ~ [for=cubeTypeN] {
+	background-color: #ffdb00;
+}
+
+#cubePerspective:checked ~ [for=cubePerspective] {
+	background-color: #81d2ff;
+}
+
+#cubeRotateCheck:checked ~ [for=cubeRotateCheck],
+#cubeRotateXCheck:checked ~ [for=cubeRotateXCheck],
+#cubeRotateYCheck:checked ~ [for=cubeRotateYCheck],
+#cubeRotateZCheck:checked ~ [for=cubeRotateZCheck],
+#cubeStaticCheck:checked ~ [for=cubeStaticCheck] {
+	background-color: #8eff50;
+} 
+
+[name=rotorstatic], [name=cubetype] {
+	position: fixed;
+	top: -100px;
+	left: -100px;
+}
+
+label {
+	padding: 2px;
+}
+
+label:hover ~ #helper {
+	background-color:#232323;
+}
+
+#helper {
+	width:125px;	
+	border-width: 0px;
+	border-style: solid;
+	border-radius: 15px;
+	padding: 5 10 5 10;
+}
+
+
+[for=cubeTypeR],[for=cubeTypeN] {
+	position: absolute;
+	top:-25px;
+}
+[for=cubeTypeN] {
+	left:110px;
+}
+[for=cubeTypeR]:after { content: "Rubiks Cube"; }
+[for=cubeTypeR]:hover ~ #helper:after {
+	content: "Change to a Rubiks style cube";
+   	color: #ffe33b;
+}
+
+[for=cubeTypeN]:after { content: "Number Cube"; }
+[for=cubeTypeN]:hover ~ #helper:after {
+	content: "Change to a numbered cube";
+   	color: #ffe33b;
+}
+
+[for=cubePerspective]:after { content: "Perspective"; }
+[for=cubePerspective]:hover ~ #helper:after {
+	content: "Change the perspective of the cube";
+   	color: #81d2ff;
+}
+
+[for=cubeStaticCheck]:after { content: "Static";}
+[for=cubeStaticCheck]:hover ~ #helper:after {
+	content: "Make the cube static";
+	color: #8eff50;
+}
+
+[for=cubeRotateCheck]:after { content: "Rotate"; }
+[for=cubeRotateCheck]:hover ~ #helper:after {
+	content: "Rotate the cube through all 3 axises";
+	color: #8eff50;
+}
+
+[for=cubeRotateXCheck]:after { content: "X"; }
+[for=cubeRotateXCheck]:hover ~ #helper:after {
+	content: "Rotate the cube around the X axis";
+	color: #8eff50;
+}
+
+
+[for=cubeRotateYCheck]:after { content: "Y"; }
+[for=cubeRotateYCheck]:hover ~ #helper:after {
+	content: "Rotate the cube around the Y axis";
+	color: #8eff50;
+}
+
+[for=cubeRotateZCheck]:after { content: "Z"; }
+[for=cubeRotateZCheck]:hover ~ #helper:after {
+	content: "Rotate the cube around the Z axis";
+	color: #8eff50;
+}
+
+@keyframes rotatey {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	25% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+	50% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+	75% {transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);}
+	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+}
+@keyframes rotateX {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	100% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+}
+@keyframes rotateY {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+}
+@keyframes rotateZ {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg); }
+}
+
+#textCube textarea {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	resize: none;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0, 0, 0, 0.7);
+	font-weight: 800;
+	font-size: 28px;
+	letter-spacing: 12px;
+	line-height: 31px;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 10px;
+	padding-top: 4px;
+}
+
+.tcF { transform: translateZ(50px); }
+.tcB { transform: rotateX(180deg) translateZ(50px); }
+.tcU { transform: rotateX(90deg) translateZ(50px); }
+.tcD { transform: rotateX(-90deg) translateZ(50px); }
+.tcL { transform: rotateY(-90deg) translateZ(50px); }
+.tcR { transform: rotateY(90deg) translateZ(50px); }
+
+.tcF { color:#FF0000; }
+.tcB { color:#FF7043; }
+.tcU { color:#dedede; }
+.tcD { color:#FFB300; }
+.tcL { color:#2e8800; }
+.tcR { color:#1565C0; }
+
+.demo {
+	display: none;
+}
+
+.demo .rube_cube {
+	transform-style:preserve-3d;
+	transform-origin: 51px 51px 0px;
+	animation-name: rotatey;
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-duration: 30s;
+	animation-iteration-count: infinite;
+}
+
+.rube_cube > div {
+	height: 102px;
+	width: 102px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	padding:2px;
+	border-radius:5px;
+	background-color: rgb(0,0,0,0.7);
+}
+
+.rcf { transform: translateZ(51px); }
+.rcb { transform: rotateX(180deg) translateZ(51px); }
+.rcu { transform: rotateX(90deg) translateZ(51px); }
+.rcd { transform: rotateX(-90deg) translateZ(51px); }
+.rcl { transform: rotateY(-90deg) translateZ(51px); }
+.rcr { transform: rotateY(90deg) translateZ(51px); }
+
+.rcf > div {background-color: rgba(255, 0, 0, 0.7);}
+.rcb > div {background-color: rgba(255, 112, 67, 0.7);}
+.rcu > div {background-color: rgba(222, 222, 222, 0.7);}
+.rcd > div {background-color:rgba(255, 179, 0, 0.7);}
+.rcl > div {background-color: rgba(46, 136, 0, 0.7);}
+.rcr > div {background-color: rgba(21, 101, 192, 0.7);}
+
+.rcf > div, .rcb > div, .rcu > div, 
+.rcd > div, .rcl > div, .rcr > div {
+	display:inline-block;
+	margin:2px;
+	border-radius:5px;
+	width:30px;
+	height:30px;
+}
+
+#logBox {
+	position:fixed;
+	bottom:5px;
+	left:5px;
+	width:325px;
+	height:500px;
+	white-space:nowrap;
+	resize:none;
+	background-color:transparent;
+    display:none;
+}
