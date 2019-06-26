@@ -1,0 +1,49 @@
+<html><head><title>Rubiks Cube Stuff</title>
+<script src="../core.js"></script>
+<link rel="stylesheet" href="css.css">
+</head>
+<body>
+<input type="text" id="origAlg" value="original algorithm"><br>
+<input type="text" id="transAlg" value="new algorithm"><br>
+transform:
+	<input type="button" id="X" onclick="roll('x')" value="x">
+	<input type="button" id="Y" onclick="roll('y')" value="y">
+	<input type="button" id="Z" onclick="roll('z')" value="z">
+	<input type="button" id="Xi" onclick="roll('x\'')" value="x'">
+	<input type="button" id="Yi" onclick="roll('y\'')" value="y'">
+	<input type="button" id="Zi" onclick="roll('z\'')" value="z'"><div class="demo"><div style="transform: rotateX(-28deg) rotateY(65deg) rotateZ(145deg);" class="rube_cube"><div class="rcf"><div id="rcf1"></div><div id="rcf2"></div><div id="rcf3"></div><div id="rcf4"></div><div id="rcf5"></div><div id="rcf6"></div><div id="rcf7"></div><div id="rcf8"></div><div id="rcf9"></div></div><div class="rcb"><div id="rcb1"></div><div id="rcb2"></div><div id="rcb3"></div><div id="rcb4"></div><div id="rcb5"></div><div id="rcb6"></div><div id="rcb7"></div><div id="rcb8"></div><div id="rcb9"></div></div><div class="rcl"><div id="rcl1"></div><div id="rcl2"></div><div id="rcl3"></div><div id="rcl4"></div><div id="rcl5"></div><div id="rcl6"></div><div id="rcl7"></div><div id="rcl8"></div><div id="rcl9"></div></div><div class="rcr"><div id="rcr1"></div><div id="rcr2"></div><div id="rcr3"></div><div id="rcr4"></div><div id="rcr5"></div><div id="rcr6"></div><div id="rcr7"></div><div id="rcr8"></div><div id="rcr9"></div></div><div class="rcu"><div id="rcu1"></div><div id="rcu2"></div><div id="rcu3"></div><div id="rcu4"></div><div id="rcu5"></div><div id="rcu6"></div><div id="rcu7"></div><div id="rcu8"></div><div id="rcu9"></div></div><div class="rcd"><div id="rcd1"></div><div id="rcd2"></div><div id="rcd3"></div><div id="rcd4"></div><div id="rcd5"></div><div id="rcd6"></div><div id="rcd7"></div><div id="rcd8"></div><div id="rcd9"></div></div></div></div>
+<div id="sceneManager">
+	<input type="radio" id="cubeTypeR" name="cubetype">
+<input type="radio" id="cubeTypeN" name="cubetype">
+<input type="checkbox" name="rotorstatic" id="cubePerspective"><input type="radio" id="cubeRotateCheck" name="rotorstatic" value="cuberotate" checked="">
+	<input type="radio" id="cubeRotateXCheck" name="rotorstatic" value="cuberotatex"><input type="radio" id="cubeRotateYCheck" name="rotorstatic" value="cuberotatey"><input type="radio" id="cubeRotateZCheck" name="rotorstatic" value="cuberotatez"><input type="radio" id="cubeStaticCheck" name="rotorstatic" value="cubestatic">
+	<label for="cubeTypeR"></label><label for="cubeTypeN"></label><label for="cubePerspective"></label><br>
+<label for="cubeStaticCheck"></label><br><label for="cubeRotateCheck"></label><label for="cubeRotateXCheck"></label><label for="cubeRotateYCheck"></label><label for="cubeRotateZCheck"></label><div id="helper"></div>
+	
+	<div id="cubeholder"><div id="textCube">
+		<textarea class="tcF">123456789</textarea>
+		<textarea class="tcB">123456789</textarea>
+		<textarea class="tcU">123456789</textarea>
+		<textarea class="tcD">123456789</textarea>
+		<textarea class="tcL">123456789</textarea>
+		<textarea class="tcR">123456789</textarea>
+	</div></div>
+</div>
+<textarea id="logBox"></textarea>
+<script>  
+roll = function(x) {
+	document.getElementById('transAlg').value = trans(
+		document.getElementById('origAlg').value, x
+	);
+}
+
+//redundant for now
+/*
+function logBox(v) {
+  document.getElementById('logBox').value += v +"\n";
+}
+document.getElementById('logBox').style.display = ''; // show box when log function is active
+//*/
+</script>
+
+</body></html>
