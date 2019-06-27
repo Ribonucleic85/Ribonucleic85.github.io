@@ -25,12 +25,17 @@
 	perspective: initial;
 }
 
-#textCube {
+.numberCube, .rube_cube {
 	position:absolute;
 	width: 100px;
 	height: 100px;
 	transform-style: preserve-3d;
 	transform-origin: 50% 50% 0;
+}
+
+#cubeTypeR:checked ~ #cubeholder > .numberCube,
+#cubeTypeN:checked ~ #cubeholder > .rube_cube {
+	display:none;
 }
 
 #cubeRotateCheck:checked ~ div > div {
@@ -173,7 +178,7 @@ label:hover ~ #helper {
 	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg); }
 }
 
-#textCube textarea {
+.numberCube textarea {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -226,7 +231,7 @@ label:hover ~ #helper {
 	left:0px;
 	padding:2px;
 	border-radius:5px;
-	background-color: rgb(0,0,0,0.7);
+	background-color: rgb(0,0,0,1);
 }
 
 .rcf { transform: translateZ(51px); }
@@ -261,5 +266,5 @@ label:hover ~ #helper {
 	white-space:nowrap;
 	resize:none;
 	background-color:transparent;
-    display:none;
+	display:none;
 }
