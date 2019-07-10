@@ -1,0 +1,22 @@
+* {
+	color: white;
+	background-color: black;
+}
+
+[type=text] {
+	width: 55px;
+}
+
+textarea {
+	width: 100%;
+	height: calc(100% - 250px);
+}
+
+div {
+	color: lime;
+	white-space: pre-wrap;
+}
+
+.intro {
+	color: white;
+}
