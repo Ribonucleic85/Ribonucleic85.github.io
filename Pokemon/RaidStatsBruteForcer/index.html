@@ -1,1 +1,14 @@
-<html></html>
+<html><head>
+<title>Raid Stats Brute Forcer</title>
+<script src="lib.js"></script>
+</head>
+
+<body><pre><h1>Raid Stats Brute Forcer</h1><div class="intro">This is intended to help determine what Attack, Defense and Stamina combination produces a raid with the observed CP</div>Attack: <label>From <input type="text" id="attLow" value="1" onkeyup="tooManyWarning()"></label> <label>To <input type="text" id="attUpp" value="50" onkeyup="tooManyWarning()"></label>
+Defense: <label>From <input type="text" id="defLow" value="1" onkeyup="tooManyWarning()"></label> <label>To <input type="text" id="defUpp" value="50" onkeyup="tooManyWarning()"></label>
+<label>Raid Stamina <input type="text" id="raidSta" value="15000"></label>
+<label><input type="radio" name="CpComp" id="CpComp"> Show results with CP of <input type="text" id="raidCp" value="1"></label>
+<label><input type="radio" name="CpComp" checked="checked"> Show all results</label>
+<div id="tooMany" style="color: orange;">The number of results will be: -8.. The total results prediction is too low, adjust the Attack and / or Defense ranges</div>
+<input type="button" value="GO!" onclick="bruteForceAttDef()">
+
+<textarea id="bruteForceOutput"></textarea></pre></body></html>
