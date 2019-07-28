@@ -1,7 +1,7 @@
 <html><head><title>path-clip: polygon()</title>
 <style>
 .main {
-	position: absolute;
+	position: relative;
 	margin: 50px;
 	height: 450px;
 	width: 450px;
@@ -50,6 +50,13 @@
 	top: 126px;
 	left: 0px;
 }
+
+.code {
+	border: 2px solid red;
+	background-color: orange;
+	color: red;
+	padding: 2px;
+}
 </style></head>
 
 <body>
@@ -62,14 +69,17 @@
 	class="lineFive">line 5<br>0% 38%, 37% 38%<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span>
 </div>
 <pre>
-the star is created by the following CSS Clip Path:
+The star is created by the following CSS:<pre class="code">
 	clip-path: polygon(
 		50% 0%, 63% 38%,
 		100% 38%, 69% 59%,
 		82% 100%, 50% 75%,
 		18% 100%, 31% 59%,
 		0% 38%, 37% 38%
-	);
+	);</pre>
+The Star lines with text over them are to highlight the Clip Path,
+the lines between them are CSS filling in the points between the
+defined lines.
 </pre>
 </body>
 </html>
