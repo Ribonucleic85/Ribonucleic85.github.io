@@ -1,0 +1,74 @@
+<html><head><title>path-clip: polygon()</title>
+<style>
+.main {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	height: 450px;
+	width: 450px;
+	background-color: cyan;
+}
+
+.star {
+	clip-path: polygon(
+		50% 0%, 63% 38%,
+		100% 38%, 69% 59%,
+		82% 100%, 50% 75%,
+		18% 100%, 31% 59%,
+		0% 38%, 37% 38%
+	);
+	height: 450px;
+	width: 450px;
+	background-color: white;
+}
+
+.lineOne {
+	position: absolute;
+	top: 54px;
+	left: 178px;
+	transform: rotate(71deg);
+}
+.lineTwo {
+	position: absolute;
+	top: 207px;
+	left: 300px;
+	transform: rotate(146deg);
+}
+.lineThree {
+	position: absolute;
+	top: 380px;
+	left: 190px;
+	transform: rotate(218deg);
+}
+.lineFour {
+	position: absolute;
+	top: 324px;
+	left: -10px;
+	transform: rotate(288deg);
+}
+.lineFive {
+	position: absolute;
+	top: 126px;
+	left: 0px;
+}
+</style></head>
+
+<body>
+<div class="main"><div
+	class="star"></div><span
+	class="lineOne">line 1<br>50% 0%, 63% 38<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span><span
+	class="lineTwo">line 2<br>100% 38%, 69% 59%<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span><span
+	class="lineThree">line 3<br>82% 100%, 50% 75%<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span><span
+	class="lineFour">line 4<br>18% 100%, 31% 59%<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span><span
+	class="lineFive">line 5<br>0% 38%, 37% 38%<br>#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#</span>
+</div>
+<pre>
+the star is created by the following CSS Clip Path:
+	clip-path: polygon(
+		50% 0%, 63% 38%,
+		100% 38%, 69% 59%,
+		82% 100%, 50% 75%,
+		18% 100%, 31% 59%,
+		0% 38%, 37% 38%
+	);
+</pre>
