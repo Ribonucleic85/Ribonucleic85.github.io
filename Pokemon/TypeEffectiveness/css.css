@@ -1,0 +1,53 @@
+body {
+	background-color: black;
+}
+
+.chartcell {
+	position: absolute;
+	top: 300px;
+	left: 80;
+	width: 48px;
+	height: 38px;
+}
+
+.chartcell span {
+	color: white;
+	font-size: 30px;
+	position: relative;
+	top: 5px;
+	left: 9px;
+}
+
+.effectiveness {
+	height: 100%;
+	width: 100%;
+	//background: linear-gradient(42deg, #14e814 21%, #e85f14 53%);
+}
+
+.UPchevron {
+	position: absolute;
+	top: -12.4%;
+	height: 24.5614035%;
+	width: 100%;
+	clip-path: polygon(
+		0% 50%, 50% 0%,
+		100% 50%, 100% 100%,
+		50% 50%, 0% 100%
+	);
+	background-color: #14e814;
+}
+
+.RIGHTchevron {
+	position: absolute;
+	bottom: 0px;
+	left: -12.4%;
+	height: 88%;
+	width: 24.5614035%;
+	clip-path: polygon(
+		0% 0%, 50% 0%,
+		100% 50%, 50% 100%,
+		50% 100%, 0% 100%,
+		0% 100%, 50% 50%
+	);
+	background-color: #e85f14;
+}
