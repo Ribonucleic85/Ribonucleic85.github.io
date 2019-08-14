@@ -137,3 +137,98 @@ CPM_step
 0.7817900775756758413477517991626786150642025040051256277993233581785164015688478261583203217016301675
 0.787473590594948142734562506062390383867382863447019393074100540715198026436562132937935807928168859
 */
+
+
+
+
+
+
+const calcCP = (AB,AI,DB,DI,SB,SI,C) => {
+	var CP = ((AB + AI) * (DB + DI)**0.5 * (SB + SI)**0.5 * C / 10) >> 0;
+	if (CP<10)
+		return 10; // too low return minimum
+	else
+		return CP;
+}
+
+const calcHP = (SB,SI,C) => {
+	return ((SB + SI) * C) >> 0;
+}
+
+const listCPs = () => { var
+	Lv = 0,
+	Ab = +byId('baseAtt').value,
+	Ai = +byId('ivAtt_F').value,
+	Db = +byId('baseDef').value,
+	Di = +byId('ivDef_F').value,
+	Sb = +byId('baseSta').value,
+	Si = +byId('ivSta_F').value;
+
+	for (; Lv<40; Lv++)
+		byId('cpList').value += ""+
+		"Lv "+ (Lv>8? '': ' ') +(Lv+1) +"   "+
+		"CP "+ calcCP(Ab,Ai,Db,Di,Sb,Si,CPM2[Lv/0.5]) +"   "+
+		"HP "+ calcHP(Sb,Si,CPM[Lv/0.5]) +"\n";
+}
+
+const listCPsAdv = () => {
+	// levels
+	var Lv = {
+		F: +byId('Lv_F').value,
+		T: +byId('Lv_T').value,
+		c:0, cv:0
+	},
+	half = (!byId('halfLevels').checked? 1: 2),
+
+	// base stats
+	Ab = +byId('baseAtt').value,
+	Db = +byId('baseDef').value,
+	Sb = +byId('baseSta').value,
+
+	// ivs
+	Ai = {
+		F: +byId('ivAtt_F').value,
+		T: +byId('ivAtt_T').value,
+		c:0, cv:0
+	},
+	Di = {
+		F: +byId('ivDef_F').value,
+		T: +byId('ivDef_T').value,
+		c:0, cv:0
+	},
+	Si = {
+		F: +byId('ivSta_F').value,
+		T: +byId('ivSta_T').value,
+		c:0, cv:0
+	};
+
+	// level and ivs counter values (cv), if 1 the
+	// loop counts up or if -1 the loop counts down
+	// level can also either be 0.5 or -0.5, guess
+	// the loop directions for those cvs ;)
+	[Lv.cv, Ai.cv, Di.cv, Si.cv] = [
+		(Lv.F<=Lv.T? 1: -1) / half,
+		(Ai.F<=Ai.T? 1: -1),
+		(Di.F<=Di.T? 1: -1),
+		(Si.F<=Si.T? 1: -1)
+	];
+
+	// 2 way bounds check for the loops, if F<=T then
+	// an up count check is applied (c<=T) or if F>T
+	// then a down count check is applied (c>=T)
+	const cmp = (stat) => {
+		return stat.F<=stat.T?
+			stat.c<=stat.T:
+			stat.c>=stat.T;
+	}
+
+	for (Lv.c=Lv.F; cmp(Lv); Lv.c+=Lv.cv)
+		for (Ai.c=Ai.F; cmp(Ai); Ai.c+=Ai.cv)
+			for (Di.c=Di.F; cmp(Di); Di.c+=Di.cv)
+				for (Si.c=Si.F; cmp(Si); Si.c+=Si.cv)
+					byId('cpList').value += ""+
+					"Lv "+ (Lv.c>9? '': ' ') + Lv.c +"   "+
+					"CP "+ calcCP(Ab,Ai.c,Db,Di.c,Sb,Si.c,CPM2[(Lv.c-1)/0.5]) +"   "+
+					"HP "+ calcHP(Sb,Si.c,CPM[(Lv.c-1)/0.5]) +"   "+
+					"ivs "+ Ai.c +"/"+ Di.c +"/"+ Si.c +"\n";
+}
