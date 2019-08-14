@@ -143,6 +143,9 @@ CPM_step
 
 
 
+
+byId = (i) => { return document.getElementById(i); }
+
 const calcCP = (AB,AI,DB,DI,SB,SI,C) => {
 	var CP = ((AB + AI) * (DB + DI)**0.5 * (SB + SI)**0.5 * C / 10) >> 0;
 	if (CP<10)
