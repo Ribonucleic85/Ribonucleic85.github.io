@@ -4,7 +4,7 @@
 }
 
 [type=text]  {
-	width: 50px;
+	width: 25px;
 	border: 1px solid #191919;
 	outline: none;
 }
@@ -16,4 +16,53 @@ textarea {
 	border: 1px solid #191919;
 	outline: none;
 	white-space: pre-wrap;
+}
+
+div {
+	padding-bottom: 5px;
+}
+
+#advanced, #halfLevels {
+        display: none;
+}
+
+#advanced:checked ~ div [for=advanced]::before,
+#halfLevels:checked ~ div [for=halfLevels]::before {
+        content: "___";
+        color:black;
+        background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAACGElEQVQ4T2P8//8/IwMDA+uGG0t/MjKCmIQBOwsHw5dfnxhCNBM4GBgYfjH+//9fYOPNZe9BEgIcQgysTGwETQEZ8OHHOwZOFu4fbsr+Uoy77m74//vvbwYzaVuiNPOw8YHVPf/yhOHe+5sMG64tY2DccGPpfzFuSQZFATW8htz/cIuhf0cLg49ZEIObUgDD73+/GM4+O8aw/e5aBsbV1+b/l+FTYJDmlcdpyOefHxmat5cxfH//A6xGTVuVIdeshuHk04MMu+5uZGBcfmX2f1k8hoC82n28muHV3bdwS1ys3Bh8VMMZTjw9yLDn3iYGxqWXZ/wHuQKXS5ZdmcVw7vxZuAGKmvIM2SZVYP6pZ4cY9t7bgmnIuhuLGAQ5RBgcFbwYjj3Zx7Bu/0q4AbwS3AwVjm0MoJjEaciW2ysZDpzYB1agrafFcO3ydYb///+D+SzszAwlvvUMIpzicEMxXPLr70+GqZt7cQZugns6g46YEYo8Vu/sf7CNYevhjRgGOVq6MHirhGKI4wyTw492MWw8uBZrQKKbgtMQkEKYQegBidMQUGJjZ+Zk0BTRQ1Fz4ukBBhUhTZSARFYAyj/X3lxgOPBgBwPjgguT/7MyszIoCaoz8LMLEp0Bn31+zPDh51uGlbuWMIDz/pprC////PudYAZEV/Dzzw+GJMMCRAESs8LjPxsnC1EGMTOxMHx8+ZlhVcpesCMAtaH5t7dz2HwAAAAASUVORK5CYII=);
+}
+
+[for=advanced]:hover::before,
+[for=halfLevels]:hover::before {
+        content: "___";
+        color:black;
+        background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAABP0lEQVQ4T2Pk5+f/X1ZWxqAVJM/AyMjIQAxgZ+Fg+PLrE8PcopUMO3bsYGCcNGnSfzk3YQaQhACHEAMrExtBc0AGfPjxjoGThYshxTGPgXHX3Q3/f//9zWAmbUtQM7KC51+eMNx7f5Nhw7VlDIwbbiz9L8YtyaAooEaSIb///WI4++wYw/a7axkYV1+b/1+GT4FBmleeJENAik8+Pciw6+5GBsblV2b/lyXTkBNPDzLsubeJgXHp5Rn/Qa4gxyWnnh1i2Htvy6ghSHE4CMMElNjYmTkZNEX0SEpsoPxz7c0FhgMPdjAwLrgw+T8rMyuDkqA6Az+7INEZ8Nnnxwwffr5lWLlrCQNjQEDA/5i2QIaff7+T5BKQ4p9/fjAkGRYwgAqQ/5qamgzG9fIMbJwsRBnEzMTC8PHlZ4ZVKXvB6gGHN6P+EoMNKgAAAABJRU5ErkJggg==);
+}
+
+
+[for=advanced]::before,
+[for=halfLevels]::before {
+        content: "___";
+        color:black;
+        background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAABLUlEQVQ4T+1TMcuCYBB+3iStqVpaNASdoqWp3+EvcJB+Qz/E1QYXQxACN62gLaK9sVWEBhGRBIf7eP2WNvP7vvF74Ka7e+7uuTs2Go1os9lgsVig1+uBiNAGSZJQliUcx0EURWC2bZOqquCOyWSCfr/fxoGiKJDneZOzXq/Bjscj1XWN1WrVmvwekKYpHo8H9vs9WBiGNJ1Ooet6JxJe+Ha7fY8TBAHNZjNw64rL5YI4jsF83ydFUcCtK67XKw6HA5jneb8iOZ1O/yRv6nNh/06T3W5Hsiz/eMVNJ/zYhsMh5vN5pzPh/3O/33E+n8Fc1yVRFKFpGsbj8ccPmCQJsizDdrsFMwyDTNPE6/Xq1AljDFVVwbIsMADER1kulxgMBh8RCYKA5/OJMAyb+C89wqPgvuba4wAAAABJRU5ErkJggg==);
+}
+
+[for=advanced]::after {
+        content: "Advanced Mode";
+}
+
+[for=halfLevels]::after {
+        content: "Include half levels";
+}
+
+.adv, .basicMode {
+        display: none;
+}
+
+#advanced:checked ~ div .adv,
+#advanced:checked ~ .adv /**/,
+#advanced:not(:checked) ~ .basicMode /**/
+{
+        display: initial;
 }
