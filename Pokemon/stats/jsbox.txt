@@ -1,4 +1,230 @@
 /*
+var findPointyBraces = (src) => {
+	var A = [], // index's found
+	i = 0, // result of search per iteration
+	s = 0, // index to search from / repurposing as current index counter
+	a = 0; // counter for A
+	while (i!=-1) {
+		i = src.slice(s).search(/[{|}]/gm);
+		if (i!=-1)
+			A[a] = i+s,
+			s = i+s+1,
+			a++;
+	}
+	return A;
+}
+
+var findPointyBraceswithList = (src) => {
+	var A = [], // index's found
+	i = 0, // result of search per iteration
+	s = 0, // index to search from / repurposing as current index counter
+	a = 0, // counter for A
+	l = []; // list
+	while (i!=-1) {
+		i = src.slice(s).search(/[{|}]/gm);
+		if (i!=-1)
+			A[a] = i+s,
+			l[a] = src.charAt(i+s);
+			s = i+s+1,
+			a++;
+	}
+	return [A, l];
+}
+*/
+
+
+
+/*	Checks for data types
+*/ /*
+const typeCheck = (o) => {
+	return  Object.prototype.toString.call(
+		  o)=="[object String]"?	"String":
+
+		Object.prototype.toString.call(
+		  o)=="[object RegExp]"?	"RegExp":
+
+		Object.prototype.toString.call(
+		  o)=="[object Number]" &&
+		  (isFinite(o) && !isNaN(o))?
+		  ( Number.isInteger(o)?	"Number":
+						"Float" ):
+		false;
+}
+*/
+/*
+const indexOfAdv = (val,src,ind) => {
+	ind = typeCheck(ind)=="Number"?  ind:
+		typeCheck(ind)=="Float"? Math.round(ind):
+		/* not number / float */ 0;
+
+	if (typeCheck(src)=="String")
+		return src.indexOf(val,ind);
+
+	// if RegExp check for the global flag, then do test()
+	// if that returns true fetch the lastIndex of the RegExp
+	if (typeCheck(src)=="RegExp") {
+		if (ind>src.lastIndex)
+			src.lastIndex = ind;
+
+		else
+			return; // ?
+
+		return !src.global?	-1:
+			src.test(val)?	src.lastIndex:
+			/* else */	-1;
+	}
+
+	return -1;
+}
+*/
+
+/*	Inj = injection version, whereby Line Breaks
+**	are Injected rather than requested internally
+*/ /*
+var selectLineInj = (src,lnNo,lnBr) => {
+	if (lnNo<=0 || lnNo>lnBr.length+1)
+		return;
+	const srcLen = src.value.length;
+	if (lnBr.length==0)
+		ta.s = 0,
+		ta.e = srcLen;
+	else if (lnNo==1)
+		ta.s = 0,
+		ta.e = lnBr[0];
+	else if (lnNo==lnBr.length+1)
+		ta.s = lnBr[lnBr.length-1]+1,
+		ta.e = srcLen;
+	else
+		ta.s = lnBr[lnNo-2]+1,
+		ta.e = lnBr[lnNo-1];
+	ta.sel = src;
+}
+*/
+
+
+var selectLineInj = (src,lnNo,lnBr) => {
+	if (lnNo<=0 || lnNo>lnBr.length+1)
+		return;
+
+	const srcLen = src.value.length;
+
+	[ta.s, ta.e] =
+	lnBr.length==0?		[0,srcLen]:
+	lnNo==1?		[0,lnBr[0]]:
+	lnNo==lnBr.length+1?	[lnBr[lnBr.length-1]+1,srcLen]:
+	/* else */		[lnBr[lnNo-2]+1,lnBr[lnNo-1]];
+
+	ta.sel = src;
+}
+
+
+/*	To find line breaks pass sym="\n"
+**
+**	This searcher keeps adding indexes for the given
+**	symbol and when -1 is added it is popped off by
+**	the loop conditions ( [syms.pop(),!1][1] ) and
+**	the rest of the indexes are returned
+*/
+const findSymbolIndexes = (src,sym) => {
+	var syms = [];
+
+	while (
+	  !syms.length?			!0:
+	  syms[syms.length-1]==-1?	[syms.pop(),!1][1]:
+	  /* else */			!0
+	)
+		syms.push(
+		  indexOfAdv(
+		    src,
+		    sym,
+		    syms.length? syms[syms.length-1]+1: 0
+		  )
+		);
+
+	return syms;
+}
+
+
+/*	findSymbolIndexes(src,sym)
+**	selectLineInj(src,lnNo,lnBr)
+**
+**	i = src.slice(s).search(/[{|}]/gm);
+*/
+
+var findSymsInLines
+
+
+
+
+
+
+
+
+
+
+
+String.prototype.regexIndexOf = function(regex, startpos) {
+    var indexOf = this.substring(startpos || 0).search(regex);
+    return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
+}
+
+String.prototype.regexLastIndexOf = function(regex, startpos) {
+    regex = (regex.global) ? regex : new RegExp(regex.source, "g" + (regex.ignoreCase ? "i" : "") + (regex.multiLine ? "m" : ""));
+    if(typeof (startpos) == "undefined") {
+        startpos = this.length;
+    } else if(startpos < 0) {
+        startpos = 0;
+    }
+    var stringToWorkWith = this.substring(0, startpos + 1);
+    var lastIndexOf = -1;
+    var nextStop = 0;
+    while((result = regex.exec(stringToWorkWith)) != null) {
+        lastIndexOf = result.index;
+        regex.lastIndex = ++nextStop;
+    }
+    return lastIndexOf;
+}
+
+
+/*
+  half written and unneeded i think
+
+var FPB = (src) => {
+    var	srcText = src.value,
+	lines = [],
+	curLn = 0,
+	lnNo = 1;
+	list = [];
+
+	while (curLn!=-1)
+		curLn = srcText.indexOf("\n", (curLn==0? 0: curLn+1));
+
+		if (curLn!=-1)
+			lines.push(curLn);
+			selecta(src,s,e);
+		else
+			curLn = -2;
+		//---------
+		curLn = ln.shift();
+		if (curLn!=-1)
+			list.push()
+		lnNo++;
+}
+*/
+
+/***************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/*
  To do:
 
  { 1 } Loop for lines containing "pokemon_id:" -- [done]
