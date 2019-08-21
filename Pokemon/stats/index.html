@@ -3,6 +3,10 @@
 	color: white;
 	background-color: black;
 }
+
+textarea {
+	white-space: pre;
+}
 </style><script>
 /* original javascript here:
 	https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_first
@@ -38,7 +42,7 @@ const jsbox = (src) => {
 		<span style="float:right;"><input type="button" value="load"
 		onclick="getTxtFile(document.getElementById('gmf').value,
 		document.getElementById('stats'))">game master from <input type="text" id="gmf"
-		value="https://github.com/Ribonucleic85/cdn/blob/master/august-2nd-2019.txt?raw=true"></span><br>
+		value="https://raw.githubusercontent.com/Ribonucleic85/cdn/master/partial.txt"></span><br>
 
 		<textarea readonly style="height:629px; width:441px; resize:none;" id="stats"></textarea>
 	</div>
