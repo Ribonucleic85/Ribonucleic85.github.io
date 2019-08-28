@@ -66,24 +66,21 @@ String.prototype.perLineIndexesOf = function(searchTerm) {
 	lnBr = this.indexesOf("\n");
 	lnBr.unshift(-1);
 	lnBr.push(this.length-1);
-
 	while(i.length<lnBr.length-1)
 		i.push([
 		  i.length+1,
-		  this.substring(lnBr[i.length]+1, lnBr[i.length+1]).indexesOf(searchTerm)
+		  this.substring(
+		    lnBr[i.length]+1, lnBr[i.length+1]
+		  ).indexesOf(searchTerm)
 		]);
-
-	i.push([]),
 	i.push([]);
-
+	i.push([]);
 	while (i.length>2)
 		i[i.length-(i[0][1]==-1? 2: 1)].push(i.shift());
-
 	i.shift();
 	i = [...i[0]];
-	lnBr.shift()
+	lnBr.shift();
 	lnBr.pop();
-
 	return [i, lnBr];
 }
 
