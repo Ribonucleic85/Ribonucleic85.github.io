@@ -1,0 +1,15 @@
+<html><head>
+<title>CP List Generator</title>
+<script src="lib.js"></script>
+<link rel="stylesheet" href="css.css">
+</head>
+
+<body><input type="checkbox" id="advanced" /><input type="checkbox" id="halfLevels" /><input type="checkbox" id="CpComp" />
+<div class="levels adv">Levels: <label>From <input type="text" id="Lv_F" value="1" /></label> <label>To <input type="text" id="Lv_T" value="35" /></label> <label for="halfLevels"></label></div>
+<div class="monAndStats">Base Stats: <input type="text" id="baseAtt" value="235" /> / <input type="text" id="baseDef" value="171" /> / <input type="text" id="baseSta" value="251" /></div>
+<div class="ivsFrom">IVs: <span class="adv">From </span><input type="text" id="ivAtt_F" value="10" /> / <input type="text" id="ivDef_F" value="15" /> / <input type="text" id="ivSta_F" value="10" /></div>
+<div class="ivsTo adv">IVs: <span class="adv">To </span><input type="text" id="ivAtt_T" value="15" /> / <input type="text" id="ivDef_T" value="10" /> / <input type="text" id="ivSta_T" value="15" /></div>
+<div class="adv"><label for="CpComp"></label> <input type="text" id="calcCP" value="1500" /></div>
+<div class="advanced"><label for="advanced"></label></div>
+<input type="button" class="adv" value="Generate List Adv" onclick="javascript:listCPsAdv()" /><input type="button" class="basicMode" value="Generate List" onclick="javascript:listCPs()" />
+<textarea id="cpList"></textarea></body></html>
