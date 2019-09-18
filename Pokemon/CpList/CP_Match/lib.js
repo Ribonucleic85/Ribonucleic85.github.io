@@ -237,7 +237,7 @@ const listCPsAdv = () => {
 			for (Di.c=Di.F; cmp(Di); Di.c+=Di.cv)
 				for (Si.c=Si.F; cmp(Si); Si.c+=Si.cv) {
 					CP.curr = calcCP(Ab,Ai.c,Db,Di.c,Sb,Si.c,CPM2[(Lv.c-1)/0.5]);
-					if (Cp.Compare && CP.curr!=CP.comp)
+					if (CP.Compare && CP.curr!=CP.comp)
 						continue;
 					else
 						byId('cpList').value += ""+
