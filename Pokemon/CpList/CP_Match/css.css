@@ -74,5 +74,5 @@ div {
 #advanced:not(:checked) ~ div .basicMode,
 #advanced:not(:checked) ~ .basicMode
 {
-        display: ;
+        display: initial;
 }
