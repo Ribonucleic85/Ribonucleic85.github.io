@@ -1,0 +1,31 @@
+<html><head>
+<title>CP List Generator</title>
+<script src="lib.js"></script>
+<link rel="stylesheet" href="css.css">
+</head>
+
+<body><form class="pkmn-form">
+  <h1>Shiny Sprites</h1>
+  <div class="form-field">
+    <label>Pokémon</label>
+    <select name="pkmn"></select>
+  </div>
+  <div class="form-field">
+    <label>Widths</label>
+    <input type="text" name="widths" value="256" size="8">
+  </div>
+  <div class="form-field">
+    <label>Heights</label>
+    <input type="text" name="heights" value="256" size="8">
+  </div>
+  <div class="form-field">
+    <label>Background</label>
+    <input type="text" name="background" value="#FFFFFF" size="8">
+  </div>
+  <div class="form-field form-field-centered">
+    <input type="button" class="reset-btn" value="Reset" />
+    <input type="button" class="render-btn" value="Force Render" />
+  </div>
+  <div class="hint">Right-click the image to save it.</div>
+</form>
+<canvas id="sheet"></canvas></body></html>
