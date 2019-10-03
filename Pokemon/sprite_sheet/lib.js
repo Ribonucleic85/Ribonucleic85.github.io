@@ -11,21 +11,6 @@ const defaultOptions = {
   background : '#FFFFFF'
 };
 
-const families = getFamilies();
-var ctx = document.getElementById('sheet').getContext('2d');
-let selectEl = document.querySelector('select[name="pkmn"]');
-
-Object.keys(families).sort().forEach(family => selectEl.appendChild(new Option(family, family)));
-selectEl.addEventListener('change', onFamilyChange);
-
-document.querySelector('.reset-btn').addEventListener('click', onReset);
-document.querySelector('.render-btn').addEventListener('click', (e) => {
-	onFamilyChange({ target : { value : document.querySelector('select[name="pkmn"]').value } });
-});
-
-triggerEvent(document.querySelector('.reset-btn'), 'click');
-triggerEvent(selectEl, 'change');
-
 function onReset() {
 	let form = document.querySelector('.pkmn-form');
 	Object.keys(defaultOptions).forEach(key => {
@@ -407,3 +392,28 @@ function getFamilies() {
     'Meltan'     : { 'evo' : [ 'Meltan', 'Melmetal' ], 'forms' : [ ] }
   };
 }
+
+
+
+
+var families, ctx, selectEl;
+
+function startUp() {
+	families = getFamilies();
+	ctx = document.getElementById('sheet').getContext('2d');
+	selectEl = document.querySelector('select[name="pkmn"]');
+
+	Object.keys(families).sort().forEach(family => selectEl.appendChild(new Option(family, family)));
+	selectEl.addEventListener('change', onFamilyChange);
+
+	document.querySelector('.reset-btn').addEventListener('click', onReset);
+	document.querySelector('.render-btn').addEventListener('click', (e) => {
+		onFamilyChange({ target : { value : document.querySelector('select[name="pkmn"]').value } });
+	});
+
+	triggerEvent(document.querySelector('.reset-btn'), 'click');
+	triggerEvent(selectEl, 'change');
+}
+
+document.body.onload = startUp;
+
