@@ -35,7 +35,7 @@ function listenForEventOn(els, att, fn) {
 */
 
 const trans = (alg, ax) => {
-	var Edge, Midd, cm, ccw, ed, edsh, mi, mish;
+	var Edge, Midd, cm, cur, ed, edsh, mi, mish;
 
 	//    x, y, z = 90 deg
 	// x', y', z' = 90 deg rev
@@ -54,7 +54,6 @@ const trans = (alg, ax) => {
 
 	alg = alg.split(" ");
 	cm = 0;
-	ccw = !1;
 
 	ed   = [...Edge[ax]];
 	edsh = [...Edge[ax]];
@@ -65,22 +64,32 @@ const trans = (alg, ax) => {
 	mish.rightRot();
 
 	for (; cm<alg.length; cm++) {
-		if (alg[cm].indexOf("'") != -1)
-			ccw = true,
-			alg[cm] = alg[cm][0];
+		cur = (()=>{
+			var i = 0;
+			while (i<ed.length) {
+				if (alg[cm].indexOf(ed[i]) != -1)
+					return alg[alg[cm].indexOf(ed[i])];
+				i++;
+			}
+			i = 0;
+			while (i<mi.length) {
+				if (alg[cm].indexOf(mi[i]) != -1)
+					return alg[alg[cm].indexOf(mi[i])];
+				i++;
+			}
+			return false;
+		})();
 
-		if (ed.indexOf(alg[cm]) != -1) {
-			alg[cm] = ed[edsh.indexOf(alg[cm])],
-			alg[cm] += ccw? "'": "",
-			ccw = false;
+		if (!cur)
+			continue;
+
+		if (ed.indexOf(cur) != -1) {
+			alg[cm] = alg[cm].replace(cur, ed[edsh.indexOf(cur)]);
 			continue;
 		}
 
-		alg[cm] += ccw? "'": "";
-		ccw = false;
-
-		if (mi.indexOf(alg[cm]) != -1) {
-			alg[cm] = mi[mish.indexOf(alg[cm])];
+		if (mi.indexOf(cur) != -1) {
+			alg[cm] = alg[cm].replace(cur, mi[mish.indexOf(cur)]);
 			continue;
 		}
 	}
