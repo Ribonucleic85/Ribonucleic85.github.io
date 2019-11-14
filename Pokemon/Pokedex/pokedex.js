@@ -2,23 +2,17 @@ const
 Pokemon = {
 	Dex: {
 		No: (n) => {
-			if (n<1)
-				return false;
-
-			if (n==891||n==892)
-				n -= 83;
-
 			return (
-				n<152? Pokemon.Dex.Gen1[n-1]      :
-				n<252? Pokemon.Dex.Gen2[n-152]    :
-				n<387? Pokemon.Dex.Gen3[n-252]    :
-				n<494? Pokemon.Dex.Gen4[n-387]    :
-				n<650? Pokemon.Dex.Gen5[n-494]    :
-				n<722? Pokemon.Dex.Gen6[n-650]    :
-				n<808? Pokemon.Dex.Gen7[n-722]    :
-				n<810? Pokemon.Dex.Gen7or8[n-808] : /* These are place holders until Gens */
-				n<819? Pokemon.Dex.Gen8[n-810]    : /* 7 and 8 are fully fleshed out      */
-				false
+				n<1? false : /* too low */
+				n<152? Pokemon.Dex.Gen1[n-1]	:
+				n<252? Pokemon.Dex.Gen2[n-152]	:
+				n<387? Pokemon.Dex.Gen3[n-252]	:
+				n<494? Pokemon.Dex.Gen4[n-387]	:
+				n<650? Pokemon.Dex.Gen5[n-494]	:
+				n<722? Pokemon.Dex.Gen6[n-650]	:
+				n<810? Pokemon.Dex.Gen7[n-722]	:
+				n<819? Pokemon.Dex.Gen8[n-810]	:
+				false /* too high */
 			);
 		},
 
@@ -172,23 +166,18 @@ Pokemon = {
 			"Tapu Fini",	"Cosmog",	"Cosmoem",	"Solgaleo",	"Lunala",	"Nihilego",
 			"Buzzwole",	"Pheromosa",	"Xurkitree",	"Celesteela",	"Kartana",	"Guzzlord",
 			"Necrozma",	"Magearna",	"Marshadow",	"Poipole",	"Naganadel",	"Stakataka",
-			"Blacephalon",	"Zeraora"
+			"Blacephalon",	"Zeraora",	"Meltan",	"Melmetal"
 		],
-		Gen7or8: [
-			"Meltan",	"Melmetal"
-		],
-		Gen8: [
-			/* this list is assumed based on previous starters having
-			  3 stages and being ordered by types grass, fire and water */
+		Gen8: [ /* WIP ;; except for Basic Starters the list comes from a data mine */
 			/*810*/ "Grookey",
-			/*811*/ "Grookey 2",
-			/*812*/ "Grookey 3",
+			/*811*/
+			/*812*/
 			/*813*/ "Scorbunny",
-			/*814*/ "Scorbunny 2",
-			/*815*/ "Scorbunny 3",
-			/*816*/ "Sobble",
-			/*817*/ "Sobble 2",
-			/*818*/ "Sobble 3"
+			/*814*/
+			/*815*/
+			/*816*/ "Sobble"
+			/*817*/
+			/*818*/
 		]
 	}
 }
