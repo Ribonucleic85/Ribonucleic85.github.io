@@ -40,7 +40,7 @@ var typeCheck = o => {
 			"RegExp":
 		o == "[object Array]"?
 			"Array":
-		o == "[object Number]" && (isFinite(ob) && !isNaN(ob))? Number.isInteger(ob)?
+		o == "[object Number]" && (isFinite(ob) && !isNaN(ob))? (Number.isInteger(ob)?
 			"Number":
 			"Float"
 		/**/ ):
