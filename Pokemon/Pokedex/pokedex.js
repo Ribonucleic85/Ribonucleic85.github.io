@@ -3,15 +3,15 @@ Pokemon = {
 	Dex: {
 		No: (n) => {
 			return (
-				n<1? false : /* too low */
-				n<152? Pokemon.Dex.Gen1[n-1]	:
-				n<252? Pokemon.Dex.Gen2[n-152]	:
-				n<387? Pokemon.Dex.Gen3[n-252]	:
-				n<494? Pokemon.Dex.Gen4[n-387]	:
-				n<650? Pokemon.Dex.Gen5[n-494]	:
-				n<722? Pokemon.Dex.Gen6[n-650]	:
-				n<810? Pokemon.Dex.Gen7[n-722]	:
-				n<819? Pokemon.Dex.Gen8[n-810]	:
+				n<1? false : /* too low */	//  Gen   Region   Dex Range
+				n<152? Pokemon.Dex.Gen1[n-1]	: //  1    Kanto     1 - 151     Gens 1-6 are complete
+				n<252? Pokemon.Dex.Gen2[n-152]	: //  2    Johto   152 - 251     gen 7 seems to be complete
+				n<387? Pokemon.Dex.Gen3[n-252]	: //  3    Hoenn   252 - 386     and gen 8 is new, so
+				n<494? Pokemon.Dex.Gen4[n-387]	: //  4   Sinnoh   387 - 493     will likely expand
+				n<650? Pokemon.Dex.Gen5[n-494]	: //  5    Unova   494 - 649
+				n<722? Pokemon.Dex.Gen6[n-650]	: //  6    Kalos   650 - 721
+				n<810? Pokemon.Dex.Gen7[n-722]	: //  7    Alola   722 - 809
+				n<881? Pokemon.Dex.Gen8[n-810]	: //  8    Galar   810 - 880
 				false /* too high */
 			);
 		},
@@ -168,16 +168,21 @@ Pokemon = {
 			"Necrozma",	"Magearna",	"Marshadow",	"Poipole",	"Naganadel",	"Stakataka",
 			"Blacephalon",	"Zeraora",	"Meltan",	"Melmetal"
 		],
-		Gen8: [ /* WIP ;; except for Basic Starters the list comes from a data mine */
-			/*810*/ "Grookey",
-			/*811*/
-			/*812*/
-			/*813*/ "Scorbunny",
-			/*814*/
-			/*815*/
-			/*816*/ "Sobble"
-			/*817*/
-			/*818*/
+		Gen8: [ /* Thank you to Serebii, this list was extracted from the dropdown list in your Galar Pokedex */
+			"Grookey",	"Thwackey",	"Rillaboom",	"Scorbunny",	"Raboot",	"Cinderace",
+			"Sobble",	"Drizzile",	"Inteleon",	"Skwovet",	"Greedent",	"Rookidee",
+			"Corvisquire",	"Corviknight",	"Blipbug",	"Dottler",	"Orbeetle",	"Nickit",
+			"Thievul",	"Gossifleur",	"Eldegoss",	"Wooloo",	"Dubwool",	"Chewtle",
+			"Drednaw",	"Yamper",	"Boltund",	"Rolycoly",	"Carkol",	"Coalossal",
+			"Applin",	"Flapple",	"Appletun",	"Silicobra",	"Sandaconda",	"Cramorant",
+			"Arrokuda",	"Barraskewda",	"Toxel",	"Toxtricity",	"Sizzlipede",	"Centiskorch",
+			"Clobbopus",	"Grapploct",	"Sinistea",	"Polteageist",	"Hatenna",	"Hattrem",
+			"Hatterene",	"Impidimp",	"Morgrem",	"Grimmsnarl",	"Obstagoon",	"Perrserker",
+			"Cursola",	"Sirfetch'd",	"Mr. Rime",	"Runerigus",	"Milcery",	"Alcremie",
+			"Falinks",	"Pincurchin",	"Snom" ,	"Frosmoth",	"Stonjourner",	"Eiscue",
+			"Indeedee",	"Morpeko",	"Cufant",	"Copperajah",	"Dracozolt",	"Arctozolt",
+			"Dracovish",	"Arctovish",	"Duraludon",	"Dreepy",	"Drakloak",	"Dragapult",
+			"Zacian",	"Zamazenta",	"Eternatus"
 		]
 	}
 }
