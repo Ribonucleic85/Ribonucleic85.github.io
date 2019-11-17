@@ -34,18 +34,43 @@ var typeCheck = o => {
 	var ob = o;
 	o = Object.prototype.toString.call(o);
 	return (
-		o == "[object String]"?
+		o=="[object String]" ?
 			"String":
-		o == "[object RegExp]"?
+		o=="[object RegExp]" ?
 			"RegExp":
-		o == "[object Array]"?
+		o=="[object Array]" ?
 			"Array":
-		o == "[object Number]" && (isFinite(ob) && !isNaN(ob))? (Number.isInteger(ob)?
+		!(o=="[object Number]" && (isFinite(ob) && !isNaN(ob))) ?
+			false: /* NaN / also not String, RegExp or Array */
+		Number.isInteger(ob) ?
 			"Number":
-			"Float"
-		/**/ ):
-			false
-	);
+			"Float";
+}
+
+String.prototype.indexer = (lnNm,lnBr) => {
+	(lnNm<=0 || lnBr.length==0) ?
+		[0, src.length]:
+	lnNm==1 ?
+		[0, lnBr[0]]:
+	lnNm>=lnBr.length+1 ?
+		[lnBr[lnBr.length-1]+1, src.length]:
+	/* else */ // ?
+		[lnBr[lnNm-2]+1, lnBr[lnNm-1]]
+};
+
+
+String.prototype.getLineNos = function(searchTerm,lnBr) {
+	const src = this;
+	if (typeCheck(lnBr)!="Array")
+		lnBr = src.indexesOf("\n");
+	var lnNo = 1,
+	l = [];
+	while (lnNo<lnBr.length) {
+		if (src.substring(...src.indexer(lnNo,lnBr)).indexOf(searchTerm)!=-1)
+			l.push(lnNo);
+		lnNo++;
+	}
+	return l;
 }
 
 
@@ -53,21 +78,11 @@ String.prototype.getLines = function(lnNo,lnBr) {
 	const src = this;
 	if (typeCheck(lnBr)!="Array")
 		lnBr = src.indexesOf("\n");
-	const indexer = lnNm => (
-		(lnNm<=0 || lnBr.length==0) ?
-			[0, src.length]:
-		lnNm==1 ?
-			[0, lnBr[0]]:
-		lnNm>=lnBr.length+1 ?
-			[lnBr[lnBr.length-1]+1, src.length]:
-		/* else */ // ?
-			[lnBr[lnNm-2]+1, lnBr[lnNm-1]]
-	);
 	if (typeCheck(lnNo)=="Number")
-		return src.substring(...indexer(lnNo));
+		return src.substring(...src.indexer(lnNo,lnBr));
 	var l = [];
 	while (lnNo.length)
-		l.push(src.substring(...indexer(lnNo.shift())));
+		l.push(src.substring(...src.indexer(lnNo.shift(),lnBr)));
 	return l;
 }
 
@@ -91,8 +106,7 @@ String.prototype.indexesOf = function(searchTerm) {
 	var i = [];
 	while (i[i.length-1]!=-1? true: !i.pop() && false)
 		i.push(this.indexOf(searchTerm, i.length? i[i.length-1]+1: 0));
-	i = i.length? i: -1;
-	return i;
+	return i.length? i: -1;
 }
 
 
@@ -100,15 +114,10 @@ String.prototype.perLineIndexesOf = function(searchTerm) {
 	var i = [],
 	lnBr = this.indexesOf("\n");
 	while (i.length<lnBr.length+1)
-		i.push([
-		  i.length+1,
-		  this.getLines(i.length+1,lnBr).indexesOf(searchTerm)
-		]);
-	i.push([]);
-	i.push([]);
+		i.push([ i.length+1, this.getLines(i.length+1,lnBr).indexesOf(searchTerm) ]);
+	i.push([]); i.push([]);
 	while (i.length>2)
 		i[i.length-(i[0][1]==-1? 2: 1)].push(i.shift());
 	i.shift();
-	i = [...i[0]];
-	return i;
+	return [...i[0]];
 }
