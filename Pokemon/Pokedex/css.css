@@ -29,6 +29,6 @@ span:after {
     display: block;
 }
 
-lnbr {
+h1, lnbr {
    width: 100%;
 }
