@@ -26,7 +26,7 @@
 		for(; i<810; i++)
 			t += (genNo(i)>0? "<h1>"+ dexHead(i) +"</h1>"
 			+ (genNo(i)==8? "<lnbr>Take this with a grain of salt":"")
-			+ "<lnbr>": "")
+			+ "<lnbr></lnbr>": "")
 			+ "<label><input type=\"checkbox\" gen=><div><span l=\""
 			+ i +"\"></span><span l=\""+ Pokemon.Dex.No(i) +"\"></span></div></label>";
 		document.body.innerHTML = t;
