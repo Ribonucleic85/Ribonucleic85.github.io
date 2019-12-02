@@ -44,7 +44,8 @@ var typeCheck = o => {
 			false: /* NaN / also not String, RegExp or Array */
 		Number.isInteger(ob) ?
 			"Number":
-			"Float";
+			"Float"
+	);
 }
 
 String.prototype.indexer = (lnNm,lnBr) => {
