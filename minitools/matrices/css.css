@@ -1,0 +1,75 @@
+body {
+	font-family: monospace;
+	line-height: 17px;
+	text-align: center;
+}
+
+div {
+	text-align: center;
+}
+
+.n3matrix {
+	display: inline-block;
+	height: 54px;
+	width: 54px;
+}
+
+.n4matrix {
+	display: inline-block;
+	height: 72px;
+	width: 72px;
+}
+.n3matrix, .n4matrix {
+	border: 0px solid black;
+	letter-spacing: 10px;
+	overflow-wrap: break-word;
+}
+
+.transMatrix {
+	animation-name: ccwRot;
+}
+
+.transMatrix span {
+	display: inline-block;
+	animation-name: cwRot;
+}
+
+.cwtransMatrix {
+	animation-name: cwRot;
+}
+
+.cwtransMatrix span {
+	display: inline-block;
+	animation-name: ccwRot;
+}
+
+span, .cwtransMatrix, .transMatrix {
+	animation-duration: 6s;
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-iteration-count: infinite;
+	transform-origin: 50% 45%;
+}
+
+@keyframes ccwRot {
+	0% {transform: rotate(360deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@keyframes cwRot {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+
+.matrixta {
+	width: 77px;
+	height: 66px;
+	resize: none;
+	border: 1px solid black;
+	outline: 0px;
+	letter-spacing: 8px;
+	white-space: pre-wrap;
+	padding: 2px 0px 0px 3px;
+	clip-path: inset(0% 15% 0% 0%);
+	box-shadow: inset -11.8px 0px 1px 0px rgb(0, 0, 0);
+}
