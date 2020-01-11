@@ -1,9 +1,9 @@
-<html><head><title>Matrix Rotation</title><link rel="stylesheet" href="css.css" /><script src="./lib.js"></script></head><body>
+<html><head><title>Matrix Rotation</title><link rel="stylesheet" href="css.css" /><script src="lib.js"></script></head><body>
 <textarea id="MatrixIn"></textarea>
 <textarea id="MatrixOut"></textarea><br><!-----><br><br>
 
-<br><input type="button" value="rotate clockwise" onclick="(()=>{document.getElementById('MatrixOut').value = MatrixRot(document.getElementById('MatrixIn').value.split(''))})()">
-<br><input type="button" value="rotate anti clockwise" onclick="(()=>{document.getElementById('MatrixOut').value = MatrixRot(document.getElementById('MatrixIn').value.split(''))})()">
+<br><input type="button" value="rotate clockwise" onclick="(()=>{document.getElementById('MatrixOut').value = MatrixRot(document.getElementById('MatrixIn').value.split('')).join('')})()">
+<br><input type="button" value="rotate anti clockwise" onclick="(()=>{document.getElementById('MatrixOut').value = MatrixRot(document.getElementById('MatrixIn').value.split(''),-1).join('')})()">
 <br><br><br>
 <div class="cwtransMatrix n3matrix"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div><div class="n3matrix">123456789</div><div class="transMatrix n3matrix" style="
 	/* position: relative; */
