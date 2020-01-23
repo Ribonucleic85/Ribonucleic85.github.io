@@ -72,4 +72,24 @@ const MatrixRow = (m,x=0,d=1) => {
 /** cube code **/
 
 const numOfCubies = n => n**3 - (n-2)**3;
+
+/*******/
+sqsty = document.createElement('style');
+sqsty.innerText = "span { font-size: 40px; } .sqaure { color: #3cb371; } .notsq { color: #808080; }";
+document.head.appendChild(sqsty);
+
+const isSquare = n => {
+	var rt = n**0.5;
+	rt >>= 0;
+	nsq = rt**2;
+	return nsq==n;
+}
+
+var tab, i;
+for (i=1; i<101; i++)
+	tab += "<span class="+ (isSquare(i)?"square":"notsq") +">"+ i +
+			"</span>"+ ((i+1)%10?"":"<br>")
+
+document.body.innerHTML=tab
+
 </pre>
