@@ -1,4 +1,3 @@
-<pre>
 /* Square Matrix rotator
    ----------------------
    This was designed to rotate a matrix with a number of
@@ -92,4 +91,3 @@ for (i=1; i<101; i++)
 
 document.body.innerHTML=tab
 
-</pre>
