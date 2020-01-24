@@ -7,8 +7,8 @@ function dragElement(El) {
 	,   Mx = 0
 	,   My = 0;
 
-  // was onmousedown
-	El.touchstart = dragMouseDown;
+	// was onmousedown
+	El.ontouchstart = dragMouseDown;
 
 	function eventControl(e) {
 		e = e || window.event;
@@ -26,8 +26,8 @@ function dragElement(El) {
 
 		mouseXY(e);
 
-		document.touchend = closeDragElement; // onmouseup
-		document.touchmove = elementDrag; // onmousemove
+		El.ontouchend = closeDragElement; // onmouseup
+		El.ontouchmove = elementDrag; // onmousemove
 	}
 
 	function elementDrag(e) {
@@ -42,7 +42,7 @@ function dragElement(El) {
 	}
 
 	function closeDragElement() {
-		document.touchend = null;
-		document.touchmove = null;
+		El.ontouchend = null;
+		El.ontouchmove = null;
 	}
 }
