@@ -1,1 +1,26 @@
-<a href="https://ribonucleic85.github.io/cube/play/index.txt">code here</a>
+<html><head><title>Beta Playable Cube</title>
+<link rel="stylesheet" href="https://ribonucleic85.github.io/minitools/jsbox/css.css" />
+<script src="https://ribonucleic85.github.io/minitools/jsbox/lib.js"></script>
+<link rel="stylesheet" href="css.css" />
+<script src="https://ribonucleic85.github.io/minitools/draggable-elements/touch/drag-lib.js"></script>
+</head>
+<body>
+
+
+<!--- keep at the end of the body --->
+<div id="jsbox" class="jsbox"><pre>Javascript Box:
+<textarea id="jsta" style="width:497px; height:244px; resize:none;">/* list of current functions
+MatrixRot m, d
+MatrixCol m, y, d
+MatrixRow m, x, d
+numOfCubies n
+isSquare n
+hasNthRoot num, expo
+*/</textarea>
+<input type="button" value="Run JS" onclick="jsbox('jsta')"><span id="jsdragtab">..</span></pre></div>
+
+<script> dragElement(document.getElementById("jsdragtab"), document.getElementById("jsbox")); </script>
+<style> #jsdragtab { position:absolute; bottom:0px; right:0px; background-color:#6495ed; } </style>
+
+</body>
+</html>
