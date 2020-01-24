@@ -38,8 +38,8 @@ function dragElement(grabbed,movingEl) {
 		Ey = My-e.targetTouches[0].pageY; // e.clientY;
 		mouseXY(e);
 
-		movingEl.style.top = movingEl.offsetTop-Ey + "px";
-		movingEl.style.left = movingEl.offsetLeft-Ex + "px";
+		movingEl.style.top = grabbed.offsetTop-Ey + "px";
+		movingEl.style.left = grabbed.offsetLeft-Ex + "px";
 	}
 
 	function closeDragElement() {
