@@ -1,14 +1,15 @@
 // for simplicity function names will
 // stay the same till out of beta
 
-function dragElement(El) {
+function dragElement(grabbed,movingEl) {
 	var Ex = 0
 	,   Ey = 0
 	,   Mx = 0
 	,   My = 0;
-
+	
+	movingEl = movingEl || grabbed; //if movingEl is not supplied then set it to grabbed
 	// was onmousedown
-	El.ontouchstart = dragMouseDown;
+	grabbed.ontouchstart = dragMouseDown;
 
 	function eventControl(e) {
 		e = e || window.event;
@@ -26,8 +27,8 @@ function dragElement(El) {
 
 		mouseXY(e);
 
-		El.ontouchend = closeDragElement; // onmouseup
-		El.ontouchmove = elementDrag; // onmousemove
+		grabbed.ontouchend = closeDragElement; // onmouseup
+		grabbed.ontouchmove = elementDrag; // onmousemove
 	}
 
 	function elementDrag(e) {
@@ -37,12 +38,12 @@ function dragElement(El) {
 		Ey = My-e.targetTouches[0].pageY; // e.clientY;
 		mouseXY(e);
 
-		El.style.top = El.offsetTop-Ey + "px";
-		El.style.left = El.offsetLeft-Ex + "px";
+		movingEl.style.top = movingEl.offsetTop-Ey + "px";
+		movingEl.style.left = movingEl.offsetLeft-Ex + "px";
 	}
 
 	function closeDragElement() {
-		El.ontouchend = null;
-		El.ontouchmove = null;
+		grabbed.ontouchend = null;
+		grabbed.ontouchmove = null;
 	}
 }
