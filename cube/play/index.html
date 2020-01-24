@@ -9,7 +9,7 @@
 
 
 <!--- keep at the end of the body --->
-<div id="jsbox" class="jsbox"><pre>Javascript Box:
+<div id="jsbox" class="jsbox"><pre><span id="jsdragtab">Javascript Box:</span>
 <textarea id="jsta" style="width:497px; height:244px; resize:none;">/* list of current functions
 MatrixRot m, d
 MatrixCol m, y, d
@@ -18,10 +18,9 @@ numOfCubies n
 isSquare n
 hasNthRoot num, expo
 */</textarea>
-<input type="button" value="Run JS" onclick="jsbox('jsta')"><span id="jsdragtab">..</span></pre></div>
+<input type="button" value="Run JS" onclick="jsbox('jsta')"></pre></div>
 
 <script> dragElement(document.getElementById("jsdragtab"), document.getElementById("jsbox")); </script>
-<style> #jsdragtab { background-color:#6495ed; } </style>
 
 </body>
 </html>
