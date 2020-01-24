@@ -14,8 +14,13 @@ it looks the same but the internal code is modified.</p>
 <p>If you would like to use the code from this then go ahead, no strings ;) But beware it has only been tested for my needs.</p>
 
 <div id="mydiv">
-	<div id="mydivheader">Header</div>
+	<div id="mydivheader">Header</div><!---drag tab--->
 	<p>Paragraph, word salad.</p>
+	<p>To see if a textarea can be focused:<p>
+	<textarea>Don't move!!</textarea>
+	<br>
+	<p>To see if a button can be pressed:</p>
+	<input type="button" value="Keep still!!" onclick="javascript:alert('clickity, click, click')">
 </div>
 
 <script> dragElement(document.getElementById("mydiv")); </script>
