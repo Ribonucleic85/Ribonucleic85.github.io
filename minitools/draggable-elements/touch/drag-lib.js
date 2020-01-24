@@ -14,6 +14,7 @@ function dragElement(grabbed,movingEl) {
 	function eventControl(e) {
 		e = e || window.event;
 		e.preventDefault();
+		//e.stopPropagation();
 		return e;
 	}
 
@@ -32,14 +33,14 @@ function dragElement(grabbed,movingEl) {
 	}
 
 	function elementDrag(e) {
-		e = eventControl(e);
-
 		Ex = Mx-e.targetTouches[0].pageX; // e.clientX;
 		Ey = My-e.targetTouches[0].pageY; // e.clientY;
 		mouseXY(e);
 
 		movingEl.style.top = grabbed.offsetTop-Ey + "px";
 		movingEl.style.left = grabbed.offsetLeft-Ex + "px";
+
+		e = eventControl(e);
 	}
 
 	function closeDragElement() {
