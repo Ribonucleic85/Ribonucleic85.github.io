@@ -27,8 +27,9 @@ it looks the same but the internal code is modified.</p>
 <script> dragElement(document.getElementById("mydiv")); </script>
 ---->
 
+<!----
 <div id="mydivtab">
-	<div id="dragtab">Drag tab</div><!---drag tab--->
+	<div id="dragtab">Drag tab</div>
 	<p>In this example things should work. Again try and see :P<br>
 	The idea here is to grab the tab via touch, but affect the parents position. Check the code to see what i mean.</p>
 	<p>To see if a textarea can be focused:<p>
@@ -39,5 +40,20 @@ it looks the same but the internal code is modified.</p>
 </div>
 
 <script> dragElement(document.getElementById("dragtab"),document.getElementById("mydivtab")); </script>
+---->
+
+
+<div>wrapped:<div id="mydiv">
+	<div id="mydivheader">Whole element</div>
+	<p>Things can not function in this example. Try and see ;)</p>
+	<p>To see if a textarea can be focused:<p>
+	<textarea>Don't move!!</textarea>
+	<br>
+	<p>To see if a button can be pressed:</p>
+	<input type="button" value="Keep still!!" onclick="javascript:alert('clickity, click, click')">
+</div></div>
+
+<script> dragElement(document.getElementById("mydiv")); </script>
+
 </body>
 </html>
