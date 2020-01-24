@@ -14,8 +14,8 @@ it looks the same but the internal code is modified.</p>
 <p>If you would like to use the code from this then go ahead, no strings ;) But beware it has only been tested for my needs.</p>
 
 <div id="mydiv">
-	<div id="mydivheader">Header</div><!---drag tab--->
-	<p>Paragraph, word salad.</p>
+	<div id="mydivheader">Whole element</div><!---drag tab--->
+	<p>Things can not function in this example. Try and see ;)</p>
 	<p>To see if a textarea can be focused:<p>
 	<textarea>Don't move!!</textarea>
 	<br>
@@ -24,5 +24,19 @@ it looks the same but the internal code is modified.</p>
 </div>
 
 <script> dragElement(document.getElementById("mydiv")); </script>
+
+
+<div id="mydivtab">
+	<div id="dragtab">Drag tab</div><!---drag tab--->
+	<p>In this example things should work. Again try and see :P<br>
+	The idea here is to grab the tab via touch, but affect the parents position. Check the code to see what i mean.</p>
+	<p>To see if a textarea can be focused:<p>
+	<textarea>Don't move!!</textarea>
+	<br>
+	<p>To see if a button can be pressed:</p>
+	<input type="button" value="Keep still!!" onclick="javascript:alert('clickity, click, click')">
+</div>
+
+<script> dragElement(document.getElementById("dragtab"),document.getElementById("mydivtab")); </script>
 </body>
 </html>
