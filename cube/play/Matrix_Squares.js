@@ -18,10 +18,11 @@
    nm    = New matrix
    sr    = Square root of matrix size rounded down
 */
-const MatrixRot = (m,d=1) => {
+var MatrixRot = (m,d=1) => {
 	var x, y,
 	nm = [],
-	sr = Math.sqrt(m.length)>>0;
+	sr = m.length**0.5;
+	sr >>= 0;
 	for (y=0; y<sr; y++)
 		for (x=sr-1; x>-1; x--)
 			if (d==-1)
@@ -30,6 +31,7 @@ const MatrixRot = (m,d=1) => {
 				nm.push(m[x*sr+y]);
 	return nm;
 }
+
 
 /*
    Fetch a Column or Row from a Matrix in the form of a flat array
@@ -41,23 +43,27 @@ const MatrixRot = (m,d=1) => {
    If y is unspecified the first column will be returned,
    and if d is unspecified it will be top to bottom direction.
 */
-const MatrixCol = (m,y=0,d=1) => {
+var MatrixCol = (m,y=0,d=1) => {
 	var x,
 	nm = [],
-	sr = Math.sqrt(m.length)>>0;
+	sr = m.length**0.5;
+	sr >>= 0;
 	if (d==1)
-		for (x=0; x<sr; x++) nm.push(m[x*sr+y]);
+		for (x=0; x<sr; x++)
+			nm.push(m[x*sr+y]);
 	else if (d==-1)
-		for (x=sr-1; x>-1; x--) nm.push(m[x*sr+y]);
+		for (x=sr-1; x>-1; x--)
+			nm.push(m[x*sr+y]);
 	return nm;
 }
 
 /* Row (works same as above except for Rows instead of Columns)
 */
-const MatrixRow = (m,x=0,d=1) => {
-	var x,y,
+var MatrixRow = (m,x=0,d=1) => {
+	var y,
 	nm = [],
-	sr = Math.sqrt(m.length)>>0;
+	sr = m.length**0.5;
+	sr >>= 0;
 	if (d==1)
 		for (y=0; y<sr; y++)
 			nm.push(m[x*sr+y]);
@@ -70,24 +76,21 @@ const MatrixRow = (m,x=0,d=1) => {
 
 /** cube code **/
 
-const numOfCubies = n => n**3 - (n-2)**3;
+var numOfCubies = n => Math.round(n**3 - (n-2)**3);
 
-/*******/
-sqsty = document.createElement('style');
-sqsty.innerText = "span { font-size: 40px; } .sqaure { color: #3cb371; } .notsq { color: #808080; }";
-document.head.appendChild(sqsty);
-
-const isSquare = n => {
-	var rt = n**0.5;
-	rt >>= 0;
-	nsq = rt**2;
-	return nsq==n;
+var isSquare = n => {
+	/* var rt = n**0.5;
+	** rt >>= 0;
+	** nsq = rt**2;
+	** return nsq==n;
+	*/
+	return hasNthRoot(n,2);
 }
 
-var tab, i;
-for (i=1; i<101; i++)
-	tab += "<span class="+ (isSquare(i)?"square":"notsq") +">"+ i +
-			"</span>"+ ((i+1)%10?"":"<br>")
-
-document.body.innerHTML=tab
-
+// due to javascript insisting on float only math rounding has to be done
+var hasNthRoot = (num,expo) => {
+	var root = num**(1/expo);
+	root >>= 0;
+	var rootexpo = Math.round(root**expo);
+	return rootexpo==num;
+}
