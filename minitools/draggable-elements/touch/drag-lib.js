@@ -17,8 +17,8 @@ function dragElement(El) {
 	}
 
 	function mouseXY(e) {
-		Mx = e.clientX;
-		My = e.clientY;
+		Mx = e.targetTouches[0].pageX; //e.clientX;
+		My = e.targetTouches[0].pageY; //e.clientY;
 	}
 
 	function dragMouseDown(e) {
@@ -33,8 +33,8 @@ function dragElement(El) {
 	function elementDrag(e) {
 		e = eventControl(e);
 
-		Ex = Mx-e.clientX;
-		Ey = My-e.clientY;
+		Ex = Mx-e.targetTouches[0].pageX; // e.clientX;
+		Ey = My-e.targetTouches[0].pageY; // e.clientY;
 		mouseXY(e);
 
 		El.style.top = El.offsetTop-Ey + "px";
