@@ -14,7 +14,7 @@ function dragElement(grabbed,movingEl) {
 	function eventControl(e) {
 		e = e || window.event;
 		e.preventDefault();
-		//e.stopPropagation();
+		e.stopPropagation();alert('hello');
 		return e;
 	}
 
