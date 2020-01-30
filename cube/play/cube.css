@@ -1,0 +1,64 @@
+#cubeholder {
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	width: 100px;
+	height: 100px;
+	perspective: 200px;
+	perspective-origin: 50% 50%;
+}
+
+.numberCube {
+	animation-name: rotatey;
+	animation-duration: 20s;
+
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-iteration-count: infinite;
+
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% 0;
+}
+
+@keyframes rotatey {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	25% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+	50% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+	75% {transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);}
+	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+}
+
+.tcF { transform: translateZ(50px); }
+.tcB { transform: rotateX(180deg) translateZ(50px); }
+.tcU { transform: rotateX(90deg) translateZ(50px); }
+.tcD { transform: rotateX(-90deg) translateZ(50px); }
+.tcL { transform: rotateY(-90deg) translateZ(50px); }
+.tcR { transform: rotateY(90deg) translateZ(50px); }
+
+.tcF { color:#FF0000; }
+.tcB { color:#FF7043; }
+.tcU { color:#dedede; }
+.tcD { color:#FFB300; }
+.tcL { color:#2e8800; }
+.tcR { color:#1565C0; }
+
+.numberCube textarea {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	resize: none;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0, 0, 0, 0.7);
+	font-weight: 800;
+	font-size: 28px;
+	letter-spacing: 12px;
+	line-height: 31px;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 10px;
+	padding-top: 4px;
+}
+
