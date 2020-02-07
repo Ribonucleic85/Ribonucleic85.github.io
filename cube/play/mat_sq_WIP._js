@@ -40,7 +40,7 @@ var MatrixRot = (m,c,d=1,mode) => {
 		}
 	}
 
-	if (mode=="rot") {
+	if (mode=="rot" && d!=2) {
 		var x = [sr-1,-1,-1]
 		,   y = [0,sr,1];
 	}
@@ -49,10 +49,7 @@ var MatrixRot = (m,c,d=1,mode) => {
 
 	for (y=0; y<sr; y++)
 		for (x=sr-1; x>-1; x--)
-			if (d==-1)
-				nm.push(m[m.length-1-(x*sr+y)]);
-			else if (d==1)
-				nm.push(m[x*sr+y]);
+			nm.push(m[x*sr+y]);
 	return nm;
 }
 
