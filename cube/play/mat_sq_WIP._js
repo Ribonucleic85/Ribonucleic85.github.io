@@ -1,48 +1,44 @@
-var MatrixRot = (m,c,d=1,mode) => {
-	var nm = []
-	,   sr = (m.length**0.5) >> 0;
-
-
-	/* For x or y (depending on mode) we define an array
-	*  with the following 3 values:
-	*
-	*  - value	:: initial value for loop
-	*  - limit	:: limit for the value
-	*  - direction	:: loop direction:
-	*			-1 = down;
-	*			 0 = static/none;
-	*			 1 = up
-	*
-	*  By adding the direction toward the value limit the
-	*  loop automatically goes in the direction the value
-	*  is for; e.g. adding 0 keeps it static.
-	*
-	*  To make sure the loop doesn't end up infinite the
-	*  conditional ternary operator will be used in the
-	*  conditional check of the loop (middle field)
-	*/
+var MatrixRot = (mat,coord,dir=1,mode) => {
+	var x,y
+	,   nums = []
+	,   sqrt = (mat.length**0.5) >> 0;
 
 	if (mode=="col") {
-		var x,y = [c,c,0];
-		switch(d) {
+		y = [coord, coord, 0];
+		switch(dir) {
 			default:
-			case 1:  x = [0,sr,1]; break;
-			case -1: x = [sr-1,-1,-1]; break;
+			case 1:   x = [0, sqrt, 1];		break;
+			case -1:  x = [sqrt-1, -1, -1];		break;
 		}
 	}
 
 	if (mode=="row") {
-		var y,x = [c,c,0];
-		switch(d) {
+		x = [coord, coord, 0];
+		switch(dir) {
 			default:
-			case 1:  y = [0,sr,1]; break;
-			case -1: y = [sr-1,-1,-1]; break;
+			case 1:   y = [0, sqrt, 1];		break;
+			case -1:  y = [sqrt-1, -1, -1];		break;
 		}
 	}
 
-	if (mode=="rot" && d!=2) {
-		var x = [sr-1,-1,-1]
-		,   y = [0,sr,1];
+	if (mode=="rot") {
+		switch(dir) {
+			default:
+			case 1:
+				// 90deg
+				x = [sqrt-1, -1, -1],
+				y = [0, sqrt, 1]; break;
+
+			case 2:
+				// 180 deg 
+				x = [0, 1, 1],
+				y = [sqrt**2-1, -1, -1]; break;
+
+			case -1:
+				// -90deg
+				x = [0, sqrt, 1],
+				y = [sqrt-1, -1, -1]; break;
+		}
 	}
 
 
