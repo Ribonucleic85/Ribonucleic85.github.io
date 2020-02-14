@@ -24,10 +24,9 @@
 
 @keyframes rotatey {
 	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-	25% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
-	50% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
-	75% {transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);}
-	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	33% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+	66% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg); }
+	100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);}
 }
 
 .tcF { transform: translateZ(50px); }
@@ -39,9 +38,9 @@
 
 .tcF { color:#FF0000; }
 .tcB { color:#FF7043; }
-.tcU { color:#dedede; }
+.tcU { color:#DEDEDE; }
 .tcD { color:#FFB300; }
-.tcL { color:#2e8800; }
+.tcL { color:#2E8800; }
 .tcR { color:#1565C0; }
 
 .numberCube textarea {
