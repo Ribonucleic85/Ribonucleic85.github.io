@@ -35,63 +35,35 @@ function listenForEventOn(els, att, fn) {
 */
 
 const trans = (alg, ax) => {
-	var Edge, Midd, cm, cur, ed, edsh, mi, mish;
-
-	//    x, y, z = 90 deg
-	// x', y', z' = 90 deg rev
-	// x2, y2, z2 = 180 deg done by running x, y or z twice
+	var Edge, Midd, ed, edsh, mi, mish;
 
 	Edge = {
-		"x": [..."FUBD"],  "x'": [..."DBUF"],
-		"y": [..."FLBR"],  "y'": [..."RBLF"],
-		"z": [..."URDL"],  "z'": [..."LDRU"]
+		"x": [[..."FUBD"],[..."fubd"]], "x'": [[..."DBUF"],[..."dbuf"]],
+		"y": [[..."FLBR"],[..."flbr"]], "y'": [[..."RBLF"],[..."rblf"]],
+		"z": [[..."URDL"],[..."urdl"]], "z'": [[..."LDRU"],[..."ldru"]]
 	};
 	Midd = {
-		"x": ["E","S","E'","S'"],  "x'": ["S","E","S'","E'"],
-		"y": ["S","M","S'","M'"],  "y'": ["M","S","M'","S'"],
-		"z": ["E","M","E'","M'"],  "z'": ["M","E","M'","E'"]
+		"x": [["E","S","E'","S'"],["e","s","e'","s'"]], "x'": [["S","E","S'","E'"],["s","e","s'","e'"]],
+		"y": [["S","M","S'","M'"],["s","m","s'","m'"]], "y'": [["M","S","M'","S'"],["m","s","m'","s'"]],
+		"z": [["E","M","E'","M'"],["e","m","e'","m'"]], "z'": [["M","E","M'","E'"],["m","e","m'","e'"]]
 	};
 
-	alg = alg.split(" ");
-	cm = 0;
+	ed   = [[...Edge[ax][0]],[...Edge[ax][1]]];
+	edsh = [ ...([...ed[0]].rightRot()), ...([...ed[1]].rightRot()) ];
+	ed   = [ ...ed[0], ...ed[1] ];
 
-	ed   = [...Edge[ax]];
-	edsh = [...Edge[ax]];
-	edsh.rightRot();
+	mi   = [[...Midd[ax][0]],[...Midd[ax][1]]];
+	mish = [...([...mi[0]].rightRot()), ...([...mi[1]].rightRot())];
+	mi   = [...mi[0], ...mi[1]];
 
-	mi   = [...Midd[ax]];
-	mish = [...Midd[ax]];
-	mish.rightRot();
+	alg = alg.split(/\s/);
 
-	for (; cm<alg.length; cm++) {
-		cur = (()=>{
-			var i = 0;
-			while (i<ed.length) {
-				if (alg[cm].indexOf(ed[i]) != -1)
-					return alg[alg[cm].indexOf(ed[i])];
-				i++;
-			}
-			i = 0;
-			while (i<mi.length) {
-				if (alg[cm].indexOf(mi[i]) != -1)
-					return alg[alg[cm].indexOf(mi[i])];
-				i++;
-			}
-			return false;
-		})();
-
-		if (!cur)
-			continue;
-
-		if (ed.indexOf(cur) != -1) {
+	for (var cur,cm=0; cm<alg.length; cm++) {
+		cur = alg[cm].match(/[A-Za-z]/g).pop();
+		if (ed.indexOf(cur) != -1)
 			alg[cm] = alg[cm].replace(cur, ed[edsh.indexOf(cur)]);
-			continue;
-		}
-
-		if (mi.indexOf(cur) != -1) {
+		else if (mi.indexOf(cur) != -1)
 			alg[cm] = alg[cm].replace(cur, mi[mish.indexOf(cur)]);
-			continue;
-		}
 	}
 
 	return alg.join(" ");
