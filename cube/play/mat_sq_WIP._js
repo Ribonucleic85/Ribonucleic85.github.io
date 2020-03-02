@@ -1,3 +1,57 @@
+/* this is over engineered, time to try functions which pause until their next call */
+
+// need loop functions for varying directions and conditions
+
+var MatrixRot = (matrix,coord,direction=1,mode,ex) => {
+	var x,y,op
+	,   nums = []
+	,   sqrt = (matrix.length**0.5) >> 0;
+
+
+
+	x.i = x.val;
+	y.i = y.val;
+
+	for (; ; ) {
+		for (; ; ) {
+			nums.push(matrix[x*sqrt+y]);
+		}
+	}
+	return nums;
+}
+
+
+
+/*
+column
+  y	coord	coord	0
+  x+	0	sqrt	+
+  x-	sqrt-1	-1	-
+
+row
+  x	coord	coord	0
+  y+	0	sqrt	+
+  y-	sqrt-1	-1	-
+
+rotate
+ 90°
+  x	sqrt-1	-1	-
+  y	0	sqrt	+
+
+ 180°
+  x	0	1	+
+  y	sq-1	1	-
+
+ -90°
+  x	0	sqrt	+
+  y	sqrt-1	-1	-
+*/
+
+
+
+
+
+
 var MatrixRot = (mat,coord,dir=1,mode) => {
 	var x,y
 	,   nums = []
@@ -63,18 +117,11 @@ var MatrixRot = (matrix,coord,direction=1,mode) => {
 		dir: c => { (c.dir===1 || c.dir===0)? 1: -1; }
 	};
 
-	if (mode=="injectnewlim") {
-		op.lim = c => {
-			return inj(coord[7]);
-		}
-		mode = "inject";
-    }
+	op.lim = mode=="injectnewlim" ?
+		coord[7]: //just put the function directly in the argument
+		c => c.val<=c.lim? c.i<=c.lim: c.i>=c.lim;
 
-	else {
-		op.lim = c => {
-			return c.val<=c.lim? c.i<=c.lim: c.i>=c.lim;
-		}
-    }
+	mode = mode=="injectnewlim"? "inject": mode;
 
 	if (mode=="col") {
 		y = { val: coord,  lim: coord,  dir: 0 };
