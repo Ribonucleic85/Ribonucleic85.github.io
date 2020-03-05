@@ -1,3 +1,5 @@
+/* this is old redundant code, it is functional but a newer more concise function pair is in use */
+
 /* Square Matrix rotator
    ----------------------
    This was designed to rotate a matrix with a number of
@@ -71,26 +73,4 @@ var MatrixRow = (m,x=0,d=1) => {
 		for (y=sr-1; y>-1; y--)
 			nm.push(m[x*sr+y]);
 	return nm;
-}
-
-
-/** cube code **/
-
-var numOfCubies = n => Math.round(n**3 - (n-2)**3);
-
-var isSquare = n => {
-	/* var rt = n**0.5;
-	** rt >>= 0;
-	** nsq = rt**2;
-	** return nsq==n;
-	*/
-	return hasNthRoot(n,2);
-}
-
-// due to javascript insisting on float only math rounding has to be done
-var hasNthRoot = (num,expo) => {
-	var root = num**(1/expo);
-	root >>= 0;
-	var rootexpo = Math.round(root**expo);
-	return rootexpo==num;
 }
