@@ -2,9 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <link rel="stylesheet" href="cube.css">
 <link rel="stylesheet" href="https://ribonucleic85.github.io/minitools/jsbox/css.css" />
-<script src="Matrix_Squares.js"></script>
+<script src="matrix.js"></script>
+<script src="math.js"></script>
 
-<script src="https://ribonucleic85.github.io/minitools/jsbox/lib.js"></script>
+<!---<script src="https://ribonucleic85.github.io/minitools/jsbox/lib.js"></script>--->
 <link rel="stylesheet" href="css.css" />
 <script src="https://ribonucleic85.github.io/minitools/draggable-elements/touch/drag-lib.js"></script>
 </head>
@@ -24,6 +25,7 @@
 <!-------->
 
 <!--- keep at the end of the body --->
+<!---
 <div id="jsbox" class="jsbox"><pre><div id="jsdragtab">Javascript Box:</div
 ><textarea id="jsta">/* List of current functions
 MatrixRot m, d
@@ -35,13 +37,12 @@ hasNthRoot num, expo
 */</textarea>
 <input type="button" value="Run JS" onclick="jsboxAdv('jsta')">
 <div id="jsErrbox" style="display:none;"><div id="jsErr" style="white-space: pre-wrap;"></div></div></pre></div>
-
+--->
 <style>
 #jsErrbox {
     margin: 5px 0px 0px 0px;
     border: 1px solid #ff3838;
-}
-	
+}	
 	
 .numberCube {
     animation-name: rotatey;
@@ -77,7 +78,7 @@ hasNthRoot num, expo
 }
 </style>
 
-<script> dragElement(document.getElementById("jsdragtab"), document.getElementById("jsbox")); </script>
+<!---<script> dragElement(document.getElementById("jsdragtab"), document.getElementById("jsbox")); </script>--->
 
 </body>
 </html>
