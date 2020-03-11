@@ -1,0 +1,66 @@
+#cubeholder, .rube_cube, .rube_cube > div {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+}
+
+#cubeholder {
+	top: 100px;
+	right: 100px;
+	perspective: 250px;
+	perspective-origin: 50% 50%;
+}
+
+.rube_cube {
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% 0;
+	/* transform: rotateX(330deg) rotateY(315deg) rotateZ(0deg); */
+}
+
+.rube_cube > div {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	border-radius: 5px;
+	background-color: rgb(0,0,0,0.0);
+	opacity: 0.87;
+}
+
+.rcf { transform: translateZ(75px); }
+.rcb { transform: rotateX(180deg) translateZ(75px); }
+.rcu { transform: rotateX(90deg) translateZ(75px); }
+.rcd { transform: rotateX(-90deg) translateZ(75px); }
+.rcl { transform: rotateY(-90deg) translateZ(75px); }
+.rcr { transform: rotateY(90deg) translateZ(75px); }
+
+.rcf > div { background-color: rgba(255, 0,   0,   1); }
+.rcb > div { background-color: rgba(255, 112, 67,  1); }
+.rcu > div { background-color: rgba(222, 222, 222, 1); }
+.rcd > div { background-color: rgba(255, 179, 0,   1); }
+.rcl > div { background-color: rgba(46,  136, 0,   1); }
+.rcr > div { background-color: rgba(21,  101, 192, 1); }
+
+[class*=rc] > div {
+	display:inline-block;
+	margin:2px;
+	border-radius: 5px;
+	width: calc(25% - 4px);
+	height: calc(25% - 4px);
+}
+
+.rube_cube {
+	animation-name: rotatey;
+	animation-duration: 40s;
+	animation-timing-function: cubic-bezier(0, 0, 1, 1);
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+@keyframes rotatey {
+	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	25% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+	50% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+	75% {transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);}
+	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+}
