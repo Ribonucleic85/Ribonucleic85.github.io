@@ -1,14 +1,35 @@
-#cubeholder, .rube_cube, .rube_cube > div {
+.cubeholder, .rube_cube, .rube_cube > div {
 	position: absolute;
-	width: 150px;
-	height: 150px;
+	width: 148px;
+	height: 148px;
 }
 
-#cubeholder {
+.cubeholder {
+	perspective: 400px;
+	/* perspective: 250px; */
+	perspective-origin: 50% 50%;
+}
+
+.maincube {
 	top: 100px;
 	right: 100px;
-	perspective: 250px;
-	perspective-origin: 50% 50%;
+}
+
+
+.prevone {
+	top: 100px;
+	left: 100px;
+}
+.prevone > div {
+	transform: rotateX(330deg) rotateY(315deg) rotateZ(0deg);
+}
+
+.prevtwo {
+	top: 400px;
+	left: 100px;
+}
+.prevtwo > div {
+	transform: rotateX(150deg) rotateY(315deg) rotateZ(0deg);
 }
 
 .rube_cube {
@@ -23,7 +44,8 @@
 	left: 0px;
 	padding: 0px;
 	border-radius: 5px;
-	background-color: rgb(0,0,0,0.0);
+	border: 3px solid;
+	background-color: rgb(0,0,0,1);
 	opacity: 0.87;
 }
 
@@ -34,33 +56,32 @@
 .rcl { transform: rotateY(-90deg) translateZ(75px); }
 .rcr { transform: rotateY(90deg) translateZ(75px); }
 
-.rcf > div { background-color: rgba(255, 0,   0,   1); }
-.rcb > div { background-color: rgba(255, 112, 67,  1); }
-.rcu > div { background-color: rgba(222, 222, 222, 1); }
-.rcd > div { background-color: rgba(255, 179, 0,   1); }
-.rcl > div { background-color: rgba(46,  136, 0,   1); }
-.rcr > div { background-color: rgba(21,  101, 192, 1); }
+[class*=rcf] { background-color: rgba(255, 0,   0,   1); }
+[class*=rcb] { background-color: rgba(255, 99,  21,  1);}
+[class*=rcu] { background-color: rgba(204, 204, 204, 1);}
+[class*=rcd] { background-color: rgba(255, 194, 50,  1);}
+[class*=rcl] { background-color: rgba(46,  136, 0,   1); }
+[class*=rcr] { background-color: rgba(0,   145, 255, 1);}
 
 [class*=rc] > div {
 	display:inline-block;
-	margin:2px;
+	margin: 2px;
 	border-radius: 5px;
 	width: calc(25% - 4px);
 	height: calc(25% - 4px);
 }
 
-.rube_cube {
+.rotatey {
 	animation-name: rotatey;
-	animation-duration: 40s;
+	animation-duration: 20s;
 	animation-timing-function: cubic-bezier(0, 0, 1, 1);
 	animation-iteration-count: infinite;
-	animation-play-state: paused;
+	/* animation-play-state: paused; */
 }
 
 @keyframes rotatey {
-	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-	25% { transform: rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
-	50% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
-	75% {transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);}
-	100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+	0%    { transform: rotateX(45deg)   rotateY(45deg)   rotateZ(45deg);   }
+	33.3% { transform: rotateX(405deg) rotateY(45deg)   rotateZ(45deg);   }
+	66.6% { transform: rotateX(405deg) rotateY(405deg) rotateZ(45deg);   }
+	100%  { transform: rotateX(405deg) rotateY(405deg) rotateZ(405deg); }
 }
