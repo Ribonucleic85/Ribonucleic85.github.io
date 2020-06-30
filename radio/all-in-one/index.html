@@ -1,0 +1,42 @@
+<html><head><title>Example GUI</title>
+<style>
+#AboutUs,
+#ContactUs,
+#Donate {
+	display: none;
+}
+
+#AboutUsSection:checked ~ #AboutUs,
+#ContactUsSection:checked ~ #ContactUs,
+#DonateSection:checked ~ #Donate {
+	display: initial;
+}
+
+label {
+	margin-right: 10px;
+	padding: 2px;
+	border: 1px solid #737373;
+}
+
+#AboutUsSection:checked ~ [for=AboutUsSection],
+#ContactUsSection:checked ~ [for=ContactUsSection],
+#DonateSection:checked ~ [for=DonateSection] {
+	background-color: lime;
+}
+</style>
+</head>
+<body>
+
+<input type="radio" id="AboutUsSection" />
+<input type="radio" id="ContactUsSection" />
+<input type="radio" id="DonateSection" />
+
+<label for="AboutUsSection">About Us</label>
+<label for="ContactUsSection">Contact Us</label>
+<label for="DonateSection">Donate</label>
+
+<div id="AboutUs">This is the about us section. Here you will learn about us.</div>
+<div id="ContactUs">This is the contact us section. From here you can (not yet) contact us.</div>
+<div id="Donate">This is the donation section. If you would like to donate, that would be nice.</div>
+
+</body></html>
