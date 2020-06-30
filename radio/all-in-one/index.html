@@ -9,7 +9,11 @@
 #AboutUsSection:checked ~ #AboutUs,
 #ContactUsSection:checked ~ #ContactUs,
 #DonateSection:checked ~ #Donate {
-	display: initial;
+	display: block;
+}
+
+[type=radio] {
+	display:none;
 }
 
 label {
@@ -27,9 +31,9 @@ label {
 </head>
 <body>
 
-<input type="radio" id="AboutUsSection" />
-<input type="radio" id="ContactUsSection" />
-<input type="radio" id="DonateSection" />
+<input type="radio" name="section" id="AboutUsSection" />
+<input type="radio" name="section" id="ContactUsSection" />
+<input type="radio" name="section" id="DonateSection" />
 
 <label for="AboutUsSection">About Us</label>
 <label for="ContactUsSection">Contact Us</label>
