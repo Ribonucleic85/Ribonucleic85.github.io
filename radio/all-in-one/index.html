@@ -1,4 +1,6 @@
-<html><head><title>Example GUI</title>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Example GUI</title>
 <style>
 #AboutUs,
 #ContactUs,
@@ -6,10 +8,16 @@
 	display: none;
 }
 
+#ListenSection:checked ~ #AboutUs,
 #AboutUsSection:checked ~ #AboutUs,
 #ContactUsSection:checked ~ #ContactUs,
 #DonateSection:checked ~ #Donate {
 	display: block;
+}
+#AboutUsSection:checked ~ [for=AboutUsSection],
+#ContactUsSection:checked ~ [for=ContactUsSection],
+#DonateSection:checked ~ [for=DonateSection] {
+	background-color: lime;
 }
 
 [type=radio] {
@@ -22,25 +30,36 @@ label {
 	border: 1px solid #737373;
 }
 
-#AboutUsSection:checked ~ [for=AboutUsSection],
-#ContactUsSection:checked ~ [for=ContactUsSection],
-#DonateSection:checked ~ [for=DonateSection] {
-	background-color: lime;
-}
 </style>
 </head>
 <body>
 
+<input type="radio" name="section" id="ListenSection" />
 <input type="radio" name="section" id="AboutUsSection" />
 <input type="radio" name="section" id="ContactUsSection" />
 <input type="radio" name="section" id="DonateSection" />
 
+<label for="ListenSection">Listen</label>
 <label for="AboutUsSection">About Us</label>
 <label for="ContactUsSection">Contact Us</label>
 <label for="DonateSection">Donate</label>
 
+<span style="display:block; font-size:40pt; color:red;">Warning this is a demo page so please do not click the Donate button, i will not be held liable for you ignoring this warning.</span>
+
+<div id="Listen"><audio controls><source src="https://s48.myradiostream.com:10901/stream"></audio><br>
+<span id="songTitle"></span>
+<script src="songtitle.js"></script></div>
+
 <div id="AboutUs">This is the about us section. Here you will learn about us.</div>
+
 <div id="ContactUs">This is the contact us section. From here you can (not yet) contact us.</div>
-<div id="Donate">This is the donation section. If you would like to donate, that would be nice.</div>
+
+<div id="Donate">Donate message:
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="ZWCUKCXEFN3WL" />
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+</form></div>
 
 </body></html>
