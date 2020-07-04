@@ -15,6 +15,7 @@
 #DonateSection:checked ~ #Donate {
 	display: block;
 }
+#ListenSection:checked ~ [for=ListenSection],
 #AboutUsSection:checked ~ [for=AboutUsSection],
 #ContactUsSection:checked ~ [for=ContactUsSection],
 #DonateSection:checked ~ [for=DonateSection] {
@@ -34,7 +35,8 @@ label {
 </style>
 </head>
 <body>
-
+<span style="display:block; font-size:40pt; color:red;">Warning this is a demo page so please do not click the Donate button, i will not be held liable for you ignoring this warning.</span>
+<br><br><br>
 <input type="radio" name="section" id="ListenSection" checked="checked" />
 <input type="radio" name="section" id="AboutUsSection" />
 <input type="radio" name="section" id="ContactUsSection" />
@@ -45,7 +47,6 @@ label {
 <label for="ContactUsSection">Contact Us</label>
 <label for="DonateSection">Donate</label>
 
-<span style="display:block; font-size:40pt; color:red;">Warning this is a demo page so please do not click the Donate button, i will not be held liable for you ignoring this warning.</span>
 
 <div id="Listen"><audio controls><source src="https://s48.myradiostream.com:10901/stream"></audio><br>
 <span id="songTitle"></span>
