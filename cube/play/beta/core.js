@@ -10,6 +10,34 @@ const MatrixEq = (x, xl, xi, y, yl, yi, sqrt, m) => {
 	return arr;
 }
 
+/* if-less version */
+const Matrix = (matrix,mode,direction=1,rowcol) => {
+	var sqrt = (matrix.length**0.5) >> 0;
+
+	return MatrixEq(...
+	[
+		[
+			[0,       sqrt,      1,   sqrt-1,     -1,        -1,  sqrt,  matrix],
+			[sqrt-1,  -1,        -1,  0,          sqrt,      1,   sqrt,  matrix],
+			[0,       1,         1,   sqrt**2-1,  -1,        -1,  sqrt,  matrix]
+		],[
+			[rowcol,  rowcol+1,  1,   sqrt-1,     -1,        -1,  sqrt,  matrix],
+			[rowcol,  rowcol+1,  1,   0,          sqrt,      1,   sqrt,  matrix]
+		],[
+			[sqrt-1,  -1,        -1,  rowcol,     rowcol+1,  1,   sqrt,  matrix],
+			[0,       sqrt,      1,   rowcol,     rowcol+1,  1,   sqrt,  matrix]
+		]
+	][
+		["rot","row","col"].indexOf(mode)
+	][
+		[-1,1,2].indexOf(direction)
+	] );
+}
+
+
+
+
+/* old if based version
 const Matrix = (matrix,mode,direction=1,rowcol) => {
 	var sqrt = (matrix.length**0.5) >> 0;
 	if (mode=="rot") {
@@ -40,3 +68,4 @@ const Matrix = (matrix,mode,direction=1,rowcol) => {
 		}
 	}
 }
+*/
