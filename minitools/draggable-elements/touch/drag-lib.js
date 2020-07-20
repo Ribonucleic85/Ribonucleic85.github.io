@@ -32,7 +32,7 @@ function dragElement(grabbed, movingEl) {
 	}
 
 	function elementDrag(e) {
-		if (touches.length<1) touchNull(); // simulate ontouchend so that another touch can't trigger it
+		if (e.changedTouches.length<1) touchNull(); // simulate ontouchend so that another touch can't trigger it
 		Ex = Mx-e.targetTouches[0].pageX;
 		Ey = My-e.targetTouches[0].pageY;
 		touchXY(e);
