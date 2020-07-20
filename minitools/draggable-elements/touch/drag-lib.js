@@ -1,15 +1,17 @@
 // for simplicity function names will
 // stay the same till out of beta
+var dragElementActive = false;
 
-function dragElement(grabbed,movingEl) {
-	var Ex = 0
-	,   Ey = 0
-	,   Mx = 0
-	,   My = 0;
+function dragElement(grabbed, movingEl) {
+	if (dragElementActive)
+		return;
+	else
+		dragElementActive = true;
+
+	var Ex = 0, Ey = 0, Mx = 0, My = 0;
 	
-	movingEl = movingEl || grabbed; //if movingEl is not supplied then set it to grabbed
-	// was onmousedown
-	grabbed.ontouchstart = dragMouseDown;
+	movingEl = movingEl || grabbed; // If movingEl is not supplied then set it to grabbed.
+	grabbed.ontouchstart = touchStart;
 
 	function eventControl(e) {
 		e = e || window.event;
@@ -18,32 +20,30 @@ function dragElement(grabbed,movingEl) {
 		return e;
 	}
 
-	function mouseXY(e) {
-		Mx = e.targetTouches[0].pageX; //e.clientX;
-		My = e.targetTouches[0].pageY; //e.clientY;
+	function touchXY(e) {
+		Mx = e.targetTouches[0].pageX;
+		My = e.targetTouches[0].pageY;
 	}
 
-	function dragMouseDown(e) {
+	function touchStart(e) {
 		e = eventControl(e);
-
-		mouseXY(e);
-
-		grabbed.ontouchend = closeDragElement; // onmouseup
-		grabbed.ontouchmove = elementDrag; // onmousemove
+		touchXY(e);
+		grabbed.ontouchend = touchNull;
+		grabbed.ontouchmove = elementDrag;
 	}
 
 	function elementDrag(e) {
-		Ex = Mx-e.targetTouches[0].pageX; // e.clientX;
-		Ey = My-e.targetTouches[0].pageY; // e.clientY;
-		mouseXY(e);
-
+		Ex = Mx-e.targetTouches[0].pageX;
+		Ey = My-e.targetTouches[0].pageY;
+		touchXY(e);
 		movingEl.style.top = movingEl.offsetTop-Ey + "px";
 		movingEl.style.left = movingEl.offsetLeft-Ex + "px";
 
 		e = eventControl(e);
 	}
 
-	function closeDragElement() {
+	function touchNull() {
+		dragElementActive = false;
 		grabbed.ontouchend = null;
 		grabbed.ontouchmove = null;
 	}
