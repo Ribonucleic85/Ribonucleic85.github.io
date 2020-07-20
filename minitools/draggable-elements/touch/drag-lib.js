@@ -27,11 +27,12 @@ function dragElement(grabbed, movingEl) {
 		e = eventControl(e);
 		dragElementActive = true;
 		touchXY(e);
-		grabbed.ontouchend = touchNull;
+		/*grabbed.ontouchend = touchNull;*/
 		grabbed.ontouchmove = elementDrag;
 	}
 
 	function elementDrag(e) {
+		if (touches.length<1) touchNull(); // simulate ontouchend so that another touch can't trigger it
 		Ex = Mx-e.targetTouches[0].pageX;
 		Ey = My-e.targetTouches[0].pageY;
 		touchXY(e);
@@ -43,7 +44,7 @@ function dragElement(grabbed, movingEl) {
 
 	function touchNull() {
 		dragElementActive = false;
-		grabbed.ontouchend = null;
+		/*grabbed.ontouchend = null;*/
 		grabbed.ontouchmove = null;
 	}
 }
