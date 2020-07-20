@@ -1,8 +1,3 @@
-/*	if a drag is already in progress then this will be true
-	and further calls to dragElement will just return without
-	doing anything, once the first drag is stopped this will
-	be false and a new drag can be started				*/
-
 function dragElement(grabbed, movingEl) {
 	if (grabbed.getAttribute("dragActive")!=null)
 		return;
@@ -40,7 +35,6 @@ function dragElement(grabbed, movingEl) {
 		touchXY(e);
 		movingEl.style.top = movingEl.offsetTop-Ey + "px";
 		movingEl.style.left = movingEl.offsetLeft-Ex + "px";
-
 		e = eventControl(e);
 	}
 
