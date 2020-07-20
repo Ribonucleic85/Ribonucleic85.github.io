@@ -5,8 +5,6 @@ var dragElementActive = false;
 function dragElement(grabbed, movingEl) {
 	if (dragElementActive)
 		return;
-	else
-		dragElementActive = true;
 
 	var Ex = 0, Ey = 0, Mx = 0, My = 0;
 	
@@ -27,6 +25,7 @@ function dragElement(grabbed, movingEl) {
 
 	function touchStart(e) {
 		e = eventControl(e);
+		dragElementActive = true;
 		touchXY(e);
 		grabbed.ontouchend = touchNull;
 		grabbed.ontouchmove = elementDrag;
