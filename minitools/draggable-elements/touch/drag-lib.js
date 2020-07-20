@@ -1,9 +1,10 @@
-// for simplicity function names will
-// stay the same till out of beta
-var dragElementActive = false;
+/*	if a drag is already in progress then this will be true
+	and further calls to dragElement will just return without
+	doing anything, once the first drag is stopped this will
+	be false and a new drag can be started				*/
 
 function dragElement(grabbed, movingEl) {
-	if (dragElementActive)
+	if (grabbed.getAttribute("dragActive")!=null)
 		return;
 
 	var Ex = 0, Ey = 0, Mx = 0, My = 0;
@@ -25,14 +26,15 @@ function dragElement(grabbed, movingEl) {
 
 	function touchStart(e) {
 		e = eventControl(e);
-		dragElementActive = true;
+		grabbed.setAttribute("dragActive","");
 		touchXY(e);
-		/*grabbed.ontouchend = touchNull;*/
 		grabbed.ontouchmove = elementDrag;
 	}
 
 	function elementDrag(e) {
-		if (e.changedTouches.length<1) touchNull(); // simulate ontouchend so that another touch can't trigger it
+		// ontouchend causes problems when new touches are used this solves that problem
+		if (e.changedTouches.length<1)
+			touchNull();
 		Ex = Mx-e.targetTouches[0].pageX;
 		Ey = My-e.targetTouches[0].pageY;
 		touchXY(e);
@@ -43,8 +45,7 @@ function dragElement(grabbed, movingEl) {
 	}
 
 	function touchNull() {
-		dragElementActive = false;
-		/*grabbed.ontouchend = null;*/
+		grabbed.removeAttribute("dragActive");
 		grabbed.ontouchmove = null;
 	}
 }
