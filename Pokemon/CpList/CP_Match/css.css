@@ -42,7 +42,7 @@ div {
 
 [for=advanced]:hover::before,
 [for=halfLevels]:hover::before,
-[for=CpComp]::before {
+[for=CpComp]:hover::before {
         content: "___";
         color: black;
         background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAABP0lEQVQ4T2Pk5+f/X1ZWxqAVJM/AyMjIQAxgZ+Fg+PLrE8PcopUMO3bsYGCcNGnSfzk3YQaQhACHEAMrExtBc0AGfPjxjoGThYshxTGPgXHX3Q3/f//9zWAmbUtQM7KC51+eMNx7f5Nhw7VlDIwbbiz9L8YtyaAooEaSIb///WI4++wYw/a7axkYV1+b/1+GT4FBmleeJENAik8+Pciw6+5GBsblV2b/lyXTkBNPDzLsubeJgXHp5Rn/Qa4gxyWnnh1i2Htvy6ghSHE4CMMElNjYmTkZNEX0SEpsoPxz7c0FhgMPdjAwLrgw+T8rMyuDkqA6Az+7INEZ8Nnnxwwffr5lWLlrCQNjQEDA/5i2QIaff7+T5BKQ4p9/fjAkGRYwgAqQ/5qamgzG9fIMbJwsRBnEzMTC8PHlZ4ZVKXvB6gGHN6P+EoMNKgAAAABJRU5ErkJggg==);
