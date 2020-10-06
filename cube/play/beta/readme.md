@@ -22,11 +22,9 @@ This is designed to work with square Matrices only.
 			1  = Top to bottom OR left to right.
 
 	  r = Row or column number (not used for rotation).
-*/
 
-/* This function is a generator, here is an example
-  use which fetches row one in reverse and stores it
-  in matFnVals
+
+This function is a generator, here is an example use which fetches row one in reverse and stores it in matFnVals.
 
 	var matrixFn = Matrix(["A","B","C","D","E","F","G","H","I"], "row", -1, 1)
 	,   matFnVals = []
@@ -38,4 +36,3 @@ This is designed to work with square Matrices only.
 		else
 			matFnVals.push(yielded.value[0]);
 	}
-*/
