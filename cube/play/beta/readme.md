@@ -1,5 +1,3 @@
-Other than adding more types of Matrix operations this is the final version.
-
 This is designed to work with square Matrices only, in the form of a flat array.
 
 	params
