@@ -21,18 +21,22 @@ This is designed to work with square Matrices only, in the form of a flat array.
 			-1 = Bottom to top OR right to left.
 			1  = Top to bottom OR left to right.
 
-	  r = Row or column number (not used for rotation).
+	  r = Row or column number.
+		For example:
+			-2 = 2nd column from the right OR
+			    2nd row from the bottom.
+
+			3 = 3rd column from the left OR 3rd
+			   row from the top.
 
 
 The function is a generator, here is an example use which fetches row one in reverse and stores it in matFnVals.
 
 	var matrixFn = Matrix(["A","B","C","D","E","F","G","H","I"], "row", -1, 1)
 	,   matFnVals = []
-	,   yielded;
-	while(true) {
+	,   yielded = matrixFn.next();
+
+	while (!yielded.done) {
+		matFnVals.push(yielded.value[0]);
 		yielded = matrixFn.next();
-		if (yielded.done)
-			break;
-		else
-			matFnVals.push(yielded.value[0]);
 	}
