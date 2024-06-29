@@ -1,0 +1,55 @@
+<html><head><title>Textarea selection tester</title><style>
+[type=text] {
+	width:60px;
+}
+textarea {
+	width: 472px;
+	height: 247px;
+	resize: none;
+}
+</style>
+<script src="lib.js"></script>
+<script src="findandcopy.js"></script>
+<script>
+
+const byId = (i) => {
+	return document.getElementById(i);
+}
+
+</script></head>
+<body><textarea id="selectTest">var thiS = {
+  gusto: 'x',
+  musto: 'y',
+  endo:  'z'
+}
+
+function that(a,b,c) {
+  if (a) return 1;
+  if (b) return "banana";
+  if (c) return "error";
+
+  return "defghijklmnopqrstuvw....";
+}
+
+var Are = ["you", "trying", "to",
+    "make", "sense", "of", "this"]; // ?
+
+var Well = "you can't because while it is valid \
+    javascript it has no purpose other than being a \
+    block of text to test selecting text in this \
+    textarea";</textarea><input type="button" onclick="standin()" style="/* transform: rotate(270deg); */position: relative;top: -158px;margin: 5px;height: 170px;width: 20px;white-space: break-spaces;" value="> > > > > > >"><input type="text" id="dupeLinesArray" style="position: absolute; width: 47%;"><textarea id="uniqueLines" style="height: 220px;"></textarea>Put
+selection start and end positions into the fields below and click select..<br>
+<input type="text" id="selectStart"> -
+<input type="text" id="selectEnd">
+<input type="button" value="select" onclick="doSelect(byId('selectTest'),byId('selectStart'),byId('selectEnd'))"><br>
+___________________________________________________________<br><br>
+To get the start and end selection positions from the textarea click "get",<br>
+if both numbers match then it is simply the position of the caret (text cursor).<br>
+<input type="text" id="selectedStart"> -
+<input type="text" id="selectedEnd">
+<input type="button" id="selectedGet" value="get" onclick="selectedRange(byId('selectTest'),byId('selectedStart'),byId('selectedEnd'))"><br>
+___________________________________________________________<br><br>
+<input type="text" id="selectLine">
+<input type="button" value="select line" onclick="selectLine(byId('selectTest'),byId('selectLine').value)">
+
+</body></html>
