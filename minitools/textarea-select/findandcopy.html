@@ -16,29 +16,49 @@ const byId = (i) => {
 	return document.getElementById(i);
 }
 
-</script></head>
-<body><textarea id="selectTest">var thiS = {
-  gusto: 'x',
-  musto: 'y',
-  endo:  'z'
+</script>
+<style>
+.segment {
+	height: 250px;
+	display: inline-block;
+}
+#copyButton {
+	position: relative;
+	top: -158px;
+	margin: 5px;
+	height: 170px;
+	width: 20px;
+	white-space: break-spaces;
 }
 
-function that(a,b,c) {
-  if (a) return 1;
-  if (b) return "banana";
-  if (c) return "error";
-
-  return "defghijklmnopqrstuvw....";
+#includeDupeLines {
+	position: relative;
+	left: 25px;
 }
 
-var Are = ["you", "trying", "to",
-    "make", "sense", "of", "this"]; // ?
+#dupeLinesArray {
+	position: absolute;
+	width: 47%;
+}
 
-var Well = "you can't because while it is valid \
-    javascript it has no purpose other than being a \
-    block of text to test selecting text in this \
-    textarea";</textarea><input type="button" onclick="standin()" style="/* transform: rotate(270deg); */position: relative;top: -158px;margin: 5px;height: 170px;width: 20px;white-space: break-spaces;" value="> > > > > > >"><input type="text" id="dupeLinesArray" style="position: absolute; width: 47%;"><textarea id="uniqueLines" style="height: 220px;"></textarea>Put
-selection start and end positions into the fields below and click select..<br>
+#uniqueLines {
+	height: 220px;
+}
+</style>
+</head>
+<body>
+<div class="segment">
+	<textarea id="selectTest"></textarea>
+</div>
+<div class="segment">
+	<input type="button" onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton" value="> > > > > > >">
+	<input type="checkbox" id="includeDupeLines">
+</div>
+<div class="segment">
+	<input type="text" id="dupeLinesArray">
+	<textarea id="uniqueLines"></textarea>
+</div>	
+Put selection start and end positions into the fields below and click select..<br>
 <input type="text" id="selectStart"> -
 <input type="text" id="selectEnd">
 <input type="button" value="select" onclick="doSelect(byId('selectTest'),byId('selectStart'),byId('selectEnd'))"><br>
