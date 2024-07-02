@@ -7,9 +7,30 @@
 <script src="findandcopy.js"></script>
 <script>
 const byId = i => document.querySelector("#"+i);
+
+// an extension to selectLine.. you can do eiher
+// selectLine(sourceElement,lineNumber) or
+// selectLine.no = 1 or -1 to increment or
+// decrement the currently selected line
+selectLine.n = 0;
+Object.defineProperty(selectLine, 'no', {
+    set: function(d) {
+        this.n += d;
+        this.n = this.n<1? 1: this.n;
+        byId('lineCountNo').value = this.n;
+        selectLine(byId('selectTest'), this.n);
+    },
+    configurable: true,
+    enumerable: true
+});
 </script>
 
 <style>
+::selection {
+  color: black;
+  background-color: #00ff80;
+}
+
 body {
     background: #2f2f2f;
     color: white;
@@ -46,10 +67,20 @@ body {
 	border: 2px solid #00ff80;
 }
 
+#taheight {
+	position: fixed;
+	top:2px;
+	left:2px;
+}
+
+#taheight:checked + .ta textarea {
+	height: 50vh;
+}
+
 .ta .middle {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: right;
 	align-items: center;
 	transform: rotate(180deg);
 	margin: 0 -10px 0 -10px;
@@ -69,6 +100,12 @@ body {
 	writing-mode: vertical-rl;
 }
 
+.ta label::after {
+	display: inline-block;
+	height: 55px;
+	padding-top: 3px;
+}
+
 .ta [type="checkbox"] + label::after {
 	content: "All";
 }
@@ -77,26 +114,61 @@ body {
 	content: "Unique";
 }
 
-.ta label::after {
-	display: inline-block;
-	height: 55px;
-	padding-top: 3px;
+#lineCountDown {
+    transform: rotate(180deg);
+}
+
+#lineCountDown,
+#lineCountUp,
+#lineCountNo,
+button {
+    background: #2f2f2f;
+    color: white;
+    border: 2px solid #ffffff00;
+}
+
+#lineCountDown:hover,
+#lineCountUp:hover,
+button:hover {
+    color: #00ff80;
+}
+
+#lineCountNo {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    transform: rotate(180deg);
+    height: 36px;
+    margin: 6px 0 6px 0;
+    border-color: white;
+}
+
+.middle hr {
+    writing-mode: tb;
+    opacity: 0;
 }
 </style>
 </head>
 <body>
+<input type="checkbox" id="taheight">
 <div class="ta">
-<textarea id="selectTest"></textarea>
-<div class="middle">
-<button onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton">v v v Copy Lines v v v</button>
-<input type="checkbox" id="includeDupeLines">
-<label for="includeDupeLines"></label>
+	<textarea id="selectTest"></textarea>
+
+	<div class="middle">
+		<button onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton">v v v Copy Lines v v v</button>
+		<input type="checkbox" id="includeDupeLines">
+		<label for="includeDupeLines"></label>
+		<hr>
+		<input type="button" value="V" id="lineCountDown" onclick="selectLine.no=-1">
+		<input type="text" disabled="" id="lineCountNo" value="1">
+		<input type="button" value="V" id="lineCountUp" onclick="selectLine.nu=1">
+	</div>
+
+	<input type="text" id="dupeLinesArray" style="display: none;">
+	<textarea id="uniqueLines"></textarea>
 </div>
-<input type="text" id="dupeLinesArray" style="display: none;">
-<textarea id="uniqueLines"></textarea>
-</div>
+
 <div class="tools">
-The text selection forms below are for the textarea on the left
+The text selection forms below are for the textarea on the left<br>
 ____________________________________________________________________<br><br>
 Put selection start and end positions into the fields below and click select..<br>
 <input type="text" id="selectStart"> -
@@ -111,7 +183,7 @@ if both numbers match then it is simply the position of the caret (text cursor).
 ____________________________________________________________________<br><br>
 To select a particular line number enter it below and click "select line"<br>
 <input type="text" id="selectLine">
-<input type="button" value="select line" onclick="selectLine(byId('selectTest'),byId('selectLine').value)">
+<input type="button" value="select line" onclick="selectLine(byId('selectTest'),byId('selectLine').value)"><br>
 ____________________________________________________________________<br><br>
 The code in this page is free to use
 </div>
