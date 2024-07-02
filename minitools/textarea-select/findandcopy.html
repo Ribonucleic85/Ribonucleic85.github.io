@@ -1,75 +1,118 @@
-<html><head><title>Textarea selection tester</title><style>
-[type=text] {
-	width:60px;
-}
-textarea {
-	width: 472px;
-	height: 247px;
-	resize: none;
-}
-</style>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout</title>
+
 <script src="lib.js"></script>
 <script src="findandcopy.js"></script>
 <script>
-
-const byId = (i) => {
-	return document.getElementById(i);
-}
-
+const byId = i => document.querySelector("#"+i);
 </script>
+
 <style>
-.segment {
-	height: 250px;
-	display: inline-block;
+body {
+    background: #2f2f2f;
+    color: white;
 }
-#copyButton {
-	position: relative;
-	top: -158px;
+
+.tools {
+	padding: 30px;
+}
+
+.tools [type=text] {
+	width:60px;
+}
+
+.ta {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+}
+
+.ta textarea {
+	background: #2f2f2f;
+	color: white;
+	border: 2px solid white;
+	outline: none;
+	width: 50%;
+	height: calc(100vh - 24px);
 	margin: 5px;
-	height: 170px;
-	width: 20px;
-	white-space: break-spaces;
+	resize: none;
 }
 
-#includeDupeLines {
-	position: relative;
-	left: 25px;
+.ta textarea:focus {
+	color: #00ff80;
+	border: 2px solid #00ff80;
 }
 
-#dupeLinesArray {
-	position: absolute;
-	width: 47%;
+.ta .middle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform: rotate(180deg);
+	margin: 0 -10px 0 -10px;
 }
 
-#uniqueLines {
-	height: 220px;
+.ta .middle button {
+	writing-mode: vertical-rl;
+	margin: 10px;
+}
+
+.ta [type="checkbox"] {
+	margin-top: 10px;
+	transform: rotate(180deg);
+}
+
+.ta label {
+	writing-mode: vertical-rl;
+}
+
+.ta [type="checkbox"] + label::after {
+	content: "All";
+}
+
+.ta [type="checkbox"]:checked + label::after {
+	content: "Unique";
+}
+
+.ta label::after {
+	display: inline-block;
+	height: 55px;
+	padding-top: 3px;
 }
 </style>
 </head>
 <body>
-<div class="segment">
-	<textarea id="selectTest"></textarea>
+<div class="ta">
+<textarea id="selectTest"></textarea>
+<div class="middle">
+<button onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton">v v v Copy Lines v v v</button>
+<input type="checkbox" id="includeDupeLines">
+<label for="includeDupeLines"></label>
 </div>
-<div class="segment">
-	<input type="button" onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton" value="> > > > > > >">
-	<input type="checkbox" id="includeDupeLines">
+<input type="text" id="dupeLinesArray" style="display: none;">
+<textarea id="uniqueLines"></textarea>
 </div>
-<div class="segment">
-	<input type="text" id="dupeLinesArray">
-	<textarea id="uniqueLines"></textarea>
-</div>	
+<div class="tools">
+The text selection forms below are for the textarea on the left
+____________________________________________________________________<br><br>
 Put selection start and end positions into the fields below and click select..<br>
 <input type="text" id="selectStart"> -
 <input type="text" id="selectEnd">
 <input type="button" value="select" onclick="doSelect(byId('selectTest'),byId('selectStart'),byId('selectEnd'))"><br>
-___________________________________________________________<br><br>
+____________________________________________________________________<br><br>
 To get the start and end selection positions from the textarea click "get",<br>
 if both numbers match then it is simply the position of the caret (text cursor).<br>
 <input type="text" id="selectedStart"> -
 <input type="text" id="selectedEnd">
 <input type="button" id="selectedGet" value="get" onclick="selectedRange(byId('selectTest'),byId('selectedStart'),byId('selectedEnd'))"><br>
-___________________________________________________________<br><br>
+____________________________________________________________________<br><br>
+To select a particular line number enter it below and click "select line"<br>
 <input type="text" id="selectLine">
 <input type="button" value="select line" onclick="selectLine(byId('selectTest'),byId('selectLine').value)">
-
+____________________________________________________________________<br><br>
+The code in this page is free to use
+</div>
 </body></html>
