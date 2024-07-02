@@ -151,20 +151,18 @@ button:hover {
 <body>
 <input type="checkbox" id="taheight">
 <div class="ta">
-	<textarea id="selectTest"></textarea>
-
-	<div class="middle">
-		<button onclick="()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); }" id="copyButton">v v v Copy Lines v v v</button>
-		<input type="checkbox" id="includeDupeLines">
-		<label for="includeDupeLines"></label>
-		<hr>
-		<input type="button" value="V" id="lineCountDown" onclick="selectLine.no=-1">
-		<input type="text" disabled="" id="lineCountNo" value="1">
-		<input type="button" value="V" id="lineCountUp" onclick="selectLine.nu=1">
-	</div>
-
-	<input type="text" id="dupeLinesArray" style="display: none;">
-	<textarea id="uniqueLines"></textarea>
+<textarea id="selectTest"></textarea>
+<div class="middle">
+<button onclick="(()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); })()" id="copyButton">v v v Copy Lines v v v</button>
+<input type="checkbox" id="includeDupeLines">
+<label for="includeDupeLines"></label>
+<hr>
+<input type="button" value="V" id="lineCountDown" onclick="selectLine.no=-1">
+<input type="text" disabled="" id="lineCountNo" value="1">
+<input type="button" value="V" id="lineCountUp" onclick="selectLine.no=1">
+</div>
+<input type="text" id="dupeLinesArray" style="display: none;">
+<textarea id="uniqueLines"></textarea>
 </div>
 
 <div class="tools">
