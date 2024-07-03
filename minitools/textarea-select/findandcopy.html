@@ -153,7 +153,7 @@ button:hover {
 <div class="ta">
 <textarea id="selectTest"></textarea>
 <div class="middle">
-<button onclick="(()=>{ var src = byId('selectTest'), dst = byId('uniqueLines'), dup = byId('includeDupeLines').checked? findDuplicateLines(src): []; copyLines(src,dst,dup); })()" id="copyButton">v v v Copy Lines v v v</button>
+<button onclick="(()=>{ copyLines(byId('selectTest'), byId('uniqueLines'), true); })()" id="copyButton">v v v Copy Lines v v v</button>
 <input type="checkbox" id="includeDupeLines">
 <label for="includeDupeLines"></label>
 <hr>
