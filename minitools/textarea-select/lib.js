@@ -1,3 +1,7 @@
+Array.prototype.last = function() {
+	return this[this.length-1];
+}
+
 const ta = {
 	s: 0,
 	e: 0,
@@ -8,40 +12,25 @@ const ta = {
 	}
 }
 
-const findLineBreaks = (src) => {
-	var A = [],
-	i = 0,
-	s = 0,
-	a = 0;
-	while (i!=-1) {
-		i = src.indexOf("\n", s);
-		if (i!=-1)
-			A[a] = i,
-			s = i+1,
-			a++;
-	}
-	return A;
+var findLineBreaks = src => [...src.matchAll(/\n/g)].map(b => b.index);
+
+function lineIndexes(src, lnNo, lnBr=[]) {
+	var lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
+
+	return ( // 1st/all , last , between
+		lnNo<=1? [0, (lnBr[0]||src.value.length)]:
+		lnNo>=lnBr.length+1? [lnBr[lnBr.length-1]+1,src.value.length]:
+		[lnBr[lnNo-2]+1,lnBr[lnNo-1]]
+	);
 }
 
-const selectLine = (src,lnNo) => {
-	if (lnNo==0)
-		return;
-	const lnBr = findLineBreaks(src.value);
-	if (lnNo>lnBr.length+1)
-		return;
-	const srcLen = src.value.length;
-	if (lnBr.length==0)
-		ta.s = 0,
-		ta.e = srcLen;
-	else if (lnNo==1)
-		ta.s = 0,
-		ta.e = lnBr[0];
-	else if (lnNo==lnBr.length+1)
-		ta.s = lnBr[lnBr.length-1]+1,
-		ta.e = srcLen;
-	else
-		ta.s = lnBr[lnNo-2]+1,
-		ta.e = lnBr[lnNo-1];
+function selectLine(src, lnNo, lnBr=[]) {
+	const lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
+
+	[ta.s, ta.e] = 	/* 1st/all , last , between */
+		lnNo<=1? [0, (lnBr[0]||src.value.length)]:
+		lnNo>=lnBr.length+1? [lnBr[lnBr.length-1]+1,src.value.length]:
+		[lnBr[lnNo-2]+1,lnBr[lnNo-1]];
 	ta.sel = src;
 }
 
@@ -55,8 +44,3 @@ const doSelect = (src, st, en) => {
 	ta.e = en.value;
 	ta.sel = src;
 }
-
-/* https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
-*   Setting inputTextarea.selectionStart and inputTextarea.selectionEnd manually
-*   didn't work to well so in future i will try inputTextarea.setSelectionRange()
-*/
