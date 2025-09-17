@@ -2,20 +2,22 @@ Array.prototype.last = function() {
 	return this[this.length-1];
 }
 
-const ta = {
-	s: 0,
-	e: 0,
-	set sel(n) {
+const ta = { // ta = textarea
+	s: 0, // selection start   /* set s, e then sel * /
+	e: 0, // selection end
+	set sel(n) { // select (n=source/textarea)
 		n.focus();
 		n.selectionStart=this.s
 		n.selectionEnd=this.e;
 	}
 }
 
-var findLineBreaks = src => [...src.matchAll(/\n/g)].map(b => b.index);
+function findLineBreaks(src) {
+	return [...src.matchAll(/\n/g)].map(b => b.index);
+}
 
 function lineIndexes(src, lnNo, lnBr=[]) {
-	var lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
+	lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
 
 	return ( // 1st/all , last , between
 		lnNo<=1? [0, (lnBr[0]||src.value.length)]:
@@ -25,12 +27,13 @@ function lineIndexes(src, lnNo, lnBr=[]) {
 }
 
 function selectLine(src, lnNo, lnBr=[]) {
-	const lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
+	lnBr = lnBr.length? lnBr: findLineBreaks(src.value);
 
-	[ta.s, ta.e] = 	/* 1st/all , last , between */
+	[ta.s, ta.e] = [...lineIndexes(src, lnNo, lnBr)];
+	/* 1st/all , last , between 
 		lnNo<=1? [0, (lnBr[0]||src.value.length)]:
 		lnNo>=lnBr.length+1? [lnBr[lnBr.length-1]+1,src.value.length]:
-		[lnBr[lnNo-2]+1,lnBr[lnNo-1]];
+		[lnBr[lnNo-2]+1,lnBr[lnNo-1]]; */
 	ta.sel = src;
 }
 
